@@ -6,22 +6,17 @@ using System.Threading.Tasks;
 
 namespace Retarded_Game.Items
 {
-    internal abstract class EquipmentPart
+    internal abstract class EquipmentPart : Item
     {
         public int MinimalStrenght { get; }
         public int MinimalDexterity { get; }
         public int MinimalIntelligence { get; }
         public int MinimalFaith { get; }
-
         public Statistics StatsChange { get; }
-        public string Name { get; set; }
-        public string Description { get; }
 
-        public EquipmentPart(string name, string description, int minimalStrenght, int minimalDexterity,
-            int minimalIntelligence, int minimalFaith, Statistics statsChange)
+        public EquipmentPart(string name, string description, int price, int minimalStrenght, int minimalDexterity,
+            int minimalIntelligence, int minimalFaith, Statistics statsChange) : base(name, description, price)
         {
-            Name = name;
-            Description = description;
             MinimalStrenght = minimalStrenght;
             MinimalDexterity = minimalDexterity;
             MinimalIntelligence = minimalIntelligence;

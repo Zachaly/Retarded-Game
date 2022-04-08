@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game
 {
-    internal class Player : Fighter
+    public class Player : Fighter
     {
         int _experience = 0;
         int Experience 

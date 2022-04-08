@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game
 {
-    internal struct Statistics
+    public struct Statistics
     {
         double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
         double _defence = 0, _magicResistance = 0, _fireResistance = 0, _frostResistance = 0, _lightningResistance = 0;

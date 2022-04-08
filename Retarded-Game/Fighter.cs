@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Retarded_Game
 {
-    internal abstract class Fighter
+    public abstract class Fighter
     {
         protected int _level;
         public Statistics Statistics { get; set; }
