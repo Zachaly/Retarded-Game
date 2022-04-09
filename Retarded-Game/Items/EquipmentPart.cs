@@ -24,15 +24,19 @@ namespace Retarded_Game.Items
             StatsChange = statsChange;
         }
 
-        public virtual void Equip(Player player)
+        public virtual void Equip(Player player, out bool areStatsCorrect)
         {
-            if(player.Statistics.Strenght < MinimalStrenght
+            if (player.Statistics.Strenght < MinimalStrenght
                 || player.Statistics.Dexterity < MinimalDexterity
                 || player.Statistics.Intelligence < MinimalIntelligence
                 || player.Statistics.Faith < MinimalFaith)
+            {
+                areStatsCorrect = false;
                 return;
+            }
 
             player.Statistics.ChangeBy(StatsChange);
+            areStatsCorrect = true;
         }
 
         public virtual void UnEquip(Player player) 

@@ -19,9 +19,13 @@
             } 
         }
 
+        Equipment Equipment { get; }
+
         public Player(string name) : base(name, 1)
         {
             Statistics = new Statistics(30, 5, 0, 0, 0, 0, 0, 7, 7, 5, 5, 0, 25);
+            Equipment = new Equipment(this);
+            Equipment.SetStartingEquipment();
         }
 
         void LevelUp()

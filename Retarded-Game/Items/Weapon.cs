@@ -8,8 +8,8 @@ namespace Retarded_Game.Items
 {
     enum WeaponType
     {
-        OneArmed,
-        TwoArmed,
+        OneHanded,
+        TwoHanded,
     }
 
     internal class Weapon : EquipmentPart

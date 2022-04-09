@@ -16,10 +16,13 @@ namespace Retarded_Game
         }
         public string Name { get; }
 
+        public List<StatusEffect> StatusEffects { get; }
+
         public Fighter(string name, int level)
         {
             Name = name;
             _level = level;
+            StatusEffects = new List<StatusEffect>();
         }
     }
 }

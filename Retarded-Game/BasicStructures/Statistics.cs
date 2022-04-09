@@ -1,6 +1,8 @@
-﻿namespace Retarded_Game
+﻿using System.Collections.Generic;
+
+namespace Retarded_Game
 {
-    public struct Statistics
+    public sealed class Statistics
     {
         double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
         double _defence = 0, _magicResistance = 0, _fireResistance = 0, _frostResistance = 0, _lightningResistance = 0;
@@ -164,6 +166,8 @@
             set => _dodgeChance = value;
         }
 
+        List<Statistics> StatChanges = new List<Statistics>();
+        
         public Statistics(double maxHP, double maxMana, double defence, double magicResistance,
             double fireResistance, double frostResistance, double lighningResistance,
             int strenght, int dexterity, int intelligence, int faith, int critical, int dodge)
@@ -187,6 +191,8 @@
             _criticalChance = critical;
             _dodgeChance = dodge;
         }
+
+        public Statistics() { }
 
         public Statistics Copy()
         {
@@ -212,10 +218,15 @@
 
             CriticalChance += change.CriticalChance;
             DodgeChance += change.DodgeChance;
+
+            StatChanges.Add(change);
         }
 
         public void ReverseChange(Statistics change)
         {
+            if (!StatChanges.Contains(change))
+                return;
+
             MaxHP -= change.MaxHP;
             MaxMana -= change.MaxMana;
 
@@ -232,6 +243,7 @@
 
             CriticalChance -= change.CriticalChance;
             DodgeChance -= change.DodgeChance;
+            StatChanges.Remove(change);
         }
     }
 }

@@ -14,5 +14,6 @@ namespace Retarded_Game.Items
         public const double C = 0.1;
         public const double D = 0.05;
         public const double E = 0.01;
+        public const double None = 0;
     }
 }
