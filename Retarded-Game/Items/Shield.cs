@@ -9,7 +9,7 @@ namespace Retarded_Game.Items
     internal class Shield : EquipmentPart
     {
         int _blockChance;
-        double _blockBaseDamage, _blockFireDamage, _blockFrostDamage, _blockLightningDamage;
+        double _blockBaseDamage, _blockFireDamage, _blockFrostDamage, _blockLightningDamage, _blockMagicDamage;
 
         public int BlockChance
         {
@@ -32,6 +32,17 @@ namespace Retarded_Game.Items
                 return _blockBaseDamage;
             }
             set => _blockBaseDamage = value;
+        }
+
+        public double BlockMagicDamage
+        {
+            get
+            {
+                if (_blockMagicDamage > 1)
+                    return 1;
+                return _blockMagicDamage;
+            }
+            set => _blockMagicDamage = value;
         }
 
         public double BlockFireDamage
@@ -69,10 +80,11 @@ namespace Retarded_Game.Items
 
         public Shield(string name, string description, int price,
             int minimalStrenght, int minimalDexterity, int minimalIntelligence, int minimalFaith, Statistics statsChange,
-            double blockBaseDamage, double blockFireDamage, double blockFrostDamage, double blockLightningDamage, int blockChance) 
+            double blockBaseDamage, double blockMagicDamage, double blockFireDamage, double blockFrostDamage, double blockLightningDamage, int blockChance) 
             : base(name, description, price, minimalStrenght, minimalDexterity, minimalIntelligence, minimalFaith, statsChange)
         {
             _blockBaseDamage = blockBaseDamage;
+            _blockMagicDamage = blockMagicDamage;
             _blockChance = blockChance;
             _blockFireDamage = blockFireDamage;
             _blockFrostDamage = blockFrostDamage;

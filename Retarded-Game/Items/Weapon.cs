@@ -15,6 +15,7 @@ namespace Retarded_Game.Items
     internal class Weapon : EquipmentPart
     {
         public double BaseDamage { get; set; }
+        public double MagicDamage { get; set; }
         public double FireDamage { get; set; }
         public double FrostDamage { get; set; }
         public double LightningDamage { get; set; }
@@ -27,7 +28,7 @@ namespace Retarded_Game.Items
 
         public Weapon(string name, string description, int price,
             int minimalStrenght, int minimalDexterity, int minimalIntelligence, int minimalFaith,
-            Statistics statsChange, double baseDamage, double fireDamage, double frostDamage, double lightningDamage,
+            Statistics statsChange, double baseDamage, double magicDamage, double fireDamage, double frostDamage, double lightningDamage,
             double strengthScaling, double dexterityScaling,
             double intelligenceScaling, double faithScaling, WeaponType type)
             : base(name, description, price, minimalStrenght, minimalDexterity, minimalIntelligence, minimalFaith, statsChange)
@@ -52,10 +53,10 @@ namespace Retarded_Game.Items
             damage.BaseDamage = BaseDamage + (StrenghtScaling * playerStats.Strenght * BaseDamage) 
                 + (DexterityScaling * playerStats.Dexterity * BaseDamage);
 
+            
             damage.FireDamage = FireDamage + (FaithScaling * playerStats.Faith * FireDamage);
             damage.FrostDamage = FrostDamage + (IntelligenceScaling * playerStats.Intelligence * FrostDamage);
-            damage.LighningDamage = LightningDamage + ((IntelligenceScaling * playerStats.Intelligence * LightningDamage)/2 +
-                (FaithScaling * playerStats.Faith * LightningDamage)/2);
+            damage.LighningDamage = LightningDamage + (FaithScaling * playerStats.Faith * LightningDamage);
 
             return damage;
         }

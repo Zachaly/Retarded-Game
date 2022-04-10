@@ -6,5 +6,6 @@
         public double FireDamage { get; set; }
         public double FrostDamage { get; set; }
         public double LighningDamage { get; set; }
+        public double MagicDamage { get; set; }
     }
 }
