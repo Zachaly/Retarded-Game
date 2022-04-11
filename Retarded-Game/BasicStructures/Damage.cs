@@ -1,4 +1,4 @@
-﻿namespace Retarded_Game
+﻿namespace Retarded_Game.BasicStructures
 {
     internal struct Damage
     {

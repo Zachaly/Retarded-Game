@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Retarded_Game.Items
+﻿namespace Retarded_Game.Items
 {
     internal class WeaponScaling
     {

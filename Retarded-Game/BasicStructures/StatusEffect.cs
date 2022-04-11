@@ -1,4 +1,4 @@
-﻿namespace Retarded_Game
+﻿namespace Retarded_Game.BasicStructures
 {
     public delegate void StatusEffectTick(Fighter target);
     public sealed class StatusEffect

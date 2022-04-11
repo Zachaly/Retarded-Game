@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Retarded_Game.BasicStructures.Statistics;
 
 namespace Retarded_Game.Items
 {
     internal class Shield : EquipmentPart
     {
-        int _blockChance;
-        double _blockBaseDamage, _blockFireDamage, _blockFrostDamage, _blockLightningDamage, _blockMagicDamage;
+        int _blockChance = 0;
+        double _blockBaseDamage = 0, _blockFireDamage = 0, _blockFrostDamage = 0, _blockLightningDamage = 0, _blockMagicDamage = 0;
 
         public int BlockChance
         {

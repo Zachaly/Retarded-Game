@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Retarded_Game.BasicStructures.Statistics;
 
 namespace Retarded_Game.Items
 {
@@ -26,10 +22,12 @@ namespace Retarded_Game.Items
 
         public virtual void Equip(Player player, out bool areStatsCorrect)
         {
-            if (player.Statistics.Strenght < MinimalStrenght
-                || player.Statistics.Dexterity < MinimalDexterity
-                || player.Statistics.Intelligence < MinimalIntelligence
-                || player.Statistics.Faith < MinimalFaith)
+            BaseStats playerBaseStats = player.Statistics.BaseStats;
+
+            if (playerBaseStats.Strenght < MinimalStrenght
+                || playerBaseStats.Dexterity < MinimalDexterity
+                || playerBaseStats.Intelligence < MinimalIntelligence
+                || playerBaseStats.Faith < MinimalFaith)
             {
                 areStatsCorrect = false;
                 return;

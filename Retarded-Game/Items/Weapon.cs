@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Retarded_Game.BasicStructures.Statistics;
+using Retarded_Game.BasicStructures;
 
 namespace Retarded_Game.Items
 {
@@ -46,7 +43,7 @@ namespace Retarded_Game.Items
             WeaponType = type;
         }
 
-        public Damage CalculateDamage(Statistics playerStats)
+        public Damage CalculateDamage(BaseStats playerStats)
         {
             Damage damage = new Damage();
 

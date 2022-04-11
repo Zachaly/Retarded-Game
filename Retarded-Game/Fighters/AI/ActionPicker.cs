@@ -35,7 +35,7 @@ namespace Retarded_Game.Fighters.AI
         {
             EnemyAction action = new EnemyAction(Enemy, Player, 0, new List<ActionTag>(), (_, __) => { });
 
-            if (Enemy.Statistics.CurrentHP < Enemy.Statistics.MaxHP * 0.3)
+            if (Enemy.Statistics.BaseStats.CurrentHP < Enemy.Statistics.BaseStats.MaxHP * 0.3)
                 action = GetHealingAction(action);
             else
                 action = GetOffensiveAction();
@@ -88,12 +88,7 @@ namespace Retarded_Game.Fighters.AI
         private Resistance GetLowestPlayerResistance()
         {
             Resistance resistance = Resistance.Base;
-            double basic = Player.Statistics.Defence;
-            double fire = Player.Statistics.FireResistance;
-            double frost = Player.Statistics.FrostResistance;
-            double lightning = Player.Statistics.LightningResistance;
-            double magic = Player.Statistics.MagicResistance;
-            // TODO helper classes for managing stats
+            //TODO
             return resistance;
         }
 

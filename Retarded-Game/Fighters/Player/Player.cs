@@ -1,4 +1,6 @@
-﻿namespace Retarded_Game
+﻿using Retarded_Game.BasicStructures.Statistics;
+
+namespace Retarded_Game
 {
     public class Player : Fighter
     {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.Items;
+using Retarded_Game.BasicStructures.Statistics;
 
 namespace Retarded_Game
 {
@@ -80,7 +78,7 @@ namespace Retarded_Game
 
             AllItems.Add(new Consumable("Minor healing potion", "Heals 5 hp", 2, (player, _) =>
              {
-                 player.Statistics.CurrentHP += 5;
+                 player.Statistics.BaseStats.ChangeCurrentHP(5);
              }));
 
             bool checkIfEquipped;
