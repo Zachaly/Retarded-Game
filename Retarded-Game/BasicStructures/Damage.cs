@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game.BasicStructures
 {
-    internal struct Damage
+    public struct Damage
     {
         public double BaseDamage { get; set; }
         public double FireDamage { get; set; }
@@ -18,5 +18,10 @@
             LightningDamage = lightningDamage;
             MagicDamage = magicDamage;
         }
+
+        public static Damage operator *(Damage damage, double change)
+            => new Damage(damage.BaseDamage * change, damage.FireDamage * change,
+                damage.FrostDamage * change, damage.LightningDamage * change,
+                damage.MagicDamage * change);
     }
 }

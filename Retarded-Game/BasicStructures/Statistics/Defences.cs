@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Retarded_Game.BasicStructures.Statistics
 {
-    public class Defences
+    public sealed class Defences
     {
         double _defence = 0,
             _magicResistance = 0,
@@ -13,6 +13,7 @@ namespace Retarded_Game.BasicStructures.Statistics
             _lightningResistance = 0;
         List<Defences> Changes = new List<Defences>();
 
+        public static Defences Empty { get; } = new Defences();
         public double Defence
         {
             get 

@@ -2,7 +2,7 @@
 
 namespace Retarded_Game.Items
 {
-    internal class Shield : EquipmentPart
+    public class Shield : EquipmentPart
     {
         int _blockChance = 0;
         double _blockBaseDamage = 0, _blockFireDamage = 0, _blockFrostDamage = 0, _blockLightningDamage = 0, _blockMagicDamage = 0;

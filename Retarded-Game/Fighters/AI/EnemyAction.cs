@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Retarded_Game.BasicStructures.Enums;
+using Retarded_Game.Fighters.Players;
 
 namespace Retarded_Game.Fighters.AI
 {
-    delegate void EnemyAttack(Fighter enemy, Player player);
-    internal class EnemyAction
+    public delegate void EnemyAttack(Fighter enemy, Player player);
+    public sealed class EnemyAction
     {
         event EnemyAttack Use;
         Fighter Enemy;

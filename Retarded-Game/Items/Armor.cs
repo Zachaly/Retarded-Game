@@ -3,7 +3,7 @@ using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game.Items
 {
-    internal class Armor : EquipmentPart
+    public class Armor : EquipmentPart
     {
         public ArmorType ArmorType { get; }
         public Armor(string name, string description, int price, Statistics statsChange, ArmorType type) 

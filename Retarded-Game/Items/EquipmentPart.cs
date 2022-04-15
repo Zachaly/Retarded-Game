@@ -1,8 +1,9 @@
 ﻿using Retarded_Game.BasicStructures.Statistics;
+using Retarded_Game.Fighters.Players;
 
 namespace Retarded_Game.Items
 {
-    internal abstract class EquipmentPart : Item
+    public abstract class EquipmentPart : Item
     {
         public StatRequirements StatRequirements { get; }
         public Statistics StatsChange { get; }

@@ -2,13 +2,14 @@
 
 namespace Retarded_Game.BasicStructures.Statistics
 {
-    public class BaseStats
+    public sealed class BaseStats
     {
         double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
         int _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
         int _criticalChance = 0, _dodgeChance = 0;
         List<BaseStats> Changes = new List<BaseStats>();
 
+        public static BaseStats Empty { get; } = new BaseStats();
         public double MaxHP
         {
             get

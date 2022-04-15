@@ -5,9 +5,9 @@ using Retarded_Game.BasicStructures.Statistics;
 using Retarded_Game.BasicStructures;
 using Retarded_Game.BasicStructures.Enums;
 
-namespace Retarded_Game
+namespace Retarded_Game.Fighters.Players
 {
-    internal sealed class Equipment
+    public sealed class Equipment
     {
         public Armor Helmet { get; set; }
         public Armor Chestplate { get; set; }
@@ -53,16 +53,16 @@ namespace Retarded_Game
         public void SetStartingEquipment()
         {
             Helmet = new Armor("Leather Helmet", "", 1,
-                new Statistics(0, 0, 1, 0, -0.1, 0, 0, 0, 0, 0, 0, 0, 0),
+                new Statistics(BaseStats.Empty, new Defences(0.05, 0, -0.1, 0, 0)),
                 ArmorType.Helmet);
             Chestplate = new Armor("Leather Chestplate", "", 1,
-                new Statistics(0, 0, 2.5, 0, -0.2, 0, 0, 0, 0, 0, 0, 0, 0),
+                new Statistics(BaseStats.Empty, new Defences(0.1, 0, -0.2, 0, 0)),
                 ArmorType.Chestplate);
             Pants = new Armor("Leather Pants", "", 1,
-                new Statistics(0, 0, 1.5, 0, -0.1, 0, 0, 0, 0, 0, 0, 0, 0),
+                new Statistics(BaseStats.Empty, new Defences(0.05, 0, -0.1, 0, 0)),
                 ArmorType.Pants);
             Boots = new Armor("Leather Boots", "", 1,
-                new Statistics(0, 0, 1, 0, -0.1, 0, 0, 0, 0, 0, 0, 0, 0),
+                new Statistics(BaseStats.Empty, new Defences(0.05, 0, -0.1, 0, 0)),
                 ArmorType.Boots);
 
             RightHand = new Weapon("Iron Shortsword", "", 1, StatRequirements.None, new Statistics(), new Damage(5, 0, 0, 0, 0),

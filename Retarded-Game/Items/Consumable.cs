@@ -1,9 +1,10 @@
-﻿namespace Retarded_Game.Items
-{
-    delegate void UseItem(Player player, Fighter target);
+﻿using Retarded_Game.Fighters.Players;
 
-    internal class Consumable : Item
+namespace Retarded_Game.Items
+{
+    public class Consumable : Item
     {
+        public delegate void UseItem(Player player, Fighter target);
         event UseItem Usage;
 
         public Consumable(string name, string description, int price, UseItem usage) 

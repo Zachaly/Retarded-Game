@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game.Items
 {
-    internal class WeaponScaling
+    public sealed class WeaponScaling
     {
         public const double S = 0.4;
         public const double A = 0.3;

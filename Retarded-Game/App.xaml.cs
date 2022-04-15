@@ -13,5 +13,6 @@ namespace Retarded_Game
     /// </summary>
     public partial class App : Application
     {
+        new public static MainWindow MainWindow { get => Current.MainWindow as MainWindow; }
     }
 }

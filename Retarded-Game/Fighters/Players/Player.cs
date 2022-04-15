@@ -1,6 +1,6 @@
 ﻿using Retarded_Game.BasicStructures.Statistics;
 
-namespace Retarded_Game
+namespace Retarded_Game.Fighters.Players
 {
     public class Player : Fighter
     {
@@ -21,13 +21,15 @@ namespace Retarded_Game
             } 
         }
 
-        Equipment Equipment { get; }
+        public Equipment Equipment { get; }
+        public Spellbook Spellbook { get; }
 
         public Player(string name) : base(name, 1)
         {
-            Statistics = new Statistics(30, 5, 0, 0, 0, 0, 0, 7, 7, 5, 5, 0, 25);
+            Statistics = new Statistics(new BaseStats(30, 5, 1, 1, 1, 1, 0, 10));
             Equipment = new Equipment(this);
             Equipment.SetStartingEquipment();
+            Spellbook = new Spellbook(this);
         }
 
         void LevelUp()

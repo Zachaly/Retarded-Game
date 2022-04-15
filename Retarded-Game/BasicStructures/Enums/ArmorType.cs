@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game.BasicStructures.Enums
 {
-    enum ArmorType
+    public enum ArmorType
     {
         Helmet,
         Chestplate,

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using Retarded_Game.BasicStructures.Enums;
 using System.Linq;
+using Retarded_Game.Fighters.Players;
 
 namespace Retarded_Game.Fighters.AI
 {
-    internal class ActionPicker
+    public sealed class ActionPicker
     {
         Player Player { get; }
         Fighter Enemy { get; }

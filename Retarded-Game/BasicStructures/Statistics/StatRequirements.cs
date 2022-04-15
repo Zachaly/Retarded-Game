@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game.BasicStructures.Statistics
 {
-    internal class StatRequirements
+    public sealed class StatRequirements
     {
         public static StatRequirements None { get; } = new StatRequirements(0, 0, 0, 0);
 

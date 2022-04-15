@@ -4,7 +4,7 @@ using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game.Items
 {
-    internal class Weapon : EquipmentPart
+    public class Weapon : EquipmentPart
     {
         public Damage BaseDamage { get; set; }
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Retarded_Game.Fighters.Players;
 
 namespace Retarded_Game.Fighters.AI
 {
-    internal class AIFighter : Fighter
+    public class AIFighter : Fighter
     {
         List<EnemyAction> Actions { get; }
         ActionPicker ActionPicker { get; set; }

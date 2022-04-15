@@ -1,6 +1,6 @@
 ﻿namespace Retarded_Game.BasicStructures.Enums
 {
-    enum WeaponType
+    public enum WeaponType
     {
         OneHanded,
         TwoHanded,

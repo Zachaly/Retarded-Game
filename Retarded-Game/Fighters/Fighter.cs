@@ -22,5 +22,10 @@ namespace Retarded_Game
             _level = level;
             StatusEffects = new List<StatusEffect>();
         }
+
+        public void TakeDamage(Damage damage)
+        {
+
+        }
     }
 }
