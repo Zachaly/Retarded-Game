@@ -1,20 +1,24 @@
-﻿using Retarded_Game.BasicStructures.Statistics;
-
-namespace Retarded_Game.Items
+﻿namespace Retarded_Game.BasicStructures.Statistics
 {
     internal class StatRequirements
     {
         public static StatRequirements None { get; } = new StatRequirements(0, 0, 0, 0);
 
-        public int MinimalStrenght { get; }
-        public int MinimalDexterity { get; }
-        public int MinimalFaith { get; }
-        public int MinimalIntelligence { get; }
+        public int MinimalStrenght { get; } = 0;
+        public int MinimalDexterity { get; } = 0;
+        public int MinimalFaith { get; } = 0;
+        public int MinimalIntelligence { get; } = 0;
 
         public StatRequirements(int strenght, int dexterity, int faith, int intelligence)
         {
             MinimalStrenght = strenght;
             MinimalDexterity = dexterity;
+            MinimalFaith = faith;
+            MinimalIntelligence = intelligence;
+        }
+
+        public StatRequirements(int faith, int intelligence)
+        {
             MinimalFaith = faith;
             MinimalIntelligence = intelligence;
         }

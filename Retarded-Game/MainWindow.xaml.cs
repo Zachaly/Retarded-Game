@@ -26,5 +26,15 @@ namespace Retarded_Game
         {
             InitializeComponent();
         }
+
+        private void CloseCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CloseCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

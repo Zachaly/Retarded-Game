@@ -8,7 +8,14 @@
         Title="Retarded Game"
         Width="500"
         Height="400"
-        Background="DarkGray">
+        Background="DarkGray"
+        x:Name="Game">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close"
+                        Executed="CloseCommandExecuted"
+                        CanExecute="CloseCommandCanExecute"/>
+    </Window.CommandBindings>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,8 +25,9 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Content="Create character" Width="180" Height="60" FontSize="20" Grid.Row="0" Background="LightGray"/>
-        <Button Content="Load Character" Width="180" Height="60" FontSize="20" Grid.Row="1" Background="LightGray"/>
-        <Button Content="Exit" Width="180" Height="60" FontSize="20" Grid.Row="2" Background="LightGray"/>
+        <Button Content="Create Game" Width="180" Height="60" FontSize="20" Grid.Row="0" Background="LightGray"/>
+        <Button Content="Load Game" Width="180" Height="60" FontSize="20" Grid.Row="1" Background="LightGray"/>
+        <Button Content="Exit" Width="180" Height="60" FontSize="20" Grid.Row="2" Background="LightGray" 
+                Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=Game}" CommandParameter=""/>
     </Grid>
 </Window>

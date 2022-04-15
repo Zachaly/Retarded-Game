@@ -1,23 +1,9 @@
 ﻿using System.Collections.Generic;
+using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game.Fighters.AI
 {
     delegate void EnemyAttack(Fighter enemy, Player player);
-    enum ActionTag
-    {
-        Attack,
-        Spell,
-        StatusEffect,
-        Healing,
-        Fire,
-        Frost,
-        Lightning,
-        Magic,
-        Basic,
-        Buff,
-        Debuff
-    }
-
     internal class EnemyAction
     {
         event EnemyAttack Use;
@@ -38,6 +24,7 @@ namespace Retarded_Game.Fighters.AI
 
         public void TakeAction()
         {
+            Enemy.Statistics.BaseStats.CurrentMana -= ManaCost;
             Use(Enemy, Player);
         }
     }

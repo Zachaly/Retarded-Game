@@ -173,7 +173,5 @@ namespace Retarded_Game.BasicStructures.Statistics
 
         public BaseStats Clone()
             => new BaseStats(_maxHP, _maxMana, _strenght, _dexterity, _intelligence, _faith, _criticalChance, _dodgeChance);
-        
-
     }
 }
