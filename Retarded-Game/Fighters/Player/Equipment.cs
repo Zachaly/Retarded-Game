@@ -2,6 +2,8 @@
 using System.Linq;
 using Retarded_Game.Items;
 using Retarded_Game.BasicStructures.Statistics;
+using Retarded_Game.BasicStructures;
+using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game
 {
@@ -30,7 +32,7 @@ namespace Retarded_Game
         Player player;
 
         // used when left hand is empty, used to avoid null reference
-        Weapon EmptyHand = new Weapon("Empty Hand", "", 0, 0, 0, 0, 0, new Statistics(), 0, 0, 0, 0, 0, 0, 0, 0, 0, WeaponType.OneHanded);
+        Weapon EmptyHand = new Weapon("Empty Hand", "", 0, StatRequirements.None, new Statistics(), Damage.None, 0, 0, 0, 0, WeaponType.OneHanded);
 
         public Equipment(Player player)
         {
@@ -63,10 +65,10 @@ namespace Retarded_Game
                 new Statistics(0, 0, 1, 0, -0.1, 0, 0, 0, 0, 0, 0, 0, 0),
                 ArmorType.Boots);
 
-            RightHand = new Weapon("Iron Shortsword", "", 1, 0, 0, 0, 0, new Statistics(), 5, 0, 0, 0, 0,
+            RightHand = new Weapon("Iron Shortsword", "", 1, StatRequirements.None, new Statistics(), new Damage(5, 0, 0, 0, 0),
                 WeaponScaling.D, WeaponScaling.D, WeaponScaling.None, WeaponScaling.None, WeaponType.OneHanded);
 
-            LeftHand = new Shield("Wooden Shield", "", 1, 0, 0, 0, 0, new Statistics(),
+            LeftHand = new Shield("Wooden Shield", "", 1, StatRequirements.None, new Statistics(),
                 0.6, 0, 0, 0, 0, 50);
 
             AllItems.Add(Helmet);
@@ -78,7 +80,7 @@ namespace Retarded_Game
 
             AllItems.Add(new Consumable("Minor healing potion", "Heals 5 hp", 2, (player, _) =>
              {
-                 player.Statistics.BaseStats.ChangeCurrentHP(5);
+                 player.Statistics.BaseStats.CurrentHP += 5;
              }));
 
             bool checkIfEquipped;

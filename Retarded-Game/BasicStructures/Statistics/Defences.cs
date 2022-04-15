@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using Retarded_Game.BasicStructures.Enums;
+using System.Linq;
 
 namespace Retarded_Game.BasicStructures.Statistics
 {
-    public struct Defences
+    public class Defences
     {
         double _defence = 0,
             _magicResistance = 0,
@@ -66,6 +68,8 @@ namespace Retarded_Game.BasicStructures.Statistics
             set => _lightningResistance = value;
         }
 
+        public Defences() { }
+
         public Defences(double defence, double magicResistance, double fireResistance, double frostResistance, double lightningResistance)
         {
             _defence = defence;
@@ -96,6 +100,19 @@ namespace Retarded_Game.BasicStructures.Statistics
             FireResistance -= change.FireResistance;
             FrostResistance -= change.FrostResistance;
             LightningResistance -= change.LightningResistance;
+        }
+
+        public Defences Clone()
+            => new Defences(_defence, _magicResistance, _fireResistance, _frostResistance, _lightningResistance);
+        
+        public IEnumerable<(Resistance, double)> GetResistancesAscening()
+        {
+            List<(Resistance resistance, double value)> resists = new List<(Resistance, double)>
+            { (Resistance.Base, Defence), (Resistance.Magic, MagicResistance),
+            (Resistance.Fire, FireResistance), (Resistance.Frost, FrostResistance),
+            (Resistance.Lightning, LightningResistance)};
+
+            return resists.OrderBy(el => el.value);
         }
     }
 }

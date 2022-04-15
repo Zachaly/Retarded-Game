@@ -1,21 +1,12 @@
 ﻿using Retarded_Game.BasicStructures.Statistics;
 using Retarded_Game.BasicStructures;
+using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game.Items
 {
-    enum WeaponType
-    {
-        OneHanded,
-        TwoHanded,
-    }
-
     internal class Weapon : EquipmentPart
     {
-        public double BaseDamage { get; set; }
-        public double MagicDamage { get; set; }
-        public double FireDamage { get; set; }
-        public double FrostDamage { get; set; }
-        public double LightningDamage { get; set; }
+        public Damage BaseDamage { get; set; }
 
         public double StrenghtScaling { get; set; }
         public double DexterityScaling { get; set; }
@@ -24,16 +15,13 @@ namespace Retarded_Game.Items
         public WeaponType WeaponType { get;}
 
         public Weapon(string name, string description, int price,
-            int minimalStrenght, int minimalDexterity, int minimalIntelligence, int minimalFaith,
-            Statistics statsChange, double baseDamage, double magicDamage, double fireDamage, double frostDamage, double lightningDamage,
+            StatRequirements statRequirements,
+            Statistics statsChange, Damage baseDamage,
             double strengthScaling, double dexterityScaling,
             double intelligenceScaling, double faithScaling, WeaponType type)
-            : base(name, description, price, minimalStrenght, minimalDexterity, minimalIntelligence, minimalFaith, statsChange)
+            : base(name, description, price, statRequirements, statsChange)
         {
             BaseDamage = baseDamage;
-            FireDamage = fireDamage;
-            FrostDamage = frostDamage;
-            LightningDamage = lightningDamage;
 
             StrenghtScaling = strengthScaling;
             DexterityScaling = dexterityScaling;
@@ -47,13 +35,12 @@ namespace Retarded_Game.Items
         {
             Damage damage = new Damage();
 
-            damage.BaseDamage = BaseDamage + (StrenghtScaling * playerStats.Strenght * BaseDamage) 
-                + (DexterityScaling * playerStats.Dexterity * BaseDamage);
+            damage.BaseDamage = BaseDamage.BaseDamage + (StrenghtScaling * playerStats.Strenght * BaseDamage.BaseDamage) 
+                + (DexterityScaling * playerStats.Dexterity * BaseDamage.BaseDamage);
 
-            
-            damage.FireDamage = FireDamage + (FaithScaling * playerStats.Faith * FireDamage);
-            damage.FrostDamage = FrostDamage + (IntelligenceScaling * playerStats.Intelligence * FrostDamage);
-            damage.LighningDamage = LightningDamage + (FaithScaling * playerStats.Faith * LightningDamage);
+            damage.FireDamage = BaseDamage.FireDamage + (FaithScaling * playerStats.Faith * BaseDamage.FireDamage);
+            damage.FrostDamage = BaseDamage.FrostDamage + (IntelligenceScaling * playerStats.Intelligence * BaseDamage.FrostDamage);
+            damage.LightningDamage = BaseDamage.LightningDamage + (FaithScaling * playerStats.Faith * BaseDamage.LightningDamage);
 
             return damage;
         }

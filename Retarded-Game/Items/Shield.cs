@@ -75,9 +75,10 @@ namespace Retarded_Game.Items
         }
 
         public Shield(string name, string description, int price,
-            int minimalStrenght, int minimalDexterity, int minimalIntelligence, int minimalFaith, Statistics statsChange,
-            double blockBaseDamage, double blockMagicDamage, double blockFireDamage, double blockFrostDamage, double blockLightningDamage, int blockChance) 
-            : base(name, description, price, minimalStrenght, minimalDexterity, minimalIntelligence, minimalFaith, statsChange)
+            StatRequirements statRequirements, Statistics statsChange,
+            double blockBaseDamage, double blockMagicDamage, double blockFireDamage,
+            double blockFrostDamage, double blockLightningDamage, int blockChance) 
+            : base(name, description, price, statRequirements, statsChange)
         {
             _blockBaseDamage = blockBaseDamage;
             _blockMagicDamage = blockMagicDamage;

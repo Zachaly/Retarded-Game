@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Retarded_Game.BasicStructures.Enums;
 
 namespace Retarded_Game.Fighters.AI
 {
@@ -12,11 +10,6 @@ namespace Retarded_Game.Fighters.AI
         Fighter Enemy { get; }
         List<EnemyAction> Actions { get; }
         Random Random { get; }
-
-        enum Resistance
-        {
-            Base, Magic, Fire, Lightning, Frost
-        }
 
         public ActionPicker(AIFighter enemy, List<EnemyAction> actions, Player player)
         {
@@ -88,7 +81,6 @@ namespace Retarded_Game.Fighters.AI
         private Resistance GetLowestPlayerResistance()
         {
             Resistance resistance = Resistance.Base;
-            //TODO
             return resistance;
         }
 

@@ -2,7 +2,7 @@
 
 namespace Retarded_Game.BasicStructures.Statistics
 {
-    public struct BaseStats
+    public class BaseStats
     {
         double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
         int _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
@@ -121,6 +121,7 @@ namespace Retarded_Game.BasicStructures.Statistics
             set => _dodgeChance = value;
         }
 
+        public BaseStats() { }
         public BaseStats(double maxHP, double maxMana, int strenght, int dexterity, int intelligence, int faith, int critical, int dodge)
         {
             _maxHP = maxHP;
@@ -170,11 +171,9 @@ namespace Retarded_Game.BasicStructures.Statistics
             DodgeChance -= change._dodgeChance;
         }
 
-        public void ChangeCurrentHP(double value) 
-            => CurrentHP += value;
-
-        public void ChangeCurrentMana(double value)
-            => CurrentMana += value;
+        public BaseStats Clone()
+            => new BaseStats(_maxHP, _maxMana, _strenght, _dexterity, _intelligence, _faith, _criticalChance, _dodgeChance);
+        
 
     }
 }
