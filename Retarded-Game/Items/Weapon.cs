@@ -7,7 +7,6 @@ namespace Retarded_Game.Items
     public class Weapon : EquipmentPart
     {
         public Damage BaseDamage { get; set; }
-
         public double StrenghtScaling { get; set; }
         public double DexterityScaling { get; set; }
         public double IntelligenceScaling { get; set; }

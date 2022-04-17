@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
         public string Description { get; }
-        int Price { get; set; }
+        public int Price { get; set; }
 
         public Item(string name, string description, int price)
         {

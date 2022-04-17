@@ -29,7 +29,7 @@ namespace Retarded_Game.Fighters.Players
 
         public IEnumerable<Consumable> AllConsumables;
 
-        Player player;
+        Player _player;
 
         // used when left hand is empty, used to avoid null reference
         Weapon EmptyHand = new Weapon("Empty Hand", "", 0, StatRequirements.None, new Statistics(), Damage.None, 0, 0, 0, 0, WeaponType.OneHanded);
@@ -47,7 +47,7 @@ namespace Retarded_Game.Fighters.Players
             AllShields = from Shield el in AllItems where el != null select el;
             AllConsumables = from Consumable el in AllItems where el != null select el;
 
-            this.player = player;
+            _player = player;
         }
 
         public void SetStartingEquipment()
@@ -98,33 +98,33 @@ namespace Retarded_Game.Fighters.Players
             bool dummyBool; // used only for compatibility because armor does not care about stats(or at least shouldn't ;P)
             if(armor.ArmorType == ArmorType.Helmet)
             {
-                Helmet.UnEquip(player);
+                Helmet.UnEquip(_player);
                 Helmet = armor;
-                Helmet.Equip(player, out dummyBool);
+                Helmet.Equip(_player, out dummyBool);
             }
             else if(armor.ArmorType == ArmorType.Chestplate)
             {
-                Chestplate.UnEquip(player);
+                Chestplate.UnEquip(_player);
                 Chestplate = armor;
-                Chestplate.Equip(player, out dummyBool);
+                Chestplate.Equip(_player, out dummyBool);
             }
             else if(armor.ArmorType == ArmorType.Pants)
             {
-                Pants.UnEquip(player);
+                Pants.UnEquip(_player);
                 Pants = armor;
-                Pants.Equip(player, out dummyBool);
+                Pants.Equip(_player, out dummyBool);
             }
             else if (armor.ArmorType == ArmorType.Boots)
             {
-                Boots.UnEquip(player);
+                Boots.UnEquip(_player);
                 Boots = armor;
-                Boots.Equip(player, out dummyBool);
+                Boots.Equip(_player, out dummyBool);
             }
         }
 
         public void EquipRightHand(Weapon weapon, out bool statsCorrect)
         {
-            weapon.Equip(player, out statsCorrect);
+            weapon.Equip(_player, out statsCorrect);
 
             if (!statsCorrect)
                 return;
@@ -141,11 +141,11 @@ namespace Retarded_Game.Fighters.Players
             }
             if(weapon.WeaponType == WeaponType.TwoHanded)
             {
-                LeftHand.UnEquip(player);
+                LeftHand.UnEquip(_player);
                 LeftHand = weapon;
             }
 
-            RightHand.UnEquip(player);
+            RightHand.UnEquip(_player);
             RightHand = weapon;
         }
 
@@ -155,7 +155,7 @@ namespace Retarded_Game.Fighters.Players
             if (item is Weapon == false && item is Shield == false)
                 return;
 
-            item.Equip(player, out done);
+            item.Equip(_player, out done);
 
             if (!done)
                 return;
@@ -173,7 +173,7 @@ namespace Retarded_Game.Fighters.Players
                     return;
             }
             
-            LeftHand.UnEquip(player);
+            LeftHand.UnEquip(_player);
             LeftHand = item;
         }
     }

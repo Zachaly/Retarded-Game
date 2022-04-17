@@ -19,16 +19,16 @@ namespace Retarded_Game.Fighters.Players
 
         public int PossibleSpells 
         { 
-            get => _baseNumberOfSpells + (Player.Statistics.BaseStats.Faith/5 + Player.Statistics.BaseStats.Intelligence/5); 
+            get => _baseNumberOfSpells + (_player.Statistics.BaseStats.Faith/5 + _player.Statistics.BaseStats.Intelligence/5); 
         }
 
-        Player Player;
+        Player _player;
 
         public Spellbook(Player player)
         {
             AllSpells = new List<Spell>();
             EquippedSpells = new List<Spell>();
-            Player = player;
+            _player = player;
 
             Spell basicHeal = new Spell("Minor Magic Heal", 0.5, new StatRequirements(1, 1), Damage.None,
                 WeaponScaling.E, WeaponScaling.E, new List<ActionTag> { ActionTag.Healing, ActionTag.Spell },
@@ -41,7 +41,7 @@ namespace Retarded_Game.Fighters.Players
 
         public void LearnSpell(Spell spell, out bool canLearn)
         {
-            canLearn = !AllSpells.Contains(spell) || spell.StatRequirements.AreFulliled(Player.Statistics.BaseStats);
+            canLearn = !AllSpells.Contains(spell) || spell.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
             if (!canLearn)
                 return;
             

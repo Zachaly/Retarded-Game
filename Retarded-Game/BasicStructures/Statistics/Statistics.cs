@@ -7,7 +7,7 @@ namespace Retarded_Game.BasicStructures.Statistics
         public Defences Defences { get; set; } = new Defences();
         public BaseStats BaseStats { get; set; } = new BaseStats();
 
-        List<Statistics> StatChanges = new List<Statistics>();
+        List<Statistics> _statChanges = new List<Statistics>();
         
         public Statistics(double maxHP, double maxMana, double defence, double magicResistance,
             double fireResistance, double frostResistance, double lightningResistance,
@@ -45,18 +45,18 @@ namespace Retarded_Game.BasicStructures.Statistics
             BaseStats.ApplyChange(change.BaseStats);
             Defences.ApplyChange(change.Defences);
 
-            StatChanges.Add(change);
+            _statChanges.Add(change);
         }
 
         public void ReverseChange(Statistics change)
         {
-            if (!StatChanges.Contains(change))
+            if (!_statChanges.Contains(change))
                 return;
 
             BaseStats.ReverseChange(change.BaseStats);
             Defences.ReverseChange(change.Defences);
 
-            StatChanges.Remove(change);
+            _statChanges.Remove(change);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Retarded_Game.Fighters.Players
     public class Spell
     {
         public delegate void Usage(Player player, Fighter target);
-        event Usage OnUsage;
+        event Usage _onUsage;
         public double ManaCost { get; }
         public Damage Damage { get; }
 
@@ -19,7 +19,7 @@ namespace Retarded_Game.Fighters.Players
         public double IntelligenceScaling { get; }
         public List<ActionTag> ActionTags { get; }
 
-        private Player Player;
+        private Player _player;
         
 
         public Spell(string name, double manaCost, StatRequirements statRequirements, Damage damage,
@@ -29,12 +29,12 @@ namespace Retarded_Game.Fighters.Players
             ManaCost = manaCost;
             Damage = damage;
             StatRequirements = statRequirements;
-            OnUsage += specialUsage;
+            _onUsage += specialUsage;
             FaithScaling = faithScaling;
             IntelligenceScaling = intelligenceScaling;
             ActionTags = actionTags;
 
-            OnUsage += (player, enemy) =>
+            _onUsage += (player, enemy) =>
             {
                 Damage damage = Damage*(1+(player.Statistics.BaseStats.Faith * FaithScaling));
                 damage *= 1+(player.Statistics.BaseStats.Intelligence * IntelligenceScaling);
@@ -47,15 +47,15 @@ namespace Retarded_Game.Fighters.Players
         {
             used = false;
 
-            if (Player.Statistics.BaseStats.CurrentMana < ManaCost)
+            if (_player.Statistics.BaseStats.CurrentMana < ManaCost)
                 return;
 
-            Player.Statistics.BaseStats.CurrentMana -= ManaCost;
+            _player.Statistics.BaseStats.CurrentMana -= ManaCost;
             used = true;
-            OnUsage(Player, fighter);
+            _onUsage(_player, fighter);
         }
 
         public void Learn(Player player)
-            => Player = player;
+            => _player = player;
     }
 }

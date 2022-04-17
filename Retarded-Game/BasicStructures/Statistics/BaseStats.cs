@@ -7,7 +7,7 @@ namespace Retarded_Game.BasicStructures.Statistics
         double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
         int _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
         int _criticalChance = 0, _dodgeChance = 0;
-        List<BaseStats> Changes = new List<BaseStats>();
+        List<BaseStats> _changes = new List<BaseStats>();
 
         public static BaseStats Empty { get; } = new BaseStats();
         public double MaxHP
@@ -141,7 +141,7 @@ namespace Retarded_Game.BasicStructures.Statistics
 
         public void ApplyChange(BaseStats change)
         {
-            Changes.Add(change);
+            _changes.Add(change);
 
             MaxHP += change._maxHP;
             MaxMana += change._maxMana;
@@ -157,7 +157,7 @@ namespace Retarded_Game.BasicStructures.Statistics
 
         public void ReverseChange(BaseStats change)
         {
-            if (!Changes.Contains(change))
+            if (!_changes.Contains(change))
                 return;
 
             MaxHP -= change._maxHP;

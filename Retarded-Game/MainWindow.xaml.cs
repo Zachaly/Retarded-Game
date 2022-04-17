@@ -30,7 +30,7 @@ namespace Retarded_Game
 
         private void CloseCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void CloseCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)

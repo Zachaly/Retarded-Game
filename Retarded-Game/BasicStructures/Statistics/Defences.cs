@@ -11,7 +11,7 @@ namespace Retarded_Game.BasicStructures.Statistics
             _fireResistance = 0,
             _frostResistance = 0,
             _lightningResistance = 0;
-        List<Defences> Changes = new List<Defences>();
+        List<Defences> _changes = new List<Defences>();
 
         public static Defences Empty { get; } = new Defences();
         public double Defence
@@ -82,7 +82,7 @@ namespace Retarded_Game.BasicStructures.Statistics
 
         public void ApplyChange(Defences change)
         {
-            Changes.Add(change);
+            _changes.Add(change);
 
             Defence += change.Defence;
             MagicResistance += change.MagicResistance;
@@ -93,7 +93,7 @@ namespace Retarded_Game.BasicStructures.Statistics
 
         public void ReverseChange(Defences change)
         {
-            if(!Changes.Contains(change))
+            if(!_changes.Contains(change))
                     return;
 
             Defence -= change.Defence;

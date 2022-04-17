@@ -3,23 +3,23 @@
     public delegate void StatusEffectTick(Fighter target);
     public sealed class StatusEffect
     {
-        Fighter target;
-        event StatusEffectTick tick;
-        int numberOfTicks;
+        Fighter _target;
+        event StatusEffectTick _tick;
+        int _numberOfTicks;
         public StatusEffect(Fighter target, int numberOfTicks, StatusEffectTick tick)
         {
-            this.target = target;
-            this.tick += tick;
-            this.numberOfTicks = numberOfTicks;
+            _target = target;
+            _tick += tick;
+            _numberOfTicks = numberOfTicks;
         }
 
         public void TakeEffect()
         {
-            tick(target);
-            numberOfTicks--;
+            _tick(_target);
+            _numberOfTicks--;
 
-            if(numberOfTicks == 0)
-                target.StatusEffects.Remove(this);
+            if(_numberOfTicks == 0)
+                _target.StatusEffects.Remove(this);
         }
     }
 }
