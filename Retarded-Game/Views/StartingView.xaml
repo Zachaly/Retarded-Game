@@ -19,7 +19,8 @@
                     Height="{StaticResource DefaultBoxHeight}" 
                     FontSize="{StaticResource DefaultFontSize}" 
                     Grid.Row="0" 
-                    Background="LightGray"/>
+                    Background="LightGray"
+                    Command="{Binding CreateCharacterCommand}"/>
         <Button Content="Load Character" 
                     Width="{StaticResource DefaultBoxWidth}" 
                     Height="{StaticResource DefaultBoxHeight}" 

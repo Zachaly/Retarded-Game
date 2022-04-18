@@ -23,7 +23,9 @@ namespace Retarded_Game.Commands
 
         public override bool CanExecute(object? parameter)
         {
-            return _nameViewModel.CharacterName.Length >= 5 && base.CanExecute(parameter);
+            return _nameViewModel.CharacterName.Length >= 5  
+                && _nameViewModel.CharacterName.Length <= 20 
+                && base.CanExecute(parameter);
         }
 
         public override void Execute(object? parameter)

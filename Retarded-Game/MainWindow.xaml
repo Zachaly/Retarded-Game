@@ -3,16 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Retarded_Game.Views"
+        xmlns:local="clr-namespace:Retarded_Game"
+        xmlns:viewModels="clr-namespace:Retarded_Game.ViewModels"
+        xmlns:views="clr-namespace:Retarded_Game.Views"
         mc:Ignorable="d"
         Title="Retarded Game"
-        Width="500"
-        Height="400"
         Background="DarkGray"
         x:Name="Game"
-        ResizeMode="NoResize"
-        FontFamily="Arial">
-    <DockPanel>
-        <local:StartingView DataContext="{Binding CurrentViewModel}"/>
-    </DockPanel>
+        FontFamily="Arial"
+        MinHeight="500"
+        MinWidth="500">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:StartingViewModel}">
+            <views:StartingView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:EnterNameViewModel}">
+            <views:EnterNameView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid MaxHeight="500" MaxWidth="500" Background="SlateGray">
+        <ContentControl Content="{Binding CurrentViewModel}"/>
+    </Grid>
 </Window>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Retarded_Game.Views"
              mc:Ignorable="d"
              FontSize="{StaticResource DefaultFontSize}">
-    <Grid>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -28,7 +28,9 @@
                  Text="{Binding CharacterName, UpdateSourceTrigger=PropertyChanged}"
                  Width="{StaticResource DefaultBoxWidth}"
                  Height="{StaticResource DefaultBoxHeight}" 
-                 Margin="5"/>
+                 Margin="5"
+                 TextAlignment="Center"
+                 VerticalContentAlignment="Center"/>
         <Button Grid.Column="1"
                 Grid.Row="1"
                 Content="Confirm"
