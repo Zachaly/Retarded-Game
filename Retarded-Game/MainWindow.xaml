@@ -3,31 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Retarded_Game"
+        xmlns:local="clr-namespace:Retarded_Game.Views"
         mc:Ignorable="d"
         Title="Retarded Game"
         Width="500"
         Height="400"
         Background="DarkGray"
-        x:Name="Game">
-    <Window.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Close"
-                        Executed="CloseCommandExecuted"
-                        CanExecute="CloseCommandCanExecute"/>
-    </Window.CommandBindings>
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Content="Create Game" Width="180" Height="60" FontSize="20" Grid.Row="0" Background="LightGray"/>
-        <Button Content="Load Game" Width="180" Height="60" FontSize="20" Grid.Row="1" Background="LightGray"/>
-        <Button Content="Exit" Width="180" Height="60" FontSize="20" Grid.Row="2" Background="LightGray" 
-                Command="ApplicationCommands.Close" CommandTarget="{Binding ElementName=Game}" CommandParameter=""/>
-    </Grid>
+        x:Name="Game"
+        ResizeMode="NoResize"
+        FontFamily="Arial">
+    <DockPanel>
+        <local:StartingView DataContext="{Binding CurrentViewModel}"/>
+    </DockPanel>
 </Window>

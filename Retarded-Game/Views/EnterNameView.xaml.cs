@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Retarded_Game
+namespace Retarded_Game.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logika interakcji dla klasy EnterNameView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EnterNameView : UserControl
     {
-        public MainWindow()
+        public EnterNameView()
         {
             InitializeComponent();
         }
