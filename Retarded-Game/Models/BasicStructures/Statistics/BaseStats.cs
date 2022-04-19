@@ -4,9 +4,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
 {
     public sealed class BaseStats
     {
-        double _maxHP = 0, _maxMana = 0, _currentHP = 0, _currentMana = 0;
-        int _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
-        int _criticalChance = 0, _dodgeChance = 0;
+        double _maxHPBase = 0, _maxManaBase = 0, _maxWeightBase = 0, _currentHP = 0, _currentMana = 0;
+        int _vitality = 0, _focus = 0, _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
+        int _criticalChance = 0, _dodgeBaseChance = 0;
         List<BaseStats> _changes = new List<BaseStats>();
 
         public static BaseStats Empty { get; } = new BaseStats();
@@ -14,22 +14,22 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_maxHP <= 20)
+                if (_maxHPBase <= 20)
                     return 20;
-                return _maxHP;
+                return _maxHPBase + (5*Vitality) + (Strenght + Dexterity);
             }
-            set => _maxHP = value;
+            set => _maxHPBase = value;
         }
 
         public double MaxMana
         {
             get
             {
-                if (_maxMana >= 0)
-                    return _maxMana;
+                if (_maxManaBase >= 0)
+                    return _maxManaBase + (5*Focus) + (Faith + Intelligence);
                 return 0;
             }
-            set => _maxMana = value;
+            set => _maxManaBase = value;
         }
 
         public double CurrentHP
@@ -37,8 +37,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             get => _currentHP;
             set
             {
-                if (value > _maxHP)
-                    _currentHP = _maxHP;
+                if (value > MaxHP)
+                    _currentHP = MaxHP;
                 else
                     _currentHP = value;
             }
@@ -48,11 +48,33 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             get => _currentMana;
             set
             {
-                if (value > _maxMana)
-                    _currentMana = _maxMana;
+                if (value > MaxMana)
+                    _currentMana = MaxMana;
                 else
                     _currentMana = value;
             }
+        }
+
+        public int Vitality
+        {
+            get
+            {
+                if (_vitality < 5)
+                    return 5;
+                return _vitality;
+            }
+            set => _vitality = value;
+        }
+
+        public int Focus
+        {
+            get
+            {
+                if (_focus < 5)
+                    return 5;
+                return _focus;
+            }
+            set => _focus = value;
         }
 
         public int Strenght
@@ -113,46 +135,51 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_dodgeChance < 1)
-                    return 1;
-                if (_dodgeChance > 80)
-                    return 80;
-                return _dodgeChance;
+                if (_dodgeBaseChance < 1)
+                    return 1 + (int)(0.5 * Dexterity);
+                if (_dodgeBaseChance > 80)
+                    return 80 + (int)(0.5 * Dexterity);
+                return _dodgeBaseChance + (int)(0.5*Dexterity);
             }
-            set => _dodgeChance = value;
+            set => _dodgeBaseChance = value;
         }
 
         public BaseStats() { }
-        public BaseStats(double maxHP, double maxMana, int strenght, int dexterity, int intelligence, int faith, int critical, int dodge)
+        public BaseStats(double maxHP, double maxMana, int vitality, int focus, int strenght,
+            int dexterity, int intelligence, int faith, int critical, int dodge)
         {
-            _maxHP = maxHP;
-            _maxMana = maxMana;
-            _currentHP = _maxHP;
-            _currentMana = _maxMana;
+            _maxHPBase = maxHP;
+            _maxManaBase = maxMana;
+            _currentHP = _maxHPBase;
+            _currentMana = _maxManaBase;
 
+            _vitality = vitality;
+            _focus = focus;
             _strenght = strenght;
             _dexterity = dexterity;
             _intelligence = intelligence;
             _faith = faith;
 
             _criticalChance = critical;
-            _dodgeChance = dodge;
+            _dodgeBaseChance = dodge;
         }
 
         public void ApplyChange(BaseStats change)
         {
             _changes.Add(change);
 
-            MaxHP += change._maxHP;
-            MaxMana += change._maxMana;
+            MaxHP += change._maxHPBase;
+            MaxMana += change._maxManaBase;
 
+            Vitality += change._vitality;
+            Focus += change._focus;
             Strenght += change._strenght;
             Dexterity += change._dexterity;
             Intelligence += change._intelligence;
             Faith += change._faith;
 
             CriticalChance += change._criticalChance;
-            DodgeChance += change._dodgeChance;
+            DodgeChance += change._dodgeBaseChance;
         }
 
         public void ReverseChange(BaseStats change)
@@ -160,19 +187,22 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             if (!_changes.Contains(change))
                 return;
 
-            MaxHP -= change._maxHP;
-            MaxMana -= change._maxMana;
+            MaxHP -= change._maxHPBase;
+            MaxMana -= change._maxManaBase;
 
+            Vitality -= change._vitality;
+            Focus -= change._focus;
             Strenght -= change._strenght;
             Dexterity -= change._dexterity;
             Intelligence -= change._intelligence;
             Faith -= change._faith;
 
             CriticalChance -= change._criticalChance;
-            DodgeChance -= change._dodgeChance;
+            DodgeChance -= change._dodgeBaseChance;
         }
 
         public BaseStats Clone()
-            => new BaseStats(_maxHP, _maxMana, _strenght, _dexterity, _intelligence, _faith, _criticalChance, _dodgeChance);
+            => new BaseStats(_maxHPBase, _maxManaBase, _vitality, _focus, _strenght,
+                _dexterity, _intelligence, _faith, _criticalChance, _dodgeBaseChance);
     }
 }

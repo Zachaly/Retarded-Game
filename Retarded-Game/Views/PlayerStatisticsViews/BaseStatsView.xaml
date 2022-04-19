@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="Retarded_Game.Views.PlayerStatisticsViews.BaseStatsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="LightGray"
+             BorderBrush="Black"
+             BorderThickness="1 0 2 2">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1 2 2 0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="HP"
+               Grid.Column="0"
+               Grid.Row="0"/>
+        <Label Content="Mana"
+               Grid.Column="0"
+               Grid.Row="1"/>
+        <Label Content="Vitality"
+               Grid.Column="0"
+               Grid.Row="2"/>
+        <Label Content="Focus"
+               Grid.Column="0"
+               Grid.Row="3"/>
+        <Label Content="Strength"
+               Grid.Column="0"
+               Grid.Row="4"/>
+        <Label Content="Dexterity"
+               Grid.Column="0"
+               Grid.Row="5"/>
+        <Label Content="Faith"
+               Grid.Column="0"
+               Grid.Row="6"/>
+        <Label Content="Intelligence"
+               Grid.Column="0"
+               Grid.Row="7"/>
+        <Label Content="Dodge Chance"
+               Grid.Column="0"
+               Grid.Row="8"/>
+        <Label Content="Critical Hit Chance"
+               Grid.Column="0"
+               Grid.Row="9"/>
+
+        <Label Content="{Binding CurrentHPStatus}"
+               Grid.Column="1"
+               Grid.Row="0"/>
+        <Label Content="{Binding CurrentManaStatus}"
+               Grid.Column="1"
+               Grid.Row="1"/>
+        <Label Content="{Binding Vitality}"
+               Grid.Column="1"
+               Grid.Row="2"/>
+        <Label Content="{Binding Focus}"
+               Grid.Column="1"
+               Grid.Row="3"/>
+        <Label Content="{Binding Strength}"
+               Grid.Column="1"
+               Grid.Row="4"/>
+        <Label Content="{Binding Dexterity}"
+               Grid.Column="1"
+               Grid.Row="5"/>
+        <Label Content="{Binding Faith}"
+               Grid.Column="1"
+               Grid.Row="6"/>
+        <Label Content="{Binding Intelligence}"
+               Grid.Column="1"
+               Grid.Row="7"/>
+        <Label Content="{Binding DodgeChance}"
+               Grid.Column="1"
+               Grid.Row="8"/>
+        <Label Content="{Binding CriticalHitChance}"
+               Grid.Column="1"
+               Grid.Row="9"/>
+    </Grid>
+</UserControl>

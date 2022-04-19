@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Retarded_Game.Views.PlayerStatisticsViews.DefencesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="LightGray"
+             BorderBrush="Black"
+             BorderThickness="1 0 2 2">
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1 2 2 0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Base Defence"
+               Grid.Column="0"
+               Grid.Row="0"/>
+        <Label Content="Magic Resistance"
+               Grid.Column="0"
+               Grid.Row="1"/>
+        <Label Content="Fire Resistance"
+               Grid.Column="0"
+               Grid.Row="2"/>
+        <Label Content="Frost Resistance"
+               Grid.Column="0"
+               Grid.Row="3"/>
+        <Label Content="Lightning Resistance"
+               Grid.Column="0"
+               Grid.Row="4"/>
+
+        <Label Content="{Binding BaseDefence}"
+               Grid.Column="1"
+               Grid.Row="0"/>
+        <Label Content="{Binding MagicResistance}"
+               Grid.Column="1"
+               Grid.Row="1"/>
+        <Label Content="{Binding FireResistance}"
+               Grid.Column="1"
+               Grid.Row="2"/>
+        <Label Content="{Binding FrostResistance}"
+               Grid.Column="1"
+               Grid.Row="3"/>
+        <Label Content="{Binding LightningResistance}"
+               Grid.Column="1"
+               Grid.Row="4"/>
+    </Grid>
+</UserControl>

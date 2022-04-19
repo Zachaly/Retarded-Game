@@ -11,9 +11,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         
         public Statistics(double maxHP, double maxMana, double defence, double magicResistance,
             double fireResistance, double frostResistance, double lightningResistance,
-            int strenght, int dexterity, int intelligence, int faith, int critical, int dodge)
+            int vitality, int focus, int strenght, int dexterity, int intelligence, int faith, int critical, int dodge)
         {
-            BaseStats = new BaseStats(maxHP, maxMana, strenght, dexterity, intelligence, faith, critical, dodge);
+            BaseStats = new BaseStats(maxHP, maxMana, vitality, focus, strenght, dexterity, intelligence, faith, critical, dodge);
             Defences = new Defences(defence, magicResistance, fireResistance, frostResistance, lightningResistance);
         }
 
