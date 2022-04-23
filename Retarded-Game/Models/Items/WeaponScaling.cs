@@ -9,5 +9,19 @@
         public const double D = 0.05;
         public const double E = 0.01;
         public const double None = 0;
+
+        public static string ScalingToString(double scaling)
+        {
+            switch (scaling)
+            {
+                case S: return "S";
+                case A: return "A";
+                case B: return "B";
+                case C: return "C";
+                case D: return "D";
+                case E: return "E";
+                default: return "None";
+            }
+        }
     }
 }

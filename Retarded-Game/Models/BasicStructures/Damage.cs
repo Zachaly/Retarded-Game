@@ -20,8 +20,17 @@
         }
 
         public static Damage operator *(Damage damage, double change)
-            => new Damage(damage.BaseDamage * change, damage.FireDamage * change,
-                damage.FrostDamage * change, damage.LightningDamage * change,
+            => new Damage(damage.BaseDamage * change,
+                damage.FireDamage * change,
+                damage.FrostDamage * change,
+                damage.LightningDamage * change,
                 damage.MagicDamage * change);
+
+        public static Damage operator +(Damage damage1, Damage damage2)
+            => new Damage(damage1.BaseDamage + damage2.BaseDamage,
+                damage1.FireDamage + damage2.FireDamage,
+                damage1.FrostDamage + damage2.FrostDamage,
+                damage1.LightningDamage + damage2.LightningDamage,
+                damage1.MagicDamage + damage2.MagicDamage);
     }
 }

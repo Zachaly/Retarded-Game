@@ -15,6 +15,7 @@ namespace Retarded_Game.Models.Fighters.Players
 
         public Weapon RightHand { get; set; }
         public EquipmentPart LeftHand { get; set; }
+        public List<Ring> EquippedRings { get; set; }
 
         public List<Item> AllItems { get;}
 
@@ -27,6 +28,7 @@ namespace Retarded_Game.Models.Fighters.Players
         public IEnumerable<Shield> AllShields;
 
         public IEnumerable<Consumable> AllConsumables;
+        public IEnumerable<Ring> AllRings;
 
         public Equipment()
         {
@@ -40,6 +42,9 @@ namespace Retarded_Game.Models.Fighters.Players
             AllWeapons = from Weapon el in AllItems where el != null select el;
             AllShields = from Shield el in AllItems where el != null select el;
             AllConsumables = from Consumable el in AllItems where el != null select el;
+            AllRings = from Ring el in AllItems where el != null select el;
+
+            EquippedRings = new List<Ring>() { Ring.None, Ring.None, Ring.None, Ring.None };
         }
 
         public void SetStartingEquipment(Player player)
@@ -66,6 +71,9 @@ namespace Retarded_Game.Models.Fighters.Players
             Equip(Boots);
             EquipRightHand(RightHand, out checkIfEquipped);
             EquipLeftHand(LeftHand, out checkIfEquipped);
+            foreach(var ring in EquippedRings)
+                ring.Equip(player, out checkIfEquipped);
+            
         }
 
         public void Equip(Armor armor)
@@ -94,6 +102,20 @@ namespace Retarded_Game.Models.Fighters.Players
                 Boots.UnEquip(_player);
                 Boots = armor;
                 Boots.Equip(_player, out dummyBool);
+            }
+        }
+
+        public void Equip(Ring ring, out bool enoughtSpace)
+        {
+            enoughtSpace = false;
+            if(EquippedRings.Count < 4 && EquippedRings.Contains(Ring.None))
+                enoughtSpace = true;
+
+            if (enoughtSpace)
+            {
+                EquippedRings.Remove(Ring.None);
+                EquippedRings.Add(ring);
+                ring.Equip(_player, out enoughtSpace);
             }
         }
 

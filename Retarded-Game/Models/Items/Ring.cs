@@ -1,0 +1,17 @@
+﻿using Retarded_Game.Models.BasicStructures.Statistics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Retarded_Game.Models.Items
+{
+    public class Ring : EquipmentPart
+    {
+        public static Ring None { get; } = new Ring("None ring", "None ring", 0, new Statistics());
+        public Ring(string name, string description, int price, Statistics statsChange) : base(name, description, price, StatRequirements.None, statsChange)
+        {
+        }
+    }
+}

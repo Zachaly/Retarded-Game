@@ -11,11 +11,11 @@ namespace Retarded_Game.ViewModels.StatisticsViewModels
     {
         private readonly Defences _defences;
 
-        public double BaseDefence => _defences.Defence;
-        public double FireResistance => _defences.FireResistance;
-        public double MagicResistance => _defences.MagicResistance;
-        public double FrostResistance => _defences.FrostResistance;
-        public double LightingResistance => _defences.LightningResistance;
+        public string BaseDefence => $"{_defences.Defence * 100}";
+        public string FireResistance => $"{_defences.FireResistance * 100}";
+        public string MagicResistance => $"{_defences.MagicResistance * 100}";
+        public string FrostResistance => $"{_defences.FrostResistance * 100}";
+        public string LightingResistance => $"{_defences.LightningResistance * 100}";
 
         public DefencesViewModel(Defences defences)
         {
