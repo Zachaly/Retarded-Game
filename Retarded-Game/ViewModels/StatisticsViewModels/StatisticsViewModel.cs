@@ -7,7 +7,7 @@ using Retarded_Game.Models.BasicStructures.Statistics;
 
 namespace Retarded_Game.ViewModels.StatisticsViewModels
 {
-    public class StatisticsViewModel
+    public class StatisticsViewModel : BaseViewModel
     {
         private readonly Statistics _statistics;
 

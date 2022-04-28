@@ -19,6 +19,8 @@ namespace Retarded_Game.ViewModels.StatisticsViewModels
         public int Dexterity => _baseStats.Dexterity;
         public int Faith => _baseStats.Faith;
         public int Intelligence => _baseStats.Intelligence;
+        public string DodgeChance => $"{_baseStats.DodgeChance}%";
+        public string CriticalHitChance => $"{_baseStats?.CriticalChance}%";
 
         public BaseStatsViewModel(BaseStats baseStats)
         {

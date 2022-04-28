@@ -7,5 +7,12 @@
         <sys:Double x:Key="DefaultBoxWidth">180</sys:Double>
         <sys:Double x:Key="DefaultBoxHeight">60</sys:Double>
         <sys:Double x:Key="DefaultFontSize">20</sys:Double>
+        <Style TargetType="Label" x:Key="DefaultLabel">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+        </Style>
     </Application.Resources>
 </Application>

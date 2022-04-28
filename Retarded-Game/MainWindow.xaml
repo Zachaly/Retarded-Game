@@ -21,7 +21,7 @@
             <views:EnterNameView/>
         </DataTemplate>
     </Window.Resources>
-    <Grid MaxHeight="500" MaxWidth="500" Background="SlateGray">
+    <Grid MaxHeight="1000" MaxWidth="1000" Background="SlateGray">
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

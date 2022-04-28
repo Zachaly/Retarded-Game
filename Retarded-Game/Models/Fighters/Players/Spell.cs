@@ -14,6 +14,7 @@ namespace Retarded_Game.Models.Fighters.Players
 
         public StatRequirements StatRequirements { get; }
         public string Name { get; }
+        public string Description { get; }
 
         public double FaithScaling { get; }
         public double IntelligenceScaling { get; }
@@ -22,10 +23,11 @@ namespace Retarded_Game.Models.Fighters.Players
         private Player _player;
         
 
-        public Spell(string name, double manaCost, StatRequirements statRequirements, Damage damage,
+        public Spell(string name, string description, double manaCost, StatRequirements statRequirements, Damage damage,
             double faithScaling, double intelligenceScaling,List<ActionTag> actionTags, Usage specialUsage)
         {
             Name = name;
+            Description = description;
             ManaCost = manaCost;
             Damage = damage;
             StatRequirements = statRequirements;

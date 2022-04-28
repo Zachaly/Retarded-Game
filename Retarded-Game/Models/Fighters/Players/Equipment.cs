@@ -8,13 +8,13 @@ namespace Retarded_Game.Models.Fighters.Players
     public sealed class Equipment
     {
         Player _player;
-        public Armor Helmet { get; set; }
-        public Armor Chestplate { get; set; }
-        public Armor Pants { get; set; }
-        public Armor Boots { get; set; }
+        public Armor Helmet { get; set; } = Armor.None(ArmorType.Helmet);
+        public Armor Chestplate { get; set; } = Armor.None(ArmorType.Chestplate);
+        public Armor Pants { get; set; } = Armor.None(ArmorType.Pants);
+        public Armor Boots { get; set; } = Armor.None(ArmorType.Boots);
 
-        public Weapon RightHand { get; set; }
-        public EquipmentPart LeftHand { get; set; }
+        public Weapon RightHand { get; set; } = Weapon.EmptyHand;
+        public EquipmentPart LeftHand { get; set; } = Weapon.EmptyHand;
         public List<Ring> EquippedRings { get; set; }
 
         public List<Item> AllItems { get;}
@@ -47,33 +47,33 @@ namespace Retarded_Game.Models.Fighters.Players
             EquippedRings = new List<Ring>() { Ring.None, Ring.None, Ring.None, Ring.None };
         }
 
-        public void SetStartingEquipment(Player player)
+        public void SetStartingEquipment(Armor helmet, Armor chestplate, Armor pants, Armor boots,
+            Weapon weapon, EquipmentPart leftHand, List<Ring> rings, List<Consumable> consumables)
+        {
+            Helmet = helmet;
+            Chestplate = chestplate;
+            Pants = pants;
+            Boots = boots;
+            RightHand = weapon;
+            LeftHand = leftHand;
+
+            for (int i = 0; i < EquippedRings.Count; i++)
+                EquippedRings[i] = rings[i];
+            consumables.ForEach(x => AllItems.Add(x));
+        }
+
+        public void SetPlayer(Player player)
         {
             _player = player;
-
-            AllItems.Add(Helmet);
-            AllItems.Add(Chestplate);
-            AllItems.Add(Pants);
-            AllItems.Add(Boots);
-            AllItems.Add(RightHand);
-            AllItems.Add(LeftHand);
-
-            AllItems.Add(new Consumable("Minor healing potion", "Heals 5 hp", 2, (player, _) =>
-             {
-                 player.Statistics.BaseStats.CurrentHP += 5;
-             }));
-
-            bool checkIfEquipped;
+            bool dummybool;
 
             Equip(Helmet);
             Equip(Chestplate);
             Equip(Pants);
             Equip(Boots);
-            EquipRightHand(RightHand, out checkIfEquipped);
-            EquipLeftHand(LeftHand, out checkIfEquipped);
-            foreach(var ring in EquippedRings)
-                ring.Equip(player, out checkIfEquipped);
-            
+            Equip(RightHand, out dummybool);
+            Equip(LeftHand, out dummybool);
+            EquippedRings.ForEach(x => Equip(x, out dummybool));
         }
 
         public void Equip(Armor armor)
@@ -119,7 +119,7 @@ namespace Retarded_Game.Models.Fighters.Players
             }
         }
 
-        public void EquipRightHand(Weapon weapon, out bool statsCorrect)
+        public void Equip(Weapon weapon, out bool statsCorrect)
         {
             weapon.Equip(_player, out statsCorrect);
 
@@ -146,7 +146,7 @@ namespace Retarded_Game.Models.Fighters.Players
             RightHand = weapon;
         }
 
-        public void EquipLeftHand(EquipmentPart item, out bool done)
+        public void Equip(EquipmentPart item, out bool done)
         {
             done = false;
             if (item is Weapon == false && item is Shield == false)

@@ -4,7 +4,7 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
 {
     public sealed class BaseStats
     {
-        double _maxHPBase = 0, _maxManaBase = 0, _maxWeightBase = 0, _currentHP = 0, _currentMana = 0;
+        double _maxHPBase = 0, _maxManaBase = 0, _currentHP = 0, _currentMana = 0;
         int _vitality = 0, _focus = 0, _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
         int _criticalChance = 0, _dodgeBaseChance = 0;
         List<BaseStats> _changes = new List<BaseStats>();
@@ -150,8 +150,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             _maxHPBase = maxHP;
             _maxManaBase = maxMana;
-            _currentHP = _maxHPBase;
-            _currentMana = _maxManaBase;
+            _currentHP = maxHP;
+            _currentMana = maxMana;
 
             _vitality = vitality;
             _focus = focus;

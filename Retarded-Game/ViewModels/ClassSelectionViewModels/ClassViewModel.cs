@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.ViewModels.ItemViewModels;
 using Retarded_Game.ViewModels.StatisticsViewModels;
+using Retarded_Game.ViewModels.SpellViewModels;
 
 namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
@@ -16,12 +17,14 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
         public string ClassName => _playerClass.ClassName;
         public EquipmentViewModel Equipment { get; }
         public StatisticsViewModel Statistics { get; }
+        public SpellBookViewModel SpellBook { get; }
 
         public ClassViewModel(PlayerStartingClass playerClass)
         { 
             _playerClass = playerClass;
             Equipment = new EquipmentViewModel(playerClass.Equipment);
             Statistics = new StatisticsViewModel(playerClass.Statistics);
+            SpellBook = new SpellBookViewModel(playerClass.Spells);
         }
     }
 }

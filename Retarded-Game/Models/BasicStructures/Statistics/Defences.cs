@@ -105,7 +105,13 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
 
         public Defences Clone()
             => new Defences(_defence, _magicResistance, _fireResistance, _frostResistance, _lightningResistance);
-        
+
+        public Defences CloneModify(double basicDefence = 0, double magicResistance = 0, double fireResistance = 0,
+            double frostResistance = 0, double lightningResistance = 0)
+            => new Defences(_defence + basicDefence, _magicResistance + magicResistance,
+                _fireResistance + fireResistance, _frostResistance + frostResistance,
+                _lightningResistance + lightningResistance);
+
         public IEnumerable<(Resistance, double)> GetResistancesAscening()
         {
             List<(Resistance resistance, double value)> resists = new List<(Resistance, double)>

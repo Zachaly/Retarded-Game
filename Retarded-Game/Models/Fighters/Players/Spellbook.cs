@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Retarded_Game.Models.BasicStructures.Enums;
+using System.Linq;
 
 namespace Retarded_Game.Models.Fighters.Players
 {
@@ -61,5 +63,8 @@ namespace Retarded_Game.Models.Fighters.Players
                 EquipSpell(spell, out dummybool);
             }
         }
+
+        public IEnumerable<Spell> GetSpellsByTag(ActionTag tag)
+            => AllSpells.Where(x => x.ActionTags.Contains(tag));
     }
 }

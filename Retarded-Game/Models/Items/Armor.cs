@@ -11,5 +11,7 @@ namespace Retarded_Game.Models.Items
         {
             ArmorType = type;
         }
+
+        public static Armor None(ArmorType type) => new Armor("None", "", 0, new Statistics(), type);
     }
 }
