@@ -14,7 +14,7 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_maxHPBase <= 20)
+                if (_maxHPBase < 20)
                     return 20;
                 return _maxHPBase + (5*Vitality) + (Strenght + Dexterity);
             }
@@ -59,8 +59,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_vitality < 5)
-                    return 5;
+                if (_vitality < 3)
+                    return 3;
                 return _vitality;
             }
             set => _vitality = value;
@@ -70,8 +70,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_focus < 5)
-                    return 5;
+                if (_focus < 3)
+                    return 3;
                 return _focus;
             }
             set => _focus = value;
@@ -81,8 +81,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_strenght < 5)
-                    return 5;
+                if (_strenght < 3)
+                    return 3;
                 return _strenght;
             }
             set => _strenght = value;
@@ -91,8 +91,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_dexterity < 5)
-                    return 5;
+                if (_dexterity < 3)
+                    return 3;
                 return _dexterity;
             }
             set => _dexterity = value;
@@ -101,8 +101,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_intelligence < 5)
-                    return 5;
+                if (_intelligence < 3)
+                    return 3;
                 return _intelligence;
             }
             set => _intelligence = value;
@@ -111,8 +111,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
-                if (_faith < 5)
-                    return 5;
+                if (_faith < 3)
+                    return 3;
                 return _faith;
             }
             set => _faith = value;
@@ -150,8 +150,6 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             _maxHPBase = maxHP;
             _maxManaBase = maxMana;
-            _currentHP = maxHP;
-            _currentMana = maxMana;
 
             _vitality = vitality;
             _focus = focus;
@@ -162,6 +160,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
 
             _criticalChance = critical;
             _dodgeBaseChance = dodge;
+
+            _currentHP = MaxHP;
+            _currentMana = MaxMana;
         }
 
         public void ApplyChange(BaseStats change)

@@ -24,11 +24,13 @@ namespace Retarded_Game.Models.Fighters.Players
         public Equipment Equipment { get; }
         public Spellbook Spellbook { get; }
 
-        public Player(string name, PlayerStartingClass startingClass) : base(name, 1)
+        public Player(string name, PlayerStartingClass startingClass) : base(name, startingClass.StartingLevel)
         {
             Statistics = startingClass.Statistics;
             Equipment = startingClass.Equipment;
+            Equipment.SetPlayer(this);
             Spellbook = startingClass.Spells;
+            Spellbook.SetStartingSpells(this, Spellbook.EquippedSpells, startingClass.BaseNumberOfSpells);
         }
 
         void LevelUp()

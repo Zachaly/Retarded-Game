@@ -13,9 +13,21 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         private readonly Spellbook _spellbook;
         private readonly ObservableCollection<SpellViewModel> _equippedSpells;
         private readonly ObservableCollection<SpellViewModel> _allSpells;
+        private SpellViewModel _selectedSpell;
 
         public IEnumerable<SpellViewModel> EquippedSpells => _equippedSpells;
         public IEnumerable<SpellViewModel> AllSpells => _allSpells;
+        public string SpellCount => $"Current number of spells: {_equippedSpells.Count}/{_spellbook.PossibleSpells}";
+        public SpellViewModel SelectedSpell 
+        {
+            get => _selectedSpell;
+            set
+            {
+                _selectedSpell = value;
+                OnPropertyChanged(nameof(SelectedSpell));
+            }
+        }
+        
 
         public SpellBookViewModel(Spellbook spellbook)
         {
@@ -25,6 +37,7 @@ namespace Retarded_Game.ViewModels.SpellViewModels
 
             _allSpells = new ObservableCollection<SpellViewModel>();
             _spellbook.AllSpells.ForEach(x => _allSpells.Add(new SpellViewModel(x)));
+            SelectedSpell = _allSpells.First();
         }
     }
 }

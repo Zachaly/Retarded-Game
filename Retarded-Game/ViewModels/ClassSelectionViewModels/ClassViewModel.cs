@@ -10,21 +10,21 @@ using Retarded_Game.ViewModels.SpellViewModels;
 
 namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
-    internal class ClassViewModel : BaseViewModel
+    public class ClassViewModel : BaseViewModel
     {
         private readonly PlayerStartingClass _playerClass;
 
         public string ClassName => _playerClass.ClassName;
         public EquipmentViewModel Equipment { get; }
         public StatisticsViewModel Statistics { get; }
-        public SpellBookViewModel SpellBook { get; }
+        public IEnumerable<SpellViewModel> SpellNames { get; }
 
         public ClassViewModel(PlayerStartingClass playerClass)
         { 
             _playerClass = playerClass;
             Equipment = new EquipmentViewModel(playerClass.Equipment);
             Statistics = new StatisticsViewModel(playerClass.Statistics);
-            SpellBook = new SpellBookViewModel(playerClass.Spells);
+            SpellNames = _playerClass.Spells.EquippedSpells.Select(x =>  new SpellViewModel(x));
         }
     }
 }

@@ -13,22 +13,32 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
     public class ClassSelectionViewModel : BaseViewModel
     {
-        private readonly List<PlayerStartingClass> _startingClasses;
+        private readonly List<ClassViewModel> _startingClasses;
+        private ClassViewModel _selectedClass;
 
-        public IEnumerable<PlayerStartingClass> StartingClasses => _startingClasses;
-        public PlayerStartingClass SelectedClass { get; set; }
+        public IEnumerable<ClassViewModel> StartingClasses => _startingClasses;
+        public ClassViewModel SelectedClass 
+        { 
+            get => _selectedClass;
+            set
+            {
+                _selectedClass = value;
+                OnPropertyChanged(nameof(SelectedClass));
+            } 
+        }
         public int StartingLevel { get; set; }
 
         public ClassSelectionViewModel()
         {
-            _startingClasses = new List<PlayerStartingClass> { Trash(), Warrior()};
+            _startingClasses = new List<ClassViewModel> { new ClassViewModel(Trash()), new ClassViewModel(Warrior()),
+                new ClassViewModel(Mage())};
 
-            SelectedClass = StartingClasses.FirstOrDefault();
+            SelectedClass = _startingClasses.FirstOrDefault();
         }
 
         private PlayerStartingClass Trash()
         {
-            BaseStats baseStats = new BaseStats(20, 5, 5, 5, 5, 5, 5, 5, 0, 1);
+            BaseStats baseStats = new BaseStats(20, 5, 3, 3, 3, 3, 3, 3, 0, 1);
             Statistics statistics = new Statistics(baseStats);
             Equipment equipment = new Equipment();
             equipment.SetStartingEquipment(Armor.None(ArmorType.Helmet), Armor.None(ArmorType.Chestplate),
@@ -39,12 +49,12 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
                 Weapon.EmptyHand, new List<Ring>(), new List<Consumable>());
             
             
-            return new PlayerStartingClass("Trash", 1, statistics, equipment, new Spellbook());
+            return new PlayerStartingClass("Trash", 1, statistics, equipment, new Spellbook(), 0);
         }
 
         private PlayerStartingClass Warrior()
         {
-            BaseStats stats = new BaseStats(25, 0, 6, 4, 7, 5, 3, 3, 0, 0);
+            BaseStats stats = new BaseStats(25, 0, 5, 3, 6, 4, 3, 3, 0, 1);
             Equipment equipment = new Equipment();
 
             Weapon weapon = new Weapon("Iron shortsword", "", 1, StatRequirements.None, new Statistics(),
@@ -55,13 +65,42 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 
             Defences ironDefences = new Defences(0.02, 0, 0, 0, 0);
 
-            Armor helmet = new Armor("Iron helmet", "", 1, new Statistics(ironDefences.CloneModify(-0.01)), ArmorType.Helmet);
-            Armor chesplate = new Armor("Iron chestplate", "", 1, new Statistics(ironDefences.CloneModify(0.03)), ArmorType.Chestplate);
+            Armor helmet = new Armor("Iron helmet", "", 1,
+                new Statistics(ironDefences.CloneModify(-0.01)), ArmorType.Helmet);
+            Armor chesplate = new Armor("Iron chestplate", "", 1,
+                new Statistics(ironDefences.CloneModify(0.03)), ArmorType.Chestplate);
             Armor pants = new Armor("Iron leggins", "", 1, new Statistics(ironDefences.Clone()), ArmorType.Pants);
             Armor boots = new Armor("Iron boots", "", 1, new Statistics(ironDefences), ArmorType.Boots);
 
             equipment.SetStartingEquipment(helmet, chesplate, pants, boots, weapon, shield, new List<Ring>(), new List<Consumable>());
-            return new PlayerStartingClass("Warrior", 5, new Statistics(stats), equipment, new Spellbook());
+            return new PlayerStartingClass("Warrior", 8, new Statistics(stats), equipment, new Spellbook(), 0);
+        }
+
+        private PlayerStartingClass Mage()
+        {
+            BaseStats stats = new BaseStats(20, 15, 3, 5, 3, 3, 6, 4, 0, 2);
+            Equipment equipment = new Equipment();
+            Weapon weapon = new Weapon("Poor staff", "", 1, StatRequirements.None, new Statistics(),
+                new Damage(3, 0, 0, 0, 1), WeaponScaling.E, WeaponScaling.E,
+                WeaponScaling.None, WeaponScaling.C, WeaponType.TwoHanded);
+
+            Defences robeDefences = new Defences(0.01, 0.02, 0, 0, 0);
+
+            Armor chestplate = new Armor("Poor wizard robe", "", 1, new Statistics(robeDefences.Clone()), ArmorType.Chestplate);
+            Armor pants = new Armor("Poor wizard leggins", "", 1,
+                new Statistics(robeDefences.Clone()), ArmorType.Pants);
+            Armor boots = new Armor("Poor wizard boots", "", 1,
+                new Statistics(robeDefences.CloneModify(0, -0.01)), ArmorType.Boots);
+            equipment.SetStartingEquipment(Armor.None(ArmorType.Helmet), chestplate, pants, boots, weapon,
+                Weapon.EmptyHand, new List<Ring>(), new List<Consumable>());
+
+
+            Spellbook spellbook = new Spellbook();
+            Spell magicMissile = new Spell("Magic missile", "", 3, new StatRequirements(0, 5), new Damage(0, 0, 0, 0, 5),
+                WeaponScaling.None, WeaponScaling.C, new List<ActionTag> { ActionTag.Spell, ActionTag.Magic }, (_, __) => { });
+            spellbook.EquippedSpells.Add(magicMissile);
+
+            return new PlayerStartingClass("Mage", 5, new Statistics(stats), equipment, spellbook, 3);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Retarded_Game.ViewModels
         public StartingViewModel(NavigationStore navigationStore)
         {
             CloseCommand = new CloseCommand();
-            CreateCharacterCommand = new NavigateCommand(new NavigationService(navigationStore, new EnterNameViewModel()));
+            CreateCharacterCommand = new NavigateCommand(new NavigationService(navigationStore, new EnterNameViewModel(navigationStore)));
         }
     }
 }

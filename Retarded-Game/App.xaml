@@ -12,7 +12,10 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
     </Application.Resources>
 </Application>

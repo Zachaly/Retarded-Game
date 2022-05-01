@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Retarded_Game"
         xmlns:viewModels="clr-namespace:Retarded_Game.ViewModels"
+        xmlns:classviewModels="clr-namespace:Retarded_Game.ViewModels.ClassSelectionViewModels"
         xmlns:views="clr-namespace:Retarded_Game.Views"
+        xmlns:classviews="clr-namespace:Retarded_Game.Views.ClassSelectionViews"
         mc:Ignorable="d"
         Title="Retarded Game"
         Background="DarkGray"
         x:Name="Game"
-        FontFamily="Arial"
-        MinHeight="500"
-        MinWidth="500">
+        FontFamily="Arial">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:StartingViewModel}">
             <views:StartingView/>
@@ -20,8 +20,11 @@
         <DataTemplate DataType="{x:Type viewModels:EnterNameViewModel}">
             <views:EnterNameView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type classviewModels:ClassSelectionViewModel}">
+            <classviews:ClassSelectionView/>
+        </DataTemplate>
     </Window.Resources>
-    <Grid MaxHeight="1000" MaxWidth="1000" Background="SlateGray">
+    <Grid Background="SlateGray">
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

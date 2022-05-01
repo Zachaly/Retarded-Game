@@ -8,42 +8,59 @@
              xmlns:statModels="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
              xmlns:items="clr-namespace:Retarded_Game.Views.EquipmentViews"
              xmlns:itemModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:spells="clr-namespace:Retarded_Game.Views.SpellViews"
+             xmlns:spellModels="clr-namespace:Retarded_Game.ViewModels.SpellViewModels"
+             mc:Ignorable="d"
              Background="Gray">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type itemModels:EquipmentViewModel}">
             <items:EquipmentView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type statModels:BaseStatsViewModel}">
+        <DataTemplate DataType="{x:Type statModels:StatisticsViewModel}">
             <stats:StatisticsView/>
         </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0"
                Grid.Column="0"
                Grid.ColumnSpan="3"
                Content="{Binding ClassName}"
-               Style="{StaticResource DefaultLabel}"/>
+               Style="{StaticResource DefaultLabel}"
+               FontSize="{StaticResource DefaultFontSize}"/>
 
         <ContentControl Grid.Column="0"
                         Grid.Row="1"
-                        Content="{Binding Equipment}"/>
+                        Content="{Binding Equipment}"
+                        FontSize="10"/>
         <ContentControl Grid.Row="1"
                         Grid.Column="1"
-                        Content="{Binding Statistics}"/>
-        <ContentControl Grid.Row="1"
-                        Grid.Column="2"
-                        Content="{Binding SpellBook}"/>
+                        Content="{Binding Statistics}"
+                        FontSize="10"/>
+        <ListView Grid.Row="1"
+                  Grid.Column="2"
+                  ItemsSource="{Binding SpellNames}"
+                  Background="Gray">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Spell Names">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <Label Content="{Binding Name}" Style="{StaticResource DefaultLabel}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

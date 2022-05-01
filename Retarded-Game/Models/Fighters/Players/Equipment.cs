@@ -55,9 +55,12 @@ namespace Retarded_Game.Models.Fighters.Players
             Pants = pants;
             Boots = boots;
             RightHand = weapon;
-            LeftHand = leftHand;
+            if (RightHand.WeaponType != WeaponType.TwoHanded)
+                LeftHand = leftHand;
+            else
+                LeftHand = RightHand;
 
-            for (int i = 0; i < EquippedRings.Count; i++)
+            for (int i = 0; i < rings.Count; i++)
                 EquippedRings[i] = rings[i];
             consumables.ForEach(x => AllItems.Add(x));
         }

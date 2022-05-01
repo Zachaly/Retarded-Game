@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Retarded_Game.ViewModels;
+using Retarded_Game.ViewModels.ClassSelectionViewModels;
+using Retarded_Game.Services;
 
 namespace Retarded_Game.Commands
 {
-    public class ConfirmNameCommand : CommandBase
+    public class ConfirmNameCommand : NavigateCommand
     {
         EnterNameViewModel _nameViewModel;
 
-        public ConfirmNameCommand(EnterNameViewModel nameViewModel)
+        public ConfirmNameCommand(EnterNameViewModel nameViewModel, NavigationService navigationService) : base(navigationService)
         { 
             _nameViewModel = nameViewModel;
             _nameViewModel.PropertyChanged += (sender, e) =>
@@ -31,6 +33,7 @@ namespace Retarded_Game.Commands
         public override void Execute(object? parameter)
         {
             App.CharacterName = _nameViewModel.CharacterName;
+            base.Execute(parameter);
         }
     }
 }
