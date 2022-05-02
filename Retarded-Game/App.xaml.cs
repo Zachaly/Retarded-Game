@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Retarded_Game.ViewModels;
-using Retarded_Game.Services;
 using Retarded_Game.Stores;
 
 namespace Retarded_Game

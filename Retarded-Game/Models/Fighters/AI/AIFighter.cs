@@ -1,8 +1,12 @@
 ﻿using System.Collections.Generic;
 using Retarded_Game.Models.Fighters.Players;
+using Retarded_Game.Services;
 
 namespace Retarded_Game.Models.Fighters.AI
 {
+    /// <summary>
+    /// Character controlled by computer during fight
+    /// </summary>
     public class AIFighter : Fighter
     {
         List<EnemyAction> _actions { get; }

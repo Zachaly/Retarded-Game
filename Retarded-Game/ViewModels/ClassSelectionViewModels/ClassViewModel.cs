@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.ViewModels.ItemViewModels;
 using Retarded_Game.ViewModels.StatisticsViewModels;
@@ -10,6 +7,9 @@ using Retarded_Game.ViewModels.SpellViewModels;
 
 namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
+    /// <summary>
+    /// ViewModel describing a class
+    /// </summary>
     public class ClassViewModel : BaseViewModel
     {
         private readonly PlayerStartingClass _playerClass;

@@ -5,6 +5,9 @@ using Retarded_Game.Models.BasicStructures.Enums;
 
 namespace Retarded_Game.Models.Fighters.Players
 {
+    /// <summary>
+    /// Class containing player equipment
+    /// </summary>
     public sealed class Equipment
     {
         Player _player;

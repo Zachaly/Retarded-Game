@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Retarded_Game.Models.Fighters.Players;
+﻿using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.Models.Items;
 
 namespace Retarded_Game.ViewModels.SpellViewModels

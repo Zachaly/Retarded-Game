@@ -2,6 +2,9 @@
 
 namespace Retarded_Game.Models.Fighters.Players
 {
+    /// <summary>
+    /// Starting class picken on character creation
+    /// </summary>
     public class PlayerStartingClass
     {
         public string ClassName { get; }

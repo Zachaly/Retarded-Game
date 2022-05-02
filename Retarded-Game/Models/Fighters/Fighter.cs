@@ -2,7 +2,7 @@
 using Retarded_Game.Models.BasicStructures;
 using Retarded_Game.Models.BasicStructures.Statistics;
 
-namespace Retarded_Game.Models
+namespace Retarded_Game.Models.Fighters
 {
     public abstract class Fighter
     {

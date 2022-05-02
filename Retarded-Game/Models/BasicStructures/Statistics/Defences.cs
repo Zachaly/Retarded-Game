@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace Retarded_Game.Models.BasicStructures.Statistics
 {
+    /// <summary>
+    /// Class containing information about character resistances.
+    /// Resistances cannot get higher than 90%
+    /// </summary>
     public sealed class Defences
     {
         double _defence = 0,
@@ -13,7 +17,10 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             _lightningResistance = 0;
         List<Defences> _changes = new List<Defences>();
 
-        public static Defences Empty { get; } = new Defences();
+        /// <summary>
+        /// Default defences
+        /// </summary>
+        public static Defences Empty => new Defences();
         public double Defence
         {
             get 
@@ -80,6 +87,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             _lightningResistance = lightningResistance;
         }
 
+        /// <summary>
+        /// Modifies resistances by Defences given in parameter
+        /// </summary>
         public void ApplyChange(Defences change)
         {
             _changes.Add(change);
@@ -91,6 +101,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             LightningResistance += change.LightningResistance;
         }
 
+        /// <summary>
+        /// Reverses changes done by given parameter
+        /// </summary>
         public void ReverseChange(Defences change)
         {
             if(!_changes.Contains(change))
@@ -106,13 +119,19 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         public Defences Clone()
             => new Defences(_defence, _magicResistance, _fireResistance, _frostResistance, _lightningResistance);
 
+        /// <summary>
+        /// Returns a clone with given stats modification
+        /// </summary>
         public Defences CloneModify(double basicDefence = 0, double magicResistance = 0, double fireResistance = 0,
             double frostResistance = 0, double lightningResistance = 0)
             => new Defences(_defence + basicDefence, _magicResistance + magicResistance,
                 _fireResistance + fireResistance, _frostResistance + frostResistance,
                 _lightningResistance + lightningResistance);
 
-        public IEnumerable<(Resistance, double)> GetResistancesAscening()
+        /// <summary>
+        /// Gets a tuples with resitances and their values ascending
+        /// </summary>
+        public IEnumerable<(Resistance, double)> GetResistancesAscending()
         {
             List<(Resistance resistance, double value)> resists = new List<(Resistance, double)>
             { (Resistance.Base, Defence), (Resistance.Magic, MagicResistance),

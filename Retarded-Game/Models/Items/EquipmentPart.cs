@@ -3,6 +3,9 @@ using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.Models.Items
 {
+    /// <summary>
+    /// Part of equipment
+    /// </summary>
     public abstract class EquipmentPart : Item
     {
         public StatRequirements StatRequirements { get; }

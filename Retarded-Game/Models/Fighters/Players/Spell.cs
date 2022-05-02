@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Retarded_Game.Models.Fighters.Players
 {
+    /// <summary>
+    /// Class describing a spell
+    /// </summary>
     public class Spell
     {
         public delegate void Usage(Player player, Fighter target);

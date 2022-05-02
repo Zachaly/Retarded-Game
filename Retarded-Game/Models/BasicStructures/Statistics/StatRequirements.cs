@@ -1,5 +1,8 @@
 ﻿namespace Retarded_Game.Models.BasicStructures.Statistics
 {
+    /// <summary>
+    /// Class describing minimal statistics to use an item
+    /// </summary>
     public sealed class StatRequirements
     {
         public static StatRequirements None { get; } = new StatRequirements(0, 0, 0, 0);

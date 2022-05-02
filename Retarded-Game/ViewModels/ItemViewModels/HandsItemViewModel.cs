@@ -1,12 +1,10 @@
 ﻿using Retarded_Game.Models.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Retarded_Game.ViewModels.ItemViewModels
 {
+    /// <summary>
+    /// ViewModel describing an item held either in right or left hand
+    /// </summary>
     public abstract class HandsItemViewModel : EquipmentPartViewModel
     {
         private EquipmentPart _handItem => _item as EquipmentPart;

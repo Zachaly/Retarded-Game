@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.Models.Items;
 
@@ -44,7 +41,7 @@ namespace Retarded_Game.ViewModels.ItemViewModels
             foreach(var ring in _equipment.EquippedRings)
                 _rings.Add(new RingViewModel(ring));
 
-            _ringNames = _rings.Select(x => x.Name).ToArray();
+            _ringNames = _rings.Select(ring => ring.Name).ToArray();
 
             if(_equipment.LeftHand is Weapon)
                 _leftHand = new WeaponViewModel(_equipment.LeftHand as Weapon);

@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Retarded_Game.Models.Fighters.Players
 {
+    /// <summary>
+    /// Class containing informations about learned spells, maximal number of them etc.
+    /// </summary>
     public sealed class Spellbook
     {
         int _baseNumberOfSpells = 0;

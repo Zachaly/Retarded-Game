@@ -1,6 +1,11 @@
-﻿namespace Retarded_Game.Models.BasicStructures
+﻿using Retarded_Game.Models.Fighters;
+
+namespace Retarded_Game.Models.BasicStructures
 {
     public delegate void StatusEffectTick(Fighter target);
+    /// <summary>
+    /// Class representing a status effect that affects character
+    /// </summary>
     public sealed class StatusEffect
     {
         Fighter _target;

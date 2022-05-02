@@ -1,5 +1,8 @@
 ﻿namespace Retarded_Game.Models.Items
 {
+    /// <summary>
+    /// Values for weapon scaling
+    /// </summary>
     public sealed class WeaponScaling
     {
         public const double S = 0.4;
@@ -10,6 +13,9 @@
         public const double E = 0.01;
         public const double None = 0;
 
+        /// <summary>
+        /// Converts scaling to string
+        /// </summary>
         public static string ScalingToString(double scaling)
         {
             switch (scaling)

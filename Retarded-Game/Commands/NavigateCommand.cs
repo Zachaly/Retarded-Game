@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Retarded_Game.ViewModels;
-using Retarded_Game.Services;
+﻿using Retarded_Game.Services;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Simple navigation command
+    /// </summary>
     public class NavigateCommand : CommandBase
     {
         private readonly NavigationService _navigationService;

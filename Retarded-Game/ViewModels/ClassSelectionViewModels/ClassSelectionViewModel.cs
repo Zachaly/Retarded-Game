@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.Models.BasicStructures.Statistics;
 using Retarded_Game.Models.Items;
@@ -11,6 +8,9 @@ using Retarded_Game.Models.BasicStructures;
 
 namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
+    /// <summary>
+    /// ViewModel describing class selection screen
+    /// </summary>
     public class ClassSelectionViewModel : BaseViewModel
     {
         private readonly List<ClassViewModel> _startingClasses;

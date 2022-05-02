@@ -8,8 +8,6 @@
              xmlns:statModels="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
              xmlns:items="clr-namespace:Retarded_Game.Views.EquipmentViews"
              xmlns:itemModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
-             xmlns:spells="clr-namespace:Retarded_Game.Views.SpellViews"
-             xmlns:spellModels="clr-namespace:Retarded_Game.ViewModels.SpellViewModels"
              mc:Ignorable="d"
              Background="Gray">
     <UserControl.Resources>

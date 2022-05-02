@@ -1,5 +1,8 @@
 ﻿namespace Retarded_Game.Models.Items
 {
+    /// <summary>
+    /// Base class for item
+    /// </summary>
     public abstract class Item
     {
         public string Name { get; set; }

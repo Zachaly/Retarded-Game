@@ -2,6 +2,9 @@
 
 namespace Retarded_Game.Models.BasicStructures.Statistics
 {
+    /// <summary>
+    /// Class containing Defences and BaseStats of the character
+    /// </summary>
     public sealed class Statistics
     {
         public Defences Defences { get; set; } = new Defences();
@@ -35,11 +38,12 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         public Statistics(Defences defences) 
             => Defences = defences;
 
-        public Statistics Copy()
-        {
-            return new Statistics(BaseStats, Defences);
-        }
+        public Statistics Copy() => new Statistics(BaseStats, Defences);
+        
 
+        /// <summary>
+        /// Modifies statistics by given parameter
+        /// </summary>
         public void ChangeBy(Statistics change)
         {
             BaseStats.ApplyChange(change.BaseStats);
@@ -48,6 +52,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             _statChanges.Add(change);
         }
 
+        /// <summary>
+        /// Reverses changes done by given parameter
+        /// </summary>
         public void ReverseChange(Statistics change)
         {
             if (!_statChanges.Contains(change))

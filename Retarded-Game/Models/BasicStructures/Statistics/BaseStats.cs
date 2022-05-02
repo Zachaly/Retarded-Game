@@ -2,6 +2,9 @@
 
 namespace Retarded_Game.Models.BasicStructures.Statistics
 {
+    /// <summary>
+    /// Class containing basic statistics that mostly aren't influenced by equipment
+    /// </summary>
     public sealed class BaseStats
     {
         double _maxHPBase = 0, _maxManaBase = 0, _currentHP = 0, _currentMana = 0;
@@ -9,7 +12,14 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         int _criticalChance = 0, _dodgeBaseChance = 0;
         List<BaseStats> _changes = new List<BaseStats>();
 
-        public static BaseStats Empty { get; } = new BaseStats();
+        /// <summary>
+        /// Default statistics
+        /// </summary>
+        public static BaseStats Empty => new BaseStats();
+        /// <summary>
+        /// Maximum HP of character, cannot be lower than 20.
+        /// Influenced by vitality, strenght and dexterity
+        /// </summary>
         public double MaxHP
         {
             get
@@ -21,6 +31,10 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             set => _maxHPBase = value;
         }
 
+        /// <summary>
+        /// Maximum mana of character, cannot be lower than 0.
+        /// Influenced by focus, faith and intelligence
+        /// </summary>
         public double MaxMana
         {
             get
@@ -118,6 +132,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             set => _faith = value;
         }
 
+        /// <summary>
+        /// Chance for a critical hit by character, given in % between 1 and 75
+        /// </summary>
         public int CriticalChance
         {
             get
@@ -131,6 +148,11 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             set => _criticalChance = value;
 
         }
+
+        /// <summary>
+        /// Chance for a character to dodge an attack, given in % between 1 and 80,
+        /// influenced by dexterity
+        /// </summary>
         public int DodgeChance
         {
             get
@@ -165,6 +187,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             _currentMana = MaxMana;
         }
 
+        /// <summary>
+        /// Modifies statistics by BaseStats given in parameter
+        /// </summary>
         public void ApplyChange(BaseStats change)
         {
             _changes.Add(change);
@@ -183,6 +208,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             DodgeChance += change._dodgeBaseChance;
         }
 
+        /// <summary>
+        /// Reverses changes done by given parameter
+        /// </summary>
         public void ReverseChange(BaseStats change)
         {
             if (!_changes.Contains(change))

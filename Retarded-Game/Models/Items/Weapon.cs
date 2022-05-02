@@ -6,8 +6,12 @@ namespace Retarded_Game.Models.Items
 {
     public class Weapon : EquipmentPart
     {
-        public static Weapon EmptyHand { get; } = 
-            new Weapon("Empty Hand", "", 0, StatRequirements.None, new Statistics(), Damage.None, 0, 0, 0, 0, WeaponType.OneHanded);
+        /// <summary>
+        /// Default weapon
+        /// </summary>
+        public static Weapon EmptyHand =>
+            new Weapon("Empty Hand", "", 0, StatRequirements.None, new Statistics(),
+                Damage.None, 0, 0, 0, 0, WeaponType.OneHanded);
 
         public Damage BaseDamage { get; set; }
         public double StrenghtScaling { get; set; }

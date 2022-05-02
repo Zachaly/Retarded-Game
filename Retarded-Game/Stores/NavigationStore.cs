@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.ViewModels;
 
 namespace Retarded_Game.Stores
 {
+    /// <summary>
+    /// Used to change current viewmodel
+    /// </summary>
     public class NavigationStore
     {
-        BaseViewModel _currentViewModel;
+        private BaseViewModel _currentViewModel;
         public BaseViewModel CurrentViewModel 
         {
             get => _currentViewModel;

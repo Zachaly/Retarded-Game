@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.ViewModels.SpellViewModels
@@ -33,10 +30,10 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         {
             _spellbook = spellbook;
             _equippedSpells = new ObservableCollection<SpellViewModel>();
-            _spellbook.EquippedSpells.ForEach(x => _equippedSpells.Add(new SpellViewModel(x)));
+            _spellbook.EquippedSpells.ForEach(spell => _equippedSpells.Add(new SpellViewModel(spell)));
 
             _allSpells = new ObservableCollection<SpellViewModel>();
-            _spellbook.AllSpells.ForEach(x => _allSpells.Add(new SpellViewModel(x)));
+            _spellbook.AllSpells.ForEach(spell => _allSpells.Add(new SpellViewModel(spell)));
             SelectedSpell = _allSpells.First();
         }
     }

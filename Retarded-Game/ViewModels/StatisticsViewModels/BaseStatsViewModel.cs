@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Retarded_Game.Models.BasicStructures.Statistics;
+﻿using Retarded_Game.Models.BasicStructures.Statistics;
 
 namespace Retarded_Game.ViewModels.StatisticsViewModels
 {
@@ -20,7 +15,7 @@ namespace Retarded_Game.ViewModels.StatisticsViewModels
         public int Faith => _baseStats.Faith;
         public int Intelligence => _baseStats.Intelligence;
         public string DodgeChance => $"{_baseStats.DodgeChance}%";
-        public string CriticalHitChance => $"{_baseStats?.CriticalChance}%";
+        public string CriticalHitChance => $"{_baseStats.CriticalChance}%";
 
         public BaseStatsViewModel(BaseStats baseStats)
         {

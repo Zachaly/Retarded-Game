@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Retarded_Game.ViewModels;
-using Retarded_Game.ViewModels.ClassSelectionViewModels;
+﻿using Retarded_Game.ViewModels;
 using Retarded_Game.Services;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Used to confirm name in character creation
+    /// </summary>
     public class ConfirmNameCommand : NavigateCommand
     {
         EnterNameViewModel _nameViewModel;
@@ -23,6 +20,9 @@ namespace Retarded_Game.Commands
             };
         }
 
+        /// <summary>
+        /// Character name has to be between 5 and 20 characters
+        /// </summary>
         public override bool CanExecute(object? parameter)
         {
             return _nameViewModel.CharacterName.Length >= 5  
@@ -30,6 +30,9 @@ namespace Retarded_Game.Commands
                 && base.CanExecute(parameter);
         }
 
+        /// <summary>
+        /// Confirms name and navigates to class selection
+        /// </summary>
         public override void Execute(object? parameter)
         {
             App.CharacterName = _nameViewModel.CharacterName;

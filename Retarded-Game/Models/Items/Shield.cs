@@ -2,11 +2,17 @@
 
 namespace Retarded_Game.Models.Items
 {
+    /// <summary>
+    /// Class for a shield, it can block damage up to 100%
+    /// </summary>
     public class Shield : EquipmentPart
     {
         int _blockChance = 0;
         double _blockBaseDamage = 0, _blockFireDamage = 0, _blockFrostDamage = 0, _blockLightningDamage = 0, _blockMagicDamage = 0;
 
+        /// <summary>
+        /// Chance to block an enemy attack, ranges between 0 and 85%
+        /// </summary>
         public int BlockChance
         {
             get 

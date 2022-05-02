@@ -1,5 +1,8 @@
 ﻿namespace Retarded_Game.Models.BasicStructures
 {
+    /// <summary>
+    /// Struct containing informations about specific damage types
+    /// </summary>
     public struct Damage
     {
         public double BaseDamage { get; set; }

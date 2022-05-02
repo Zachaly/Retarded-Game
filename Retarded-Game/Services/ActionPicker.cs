@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using Retarded_Game.Models.BasicStructures.Enums;
 using System.Linq;
 using Retarded_Game.Models.Fighters.Players;
+using Retarded_Game.Models.Fighters.AI;
+using Retarded_Game.Models.Fighters;
 
-namespace Retarded_Game.Models.Fighters.AI
+namespace Retarded_Game.Services
 {
+    /// <summary>
+    /// Class used by AI to pick best action during fight
+    /// </summary>
     public sealed class ActionPicker
     {
-        Player _player { get; }
-        Fighter _enemy { get; }
-        List<EnemyAction> _actions { get; }
-        static Random _random { get; } = new Random();
-        bool _actionPicked { get; set; } = false;
+        private readonly Player _player;
+        private readonly Fighter _enemy;
+        private readonly List<EnemyAction> _actions;
+        private static readonly Random _random = new Random();
+        private bool _actionPicked = false;
 
         public ActionPicker(AIFighter enemy, List<EnemyAction> actions, Player player)
         {
@@ -32,21 +37,12 @@ namespace Retarded_Game.Models.Fighters.AI
 
             if (_enemy.Statistics.BaseStats.CurrentHP < _enemy.Statistics.BaseStats.MaxHP * 0.3)
                 action = GetHealingAction(action);
-            else if(_enemy.Statistics.BaseStats.CurrentMana < _actions.MinBy(action => action.ManaCost).ManaCost)
-                action = GetManaRegeneration(action);
+            else if (_enemy.Statistics.BaseStats.CurrentMana < _actions.MinBy(action => action.ManaCost).ManaCost)
+                action = GetActionByTag(_actions, action, ActionTag.ManaRegeneration);
             if(!_actionPicked)
                 action = GetOffensiveAction(_actions);
             
             return action;
-        }
-
-        private EnemyAction GetManaRegeneration(EnemyAction defaultAction)
-        {
-            var actions = _actions.FindAll(action => action.ActionTags.Contains(ActionTag.ManaRegeneration));
-            if(actions.Count < 1)
-                return defaultAction;
-
-            return GetRandomElement(actions);
         }
 
         private EnemyAction GetHealingAction(EnemyAction defaultAction)
@@ -74,14 +70,14 @@ namespace Retarded_Game.Models.Fighters.AI
 
             Resistance lowestPlayerResistance = GetLowestPlayerResistance(attacks);
 
-            defaultAttack = GetElementalAttack(attacks, defaultAttack, ResistanceToAttackTag(lowestPlayerResistance));
+            defaultAttack = GetActionByTag(attacks, defaultAttack, ResistanceToAttackTag(lowestPlayerResistance));
 
             return defaultAttack;
         }
 
         private Resistance GetLowestPlayerResistance(List<EnemyAction> possibleAttacks)
         {
-            var resistances = _player.Statistics.Defences.GetResistancesAscening();
+            var resistances = _player.Statistics.Defences.GetResistancesAscending();
             var lowestResistance = resistances.First().Item1;
 
             // if no attack contains the lowest resist damage type, try with a second lowest
@@ -91,6 +87,9 @@ namespace Retarded_Game.Models.Fighters.AI
             return lowestResistance;
         }
 
+        /// <summary>
+        /// Converts given resistances to appropriate action tag
+        /// </summary>
         private ActionTag ResistanceToAttackTag(Resistance resistance)
         {
             switch (resistance) 
@@ -110,7 +109,7 @@ namespace Retarded_Game.Models.Fighters.AI
             }
         }
 
-        private EnemyAction GetElementalAttack(List<EnemyAction> actions, EnemyAction defaultAction, ActionTag element)
+        private EnemyAction GetActionByTag(List<EnemyAction> actions, EnemyAction defaultAction, ActionTag element)
         {
             var attacks = actions.FindAll(action => action.ActionTags.Contains(element));
 

@@ -2,18 +2,22 @@
 
 namespace Retarded_Game.Models.Fighters.Players
 {
+    /// <summary>
+    /// Player character
+    /// </summary>
     public class Player : Fighter
     {
-        int _experience = 0;
+        private int _experience = 0;
+        private int _experienceForNextLevel = 0;
         public int Experience 
         {
             get => _experience;
             set
             {
-                if (value > 1000)
+                if (value > _experienceForNextLevel)
                 {
-                    _experience = value - ((value % 1000) * 1000);
-                    for (int i = 0; i < value % 1000; i++)
+                    _experience = value - ((value % _experienceForNextLevel) * _experienceForNextLevel);
+                    for (int i = 0; i < value % _experienceForNextLevel; i++)
                         LevelUp();
                 }
                 else
@@ -31,11 +35,13 @@ namespace Retarded_Game.Models.Fighters.Players
             Equipment.SetPlayer(this);
             Spellbook = startingClass.Spells;
             Spellbook.SetStartingSpells(this, Spellbook.EquippedSpells, startingClass.BaseNumberOfSpells);
+            _experienceForNextLevel = 1000 + (Level * 150);
         }
 
-        void LevelUp()
+        private void LevelUp()
         {
             _level++;
+            _experienceForNextLevel += Level * 150;
         }
     }
 }
