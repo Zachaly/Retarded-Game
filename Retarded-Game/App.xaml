@@ -17,5 +17,11 @@
         <Style TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Background" Value="LightGray"/>
+        </Style>
     </Application.Resources>
 </Application>

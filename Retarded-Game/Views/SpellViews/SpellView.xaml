@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Retarded_Game.Views.SpellViews"
              mc:Ignorable="d"  
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Gray" 
+             Background="LightGray" 
              BorderThickness="1"
              BorderBrush="Black">
     <UserControl.Resources>

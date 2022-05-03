@@ -1,5 +1,6 @@
 ﻿using Retarded_Game.ViewModels;
 using Retarded_Game.Services;
+using Retarded_Game.ViewModels.ClassSelectionViewModels;
 
 namespace Retarded_Game.Commands
 {
@@ -10,7 +11,8 @@ namespace Retarded_Game.Commands
     {
         EnterNameViewModel _nameViewModel;
 
-        public ConfirmNameCommand(EnterNameViewModel nameViewModel, NavigationService navigationService) : base(navigationService)
+        public ConfirmNameCommand(EnterNameViewModel nameViewModel, NavigationService navigationService) 
+            : base(navigationService, new ClassSelectionViewModel(navigationService))
         { 
             _nameViewModel = nameViewModel;
             _nameViewModel.PropertyChanged += (sender, e) =>

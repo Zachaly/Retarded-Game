@@ -1,4 +1,5 @@
 ﻿using Retarded_Game.Services;
+using Retarded_Game.ViewModels;
 
 namespace Retarded_Game.Commands
 {
@@ -8,10 +9,14 @@ namespace Retarded_Game.Commands
     public class NavigateCommand : CommandBase
     {
         private readonly NavigationService _navigationService;
+        private readonly BaseViewModel _target;
 
-        public NavigateCommand(NavigationService navigationService)
-            => _navigationService = navigationService;
+        public NavigateCommand(NavigationService navigationService, BaseViewModel target)
+        { 
+            _navigationService = navigationService;
+            _target = target;
+        }
 
-        public override void Execute(object? parameter) => _navigationService.Navigate();
+        public override void Execute(object? parameter) => _navigationService.Navigate(_target);
     }
 }

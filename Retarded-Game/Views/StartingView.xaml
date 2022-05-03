@@ -6,33 +6,21 @@
              xmlns:local="clr-namespace:Retarded_Game.Views"
              mc:Ignorable="d" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <Button Content="Create Character" 
-                    Width="{StaticResource DefaultBoxWidth}" 
-                    Height="{StaticResource DefaultBoxHeight}" 
-                    FontSize="{StaticResource DefaultFontSize}" 
                     Grid.Row="0" 
-                    Background="LightGray"
                     Command="{Binding CreateCharacterCommand}"/>
+        
         <Button Content="Load Character" 
-                    Width="{StaticResource DefaultBoxWidth}" 
-                    Height="{StaticResource DefaultBoxHeight}" 
-                    FontSize="{StaticResource DefaultFontSize}" 
-                    Grid.Row="1" 
-                    Background="LightGray"/>
+                    Grid.Row="1" />
+        
         <Button Content="Exit" 
-                    Width="{StaticResource DefaultBoxWidth}" 
-                    Height="{StaticResource DefaultBoxHeight}" 
-                    FontSize="{StaticResource DefaultFontSize}" 
                     Grid.Row="2" 
-                    Background="LightGray"
                     Command="{Binding CloseCommand}"/>
     </Grid>
 </UserControl>

@@ -5,6 +5,9 @@ using Retarded_Game.Models.BasicStructures.Statistics;
 using Retarded_Game.Models.Items;
 using Retarded_Game.Models.BasicStructures.Enums;
 using Retarded_Game.Models.BasicStructures;
+using Retarded_Game.Stores;
+using Retarded_Game.Services;
+using Retarded_Game.Commands;
 
 namespace Retarded_Game.ViewModels.ClassSelectionViewModels
 {
@@ -27,13 +30,15 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             } 
         }
         public int StartingLevel { get; set; }
+        public CreateCharacterCommand CreateCharacterCommand { get; }
 
-        public ClassSelectionViewModel()
+        public ClassSelectionViewModel(NavigationService navigationService)
         {
             _startingClasses = new List<ClassViewModel> { new ClassViewModel(Trash()), new ClassViewModel(Warrior()),
                 new ClassViewModel(Mage())};
 
             SelectedClass = _startingClasses.FirstOrDefault();
+            CreateCharacterCommand = new CreateCharacterCommand(navigationService, this);
         }
 
         private PlayerStartingClass Trash()

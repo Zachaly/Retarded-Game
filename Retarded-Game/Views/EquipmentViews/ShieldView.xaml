@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="Retarded_Game.Views.EquipmentViews.ShieldView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             Background="LightGray"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Content="{Binding Name}"/>
+        <Label Grid.Row="1"
+               Grid.RowSpan="3"
+               Grid.Column="0"
+               Content="{Binding Description}"/>
+        <Label Grid.Row="4"
+               Grid.Column="0"
+               Content="{Binding Price}"/>
+
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Content="Base Damage Block"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Content="Magic Damage Block"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               Content="Fire Damage Block"/>
+
+        <Label Grid.Row="3"
+               Grid.Column="1"
+               Content="Frost Damage Block"/>
+        <Label Grid.Row="4"
+               Grid.Column="1"
+               Content="Lightning Damage Block"/>
+
+        <Label Grid.Row="0"
+               Grid.Column="2"
+               Content="{Binding BaseDamage}"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="2"
+               Content="{Binding MagicDamage}"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="2"
+               Content="{Binding FireDamage}"/>
+
+        <Label Grid.Row="3"
+               Grid.Column="2"
+               Content="{Binding FrostDamage}"/>
+        <Label Grid.Row="4"
+               Grid.Column="2"
+               Content="{Binding LightningDamage}"/>
+
+        <Label Grid.Row="0"
+               Grid.Column="3"
+               Content="Required Strenght"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="3"
+               Content="Required Dexterity"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="3"
+               Content="Required Faith"/>
+
+        <Label Grid.Row="3"
+               Grid.Column="3"
+               Content="Required Intelligence"/>
+        <Label Grid.Row="4"
+               Grid.Column="3"
+               Content="Block Chance"/>
+
+        <Label Grid.Row="0"
+               Grid.Column="4"
+               Content="{Binding RequiredStrenght}"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="4"
+               Content="{Binding RequiredDexterity}"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="4"
+               Content="{Binding RequiredFaith}"/>
+
+        <Label Grid.Row="3"
+               Grid.Column="4"
+               Content="{Binding RequiredIntelligence}"/>
+        <Label Grid.Row="4"
+               Grid.Column="4"
+               Content="{Binding BlockChance}"/>
+
+        <Label Grid.Row="5"
+               Grid.Column="0"
+               Grid.ColumnSpan="7"
+               Content="Statistics change"/>
+
+        <ContentControl Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="7"
+                        Content="{Binding Statistics}"/>
+    </Grid>
+</UserControl>

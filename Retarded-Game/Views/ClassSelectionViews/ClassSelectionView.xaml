@@ -17,6 +17,7 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
+        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,7 +52,10 @@
         <Button Grid.Column="0" 
                 Grid.Row="1"
                 FontSize="{StaticResource DefaultFontSize}"
-                Content="Confirm"/>
+                Width="auto"
+                Height="auto"
+                Content="Confirm"
+                Command="{Binding CreateCharacterCommand}"/>
 
         <ContentControl Grid.Row="0" 
                         Grid.Column="1" 

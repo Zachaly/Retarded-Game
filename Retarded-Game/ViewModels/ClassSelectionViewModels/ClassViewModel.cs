@@ -18,13 +18,14 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
         public EquipmentViewModel Equipment { get; }
         public StatisticsViewModel Statistics { get; }
         public IEnumerable<SpellViewModel> SpellNames { get; }
+        public PlayerStartingClass PlayerClass => _playerClass;
 
         public ClassViewModel(PlayerStartingClass playerClass)
         { 
             _playerClass = playerClass;
             Equipment = new EquipmentViewModel(playerClass.Equipment);
             Statistics = new StatisticsViewModel(playerClass.Statistics);
-            SpellNames = _playerClass.Spells.EquippedSpells.Select(x =>  new SpellViewModel(x));
+            SpellNames = _playerClass.Spells.EquippedSpells.Select(spell =>  new SpellViewModel(spell));
         }
     }
 }

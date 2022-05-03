@@ -9,17 +9,15 @@ namespace Retarded_Game.Services
     public class NavigationService
     {
         private NavigationStore _navigationStore;
-        private BaseViewModel _target;
 
-        public NavigationService(NavigationStore navigationStore, BaseViewModel target)
+        public NavigationService(NavigationStore navigationStore)
         { 
             _navigationStore = navigationStore; 
-            _target = target;
         }
 
-        public void Navigate()
+        public void Navigate(BaseViewModel target)
         {
-            _navigationStore.CurrentViewModel = _target;
+            _navigationStore.CurrentViewModel = target;
         }
     }
 }

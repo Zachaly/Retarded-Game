@@ -8,6 +8,8 @@
         xmlns:classviewModels="clr-namespace:Retarded_Game.ViewModels.ClassSelectionViewModels"
         xmlns:views="clr-namespace:Retarded_Game.Views"
         xmlns:classviews="clr-namespace:Retarded_Game.Views.ClassSelectionViews"
+        xmlns:hub="clr-namespace:Retarded_Game.ViewModels.HubViewModels"
+        xmlns:hubView="clr-namespace:Retarded_Game.Views.HubViews"
         mc:Ignorable="d"
         Title="Retarded Game"
         Background="DarkGray"
@@ -22,6 +24,24 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type classviewModels:ClassSelectionViewModel}">
             <classviews:ClassSelectionView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:HubViewModel}">
+            <hubView:HubView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:ExplorationViewModel}">
+            <hubView:ExplorationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:CharacterInfoViewModel}">
+            <hubView:CharacterInfoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:InventoryManagementViewModel}">
+            <hubView:InventoryManagementView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:SpellManagementViewModel}">
+            <hubView:SpellManagementView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:ShopViewModel}">
+            <hubView:ShopView/>
         </DataTemplate>
     </Window.Resources>
     <Grid Background="SlateGray">

@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="LightGray"
              BorderBrush="Black"
+             Background="LightGray"
              BorderThickness="1 0 2 2">
     <UserControl.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}">
