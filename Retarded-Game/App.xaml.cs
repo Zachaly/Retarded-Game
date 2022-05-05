@@ -10,8 +10,7 @@ namespace Retarded_Game
     /// </summary>
     public partial class App : Application
     {
-        public static Player Player { get; private set; }
-        public static string CharacterName { get; set; }
+        public static string CharacterName { get; set; } = "";
         private readonly NavigationStore _navigationStore;
 
         public App()
@@ -30,9 +29,5 @@ namespace Retarded_Game
             
             base.OnStartup(e);
         }
-
-        public static void CreatePlayer(PlayerStartingClass playerClass)
-            => Player = new Player(CharacterName, playerClass);
-        
     }
 }

@@ -1,23 +1,23 @@
 ﻿using Retarded_Game.Commands;
 using Retarded_Game.Services;
+using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
     public class HubViewModel : BaseViewModel
     {
-        public NavigateCommand GoToExploration { get; }
-        public NavigateCommand GoToCharacterInfo { get; }
-        public NavigateCommand GoToInventoryManagement { get; }
-        public NavigateCommand GoToSpellManagement { get; }
-        public NavigateCommand GoToShop { get; }
+        private readonly Player _player;
+        private readonly NavigationService _navigationService;
+        public NavigateCommand GoToExploration => new NavigateCommand(_navigationService, new ExplorationViewModel());
+        public NavigateCommand GoToCharacterInfo => new NavigateCommand(_navigationService, new CharacterInfoViewModel(_player));
+        public NavigateCommand GoToInventoryManagement => new NavigateCommand(_navigationService, new InventoryManagementViewModel());
+        public NavigateCommand GoToSpellManagement => new NavigateCommand(_navigationService, new SpellManagementViewModel());
+        public NavigateCommand GoToShop => new NavigateCommand(_navigationService, new ShopViewModel());
 
-        public HubViewModel(NavigationService navigationService)
+        public HubViewModel(NavigationService navigationService, PlayerStartingClass player)
         {
-            GoToExploration = new NavigateCommand(navigationService, new ExplorationViewModel());
-            GoToCharacterInfo = new NavigateCommand(navigationService, new CharacterInfoViewModel());
-            GoToInventoryManagement = new NavigateCommand(navigationService, new InventoryManagementViewModel());
-            GoToSpellManagement = new NavigateCommand(navigationService, new SpellManagementViewModel());
-            GoToShop = new NavigateCommand(navigationService, new ShopViewModel());
+            _player = new Player(App.CharacterName, player);
+            _navigationService = navigationService;
         }
     }
 }

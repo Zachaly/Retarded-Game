@@ -4,9 +4,84 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.HubViews"
+             xmlns:stats="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
+             xmlns:statModels="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
+             xmlns:items="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             xmlns:itemModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Gray">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type itemModels:EquipmentViewModel}">
+            <items:EquipmentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type statModels:StatisticsViewModel}">
+            <stats:StatisticsView/>
+        </DataTemplate>
+        <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Content="{Binding CharacterName}"/>
+        <Grid Grid.Row="0"
+              Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Level"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding Level}"/>
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Experience"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding Experience}"/>
+        </Grid>
+        <ContentControl Grid.Row="1"
+                        Grid.Column="1"
+                        Content="{Binding Equipment}"/>
+        <ContentControl Grid.Row="1"
+                        Grid.Column="0"
+                        Content="{Binding Statistics}"/>
+        <ListView Grid.Row="1"
+                  Grid.Column="2"
+                  ItemsSource="{Binding SpellNames}"
+                  Background="Gray">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Spell Names">
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate>
+                                <Label Content="{Binding Name}" Style="{StaticResource DefaultLabel}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

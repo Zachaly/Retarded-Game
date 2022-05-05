@@ -194,18 +194,18 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             _changes.Add(change);
 
-            MaxHP += change._maxHPBase;
-            MaxMana += change._maxManaBase;
+            _maxHPBase += change._maxHPBase;
+            _maxHPBase += change._maxManaBase;
 
-            Vitality += change._vitality;
-            Focus += change._focus;
-            Strenght += change._strenght;
-            Dexterity += change._dexterity;
-            Intelligence += change._intelligence;
-            Faith += change._faith;
+            _vitality += change._vitality;
+            _focus += change._focus;
+            _strenght += change._strenght;
+            _dexterity += change._dexterity;
+            _intelligence += change._intelligence;
+            _faith += change._faith;
 
-            CriticalChance += change._criticalChance;
-            DodgeChance += change._dodgeBaseChance;
+            _criticalChance += change._criticalChance;
+            _dodgeBaseChance += change._dodgeBaseChance;
         }
 
         /// <summary>
@@ -216,18 +216,18 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             if (!_changes.Contains(change))
                 return;
 
-            MaxHP -= change._maxHPBase;
-            MaxMana -= change._maxManaBase;
+            _maxHPBase -= change._maxHPBase;
+            _maxHPBase -= change._maxManaBase;
 
-            Vitality -= change._vitality;
-            Focus -= change._focus;
-            Strenght -= change._strenght;
-            Dexterity -= change._dexterity;
-            Intelligence -= change._intelligence;
-            Faith -= change._faith;
+            _vitality -= change._vitality;
+            _focus -= change._focus;
+            _strenght -= change._strenght;
+            _dexterity -= change._dexterity;
+            _intelligence -= change._intelligence;
+            _faith -= change._faith;
 
-            CriticalChance -= change._criticalChance;
-            DodgeChance -= change._dodgeBaseChance;
+            _criticalChance -= change._criticalChance;
+            _dodgeBaseChance -= change._dodgeBaseChance;
         }
 
         public BaseStats Clone()

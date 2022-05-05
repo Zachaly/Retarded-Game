@@ -6,18 +6,17 @@ namespace Retarded_Game.Commands
 {
     public class CreateCharacterCommand : NavigateCommand
     {
-        private readonly ClassSelectionViewModel _classSelectionViewModel;
-
+        private readonly ClassSelectionViewModel _classSelection;
         /// <summary>
         /// Creates character based on picked class and goes to the hub
         /// </summary>
-        public CreateCharacterCommand(NavigationService navigationService, ClassSelectionViewModel classSelection) 
-            : base(navigationService, new HubViewModel(navigationService))
-                => _classSelectionViewModel = classSelection;
+        public CreateCharacterCommand(NavigationService navigationService, ClassSelectionViewModel classSelection)
+            : base(navigationService, new HubViewModel(navigationService, classSelection.SelectedClass.PlayerClass)) 
+            => _classSelection = classSelection;
 
         public override void Execute(object? parameter)
         {
-            App.CreatePlayer(_classSelectionViewModel.SelectedClass.PlayerClass);
+            _target = new HubViewModel(_navigationService, _classSelection.SelectedClass.PlayerClass);
             base.Execute(parameter);
         }
     }

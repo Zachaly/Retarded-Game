@@ -94,11 +94,11 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             _changes.Add(change);
 
-            Defence += change.Defence;
-            MagicResistance += change.MagicResistance;
-            FireResistance += change.FireResistance;
-            FrostResistance += change.FrostResistance;
-            LightningResistance += change.LightningResistance;
+            _defence += change.Defence;
+            _magicResistance += change.MagicResistance;
+            _fireResistance += change.FireResistance;
+            _frostResistance += change.FrostResistance;
+            _lightningResistance += change.LightningResistance;
         }
 
         /// <summary>
@@ -109,11 +109,11 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             if(!_changes.Contains(change))
                     return;
 
-            Defence -= change.Defence;
-            MagicResistance -= change.MagicResistance;
-            FireResistance -= change.FireResistance;
-            FrostResistance -= change.FrostResistance;
-            LightningResistance -= change.LightningResistance;
+            _defence -= change.Defence;
+            _magicResistance -= change.MagicResistance;
+            _fireResistance -= change.FireResistance;
+            _frostResistance -= change.FrostResistance;
+            _lightningResistance -= change.LightningResistance;
         }
 
         public Defences Clone()

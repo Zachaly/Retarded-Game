@@ -17,6 +17,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
     public class ClassSelectionViewModel : BaseViewModel
     {
         private readonly List<ClassViewModel> _startingClasses;
+        private readonly NavigationService _navigationService;
         private ClassViewModel _selectedClass;
 
         public IEnumerable<ClassViewModel> StartingClasses => _startingClasses;
@@ -30,7 +31,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             } 
         }
         public int StartingLevel { get; set; }
-        public CreateCharacterCommand CreateCharacterCommand { get; }
+        public CreateCharacterCommand CreateCharacterCommand => new CreateCharacterCommand(_navigationService, this);
 
         public ClassSelectionViewModel(NavigationService navigationService)
         {
@@ -38,7 +39,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
                 new ClassViewModel(Mage())};
 
             SelectedClass = _startingClasses.FirstOrDefault();
-            CreateCharacterCommand = new CreateCharacterCommand(navigationService, this);
+            _navigationService = navigationService;
         }
 
         private PlayerStartingClass Trash()
@@ -47,7 +48,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             Statistics statistics = new Statistics(baseStats);
             Equipment equipment = new Equipment();
             equipment.SetStartingEquipment(Armor.None(ArmorType.Helmet), Armor.None(ArmorType.Chestplate),
-                new Armor("Ragged pants", "", 1, new Statistics(new Defences(2, 0, -1, 0, 0)), ArmorType.Pants), 
+                new Armor("Ragged pants", "", 1, new Statistics(new Defences(0.02, 0, -0.1, 0, 0)), ArmorType.Pants), 
                 Armor.None(ArmorType.Boots), new Weapon("Wooden club", "", 1, StatRequirements.None, new Statistics(),
                 new Damage(3, 0, 0, 0, 0), WeaponScaling.E, WeaponScaling.E,
                 WeaponScaling.None, WeaponScaling.None, WeaponType.OneHanded),

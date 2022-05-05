@@ -8,7 +8,9 @@ namespace Retarded_Game.ViewModels
 {
     public class EnterNameViewModel : BaseViewModel
     {
+        private readonly NavigationStore _navigationStore;
         string _name = "";
+        
         public string CharacterName 
         {
             get => _name;
@@ -19,11 +21,10 @@ namespace Retarded_Game.ViewModels
             } 
         }
 
-        public ICommand ConfirmNameCommand { get; }
+        public ICommand ConfirmNameCommand => new ConfirmNameCommand(this, new NavigationService(_navigationStore));
 
         public EnterNameViewModel(NavigationStore navigationStore)
-        {
-            ConfirmNameCommand = new ConfirmNameCommand(this, new NavigationService(navigationStore));
-        }
+            => _navigationStore = navigationStore;
+        
     }
 }

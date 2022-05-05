@@ -25,6 +25,7 @@ namespace Retarded_Game.Models.Fighters.Players
             } 
         }
 
+        public int ExperienceForNextLevel => _experienceForNextLevel;
         public Equipment Equipment { get; }
         public Spellbook Spellbook { get; }
 
