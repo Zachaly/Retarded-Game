@@ -7,8 +7,12 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
     /// </summary>
     public sealed class Statistics
     {
-        public Defences Defences { get; set; } = new Defences();
-        public BaseStats BaseStats { get; set; } = new BaseStats();
+        public Defences Defences { get; set; }
+        public BaseStats BaseStats { get; set; }
+        public bool IsEquipment 
+        { 
+            set => BaseStats.IsEquipment = value;
+        }
 
         List<Statistics> _statChanges = new List<Statistics>();
         
@@ -32,11 +36,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             Defences = defences;
         }
 
-        public Statistics(BaseStats baseStats) 
-            => BaseStats = baseStats;
+        public Statistics(BaseStats baseStats) : this(baseStats, new Defences()) { }
 
-        public Statistics(Defences defences) 
-            => Defences = defences;
+        public Statistics(Defences defences) : this(new BaseStats(), defences) { }
 
         public Statistics Copy() => new Statistics(BaseStats, Defences);
         

@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="BaseDamage">
+        <Label Content="{Binding BaseDamage}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FireDamage">
+        <Label Content="{Binding FireDamage}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MagicDamage">
+        <Label Content="{Binding MagicDamage}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FrostDamage">
+        <Label Content="{Binding FrostDamage}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LightningDamage">
+        <Label Content="{Binding LightningDamage}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="Type">
+        <Label Content="{Binding Type}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="StrengthScaling">
+        <Label Content="{Binding StrengthScaling}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="DexterityScaling">
+        <Label Content="{Binding DexterityScaling}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="FaithScaling">
+        <Label Content="{Binding FaithScaling}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="IntelligenceScaling">
+        <Label Content="{Binding IntelligenceScaling}"/>
+    </DataTemplate>
+</ResourceDictionary>

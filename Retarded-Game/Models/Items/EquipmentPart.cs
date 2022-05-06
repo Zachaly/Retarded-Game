@@ -15,6 +15,7 @@ namespace Retarded_Game.Models.Items
         {
            StatRequirements = statRequirements;
            StatsChange = statsChange;
+           StatsChange.IsEquipment = true;
         }
 
         public virtual void Equip(Player player, out bool areStatsCorrect)

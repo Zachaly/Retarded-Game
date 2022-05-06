@@ -49,9 +49,9 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             Equipment equipment = new Equipment();
             equipment.SetStartingEquipment(Armor.None(ArmorType.Helmet), Armor.None(ArmorType.Chestplate),
                 new Armor("Ragged pants", "", 1, new Statistics(new Defences(0.02, 0, -0.1, 0, 0)), ArmorType.Pants), 
-                Armor.None(ArmorType.Boots), new Weapon("Wooden club", "", 1, StatRequirements.None, new Statistics(),
-                new Damage(3, 0, 0, 0, 0), WeaponScaling.E, WeaponScaling.E,
-                WeaponScaling.None, WeaponScaling.None, WeaponType.OneHanded),
+                Armor.None(ArmorType.Boots),
+                new Weapon("Wooden club", "", 1, StatRequirements.None, new Statistics(), new Damage(3, 0, 0, 0, 0),
+                WeaponScaling.E, WeaponScaling.E, WeaponScaling.None, WeaponScaling.None, WeaponType.OneHanded),
                 Weapon.EmptyHand, new List<Ring>(), new List<Consumable>());
             
             
@@ -79,7 +79,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             Armor boots = new Armor("Iron boots", "", 1, new Statistics(ironDefences), ArmorType.Boots);
 
             equipment.SetStartingEquipment(helmet, chesplate, pants, boots, weapon, shield, new List<Ring>(), new List<Consumable>());
-            return new PlayerStartingClass("Warrior", 8, new Statistics(stats), equipment, new Spellbook(), 0);
+            return new PlayerStartingClass("Warrior", 5, new Statistics(stats), equipment, new Spellbook(), 0);
         }
 
         private PlayerStartingClass Mage()
@@ -87,8 +87,8 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             BaseStats stats = new BaseStats(20, 15, 3, 5, 3, 3, 6, 4, 0, 2);
             Equipment equipment = new Equipment();
             Weapon weapon = new Weapon("Poor staff", "", 1, StatRequirements.None, new Statistics(),
-                new Damage(3, 0, 0, 0, 1), WeaponScaling.E, WeaponScaling.E,
-                WeaponScaling.None, WeaponScaling.C, WeaponType.TwoHanded);
+                new Damage(3, 0, 0, 0, 1), WeaponScaling.D, WeaponScaling.E,
+                WeaponScaling.C, WeaponScaling.None, WeaponType.TwoHanded);
 
             Defences robeDefences = new Defences(0.01, 0.02, 0, 0, 0);
 

@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="Type">
+        <Label Content="{Binding Type}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="RequiredStrength">
+        <Label Content="{Binding RequiredStrenght}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="RequiredDexterity">
+        <Label Content="{Binding RequiredDexterity}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="RequiredFaith">
+        <Label Content="{Binding RequiredFaith}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="RequiredIntelligence">
+        <Label Content="{Binding RequiredIntelligence}"/>
+    </DataTemplate>
+</ResourceDictionary>

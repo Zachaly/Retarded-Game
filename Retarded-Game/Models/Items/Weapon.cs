@@ -1,11 +1,14 @@
 ﻿using Retarded_Game.Models.BasicStructures.Statistics;
 using Retarded_Game.Models.BasicStructures;
 using Retarded_Game.Models.BasicStructures.Enums;
+using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.Models.Items
 {
     public class Weapon : EquipmentPart
     {
+        private readonly WeaponUpgrade _weaponUpgrade;
+
         /// <summary>
         /// Default weapon
         /// </summary>
@@ -27,6 +30,7 @@ namespace Retarded_Game.Models.Items
             double intelligenceScaling, double faithScaling, WeaponType type)
             : base(name, description, price, statRequirements, statsChange)
         {
+            _weaponUpgrade = new WeaponUpgrade(this);
             BaseDamage = baseDamage;
 
             StrenghtScaling = strengthScaling;
@@ -50,5 +54,7 @@ namespace Retarded_Game.Models.Items
 
             return damage;
         }
+
+        public void Upgrade(Player player, out bool canUpgrade) => _weaponUpgrade.Upgrade(player, out canUpgrade);
     }
 }

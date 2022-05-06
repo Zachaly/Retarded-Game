@@ -8,8 +8,7 @@
              xmlns:statModels="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
              xmlns:items="clr-namespace:Retarded_Game.Views.EquipmentViews"
              xmlns:itemModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
              Background="Gray">
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type itemModels:EquipmentViewModel}">
@@ -18,7 +17,9 @@
         <DataTemplate DataType="{x:Type statModels:StatisticsViewModel}">
             <stats:StatisticsView/>
         </DataTemplate>
-        <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+        <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -26,13 +27,14 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0"
                Grid.Column="0"
@@ -83,5 +85,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button Grid.Column="0"
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Content="Return to Hub"
+                Command="{Binding ReturnToHubCommand}"
+                Width="auto"
+                Height="auto"/>
     </Grid>
 </UserControl>

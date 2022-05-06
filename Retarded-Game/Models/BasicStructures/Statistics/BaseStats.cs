@@ -10,6 +10,7 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         double _maxHPBase = 0, _maxManaBase = 0, _currentHP = 0, _currentMana = 0;
         int _vitality = 0, _focus = 0, _strenght = 0, _dexterity = 0, _intelligence = 0, _faith = 0;
         int _criticalChance = 0, _dodgeBaseChance = 0;
+        private bool _isEquipment = false;
         List<BaseStats> _changes = new List<BaseStats>();
 
         /// <summary>
@@ -20,10 +21,18 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         /// Maximum HP of character, cannot be lower than 20.
         /// Influenced by vitality, strenght and dexterity
         /// </summary>
+        
+        public bool IsEquipment 
+        { 
+            get => _isEquipment; 
+            set => _isEquipment = value; 
+        }
         public double MaxHP
         {
             get
             {
+                if(_isEquipment) 
+                    return _maxHPBase;
                 if (_maxHPBase < 20)
                     return 20;
                 return _maxHPBase + (5*Vitality) + (Strenght + Dexterity);
@@ -39,6 +48,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _maxManaBase;
                 if (_maxManaBase >= 0)
                     return _maxManaBase + (5*Focus) + (Faith + Intelligence);
                 return 0;
@@ -73,6 +84,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _vitality;
                 if (_vitality < 3)
                     return 3;
                 return _vitality;
@@ -84,6 +97,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _focus;
                 if (_focus < 3)
                     return 3;
                 return _focus;
@@ -95,6 +110,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _strenght;
                 if (_strenght < 3)
                     return 3;
                 return _strenght;
@@ -105,6 +122,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _dexterity;
                 if (_dexterity < 3)
                     return 3;
                 return _dexterity;
@@ -115,6 +134,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _intelligence;
                 if (_intelligence < 3)
                     return 3;
                 return _intelligence;
@@ -125,6 +146,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _faith;
                 if (_faith < 3)
                     return 3;
                 return _faith;
@@ -139,6 +162,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _criticalChance;
                 if (_criticalChance < 1)
                     return 1;
                 if (_criticalChance > 75)
@@ -157,6 +182,8 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         {
             get
             {
+                if (_isEquipment)
+                    return _dodgeBaseChance;
                 if (_dodgeBaseChance < 1)
                     return 1 + (int)(0.5 * Dexterity);
                 if (_dodgeBaseChance > 80)
@@ -166,7 +193,7 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
             set => _dodgeBaseChance = value;
         }
 
-        public BaseStats() { }
+        public BaseStats(bool isEquipment = false) => _isEquipment = isEquipment;
         public BaseStats(double maxHP, double maxMana, int vitality, int focus, int strenght,
             int dexterity, int intelligence, int faith, int critical, int dodge)
         {

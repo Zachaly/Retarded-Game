@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Retarded_Game.Views.EquipmentViews.UpgradeMaterialView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             mc:Ignorable="d" 
+             Background="Gray">
+    <UserControl.Resources>
+        <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0"
+               Content="{Binding Name}"/>
+        <Label Grid.Row="1"
+               Content="{Binding Description}"/>
+        <Label Grid.Row="2"
+               Content="{Binding Price}"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Content="Material Level"/>
+            <Label Grid.Column="1"
+                   Content="{Binding MaterialLevel}"/>
+        </Grid>
+    </Grid>
+</UserControl>

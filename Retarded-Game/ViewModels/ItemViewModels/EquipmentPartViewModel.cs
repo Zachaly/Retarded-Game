@@ -8,6 +8,8 @@ namespace Retarded_Game.ViewModels.ItemViewModels
     {
         private readonly StatRequirements _statRequirements;
         public StatisticsViewModel Statistics { get; }
+        public BaseStatsViewModel BaseStats { get; }
+        public DefencesViewModel Defences { get; }
 
         public int RequiredStrenght => _statRequirements.MinimalStrenght;
         public int RequiredDexterity => _statRequirements.MinimalDexterity;
@@ -18,6 +20,8 @@ namespace Retarded_Game.ViewModels.ItemViewModels
         { 
             Statistics = new StatisticsViewModel(equipmentPart.StatsChange);
             _statRequirements = equipmentPart.StatRequirements;
+            BaseStats = new BaseStatsViewModel(equipmentPart.StatsChange.BaseStats);
+            Defences = new DefencesViewModel(equipmentPart.StatsChange.Defences);
         }
     }
 }

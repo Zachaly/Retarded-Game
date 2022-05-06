@@ -2,7 +2,6 @@
 using Retarded_Game.Commands;
 using Retarded_Game.Services;
 using Retarded_Game.Stores;
-using Retarded_Game.ViewModels.ClassSelectionViewModels;
 
 namespace Retarded_Game.ViewModels
 {
@@ -16,7 +15,7 @@ namespace Retarded_Game.ViewModels
             get => _name;
             set
             {
-                _name = value;
+                _name = value.TrimStart();
                 OnPropertyChanged(nameof(CharacterName));
             } 
         }

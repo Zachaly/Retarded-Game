@@ -24,8 +24,8 @@ namespace Retarded_Game.Models.Fighters.Players
                     _experience = value;
             } 
         }
-
         public int ExperienceForNextLevel => _experienceForNextLevel;
+        public int Money { get; set; } = 0;
         public Equipment Equipment { get; }
         public Spellbook Spellbook { get; }
 

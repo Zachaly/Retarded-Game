@@ -18,16 +18,13 @@
         /// </summary>
         public static string ScalingToString(double scaling)
         {
-            switch (scaling)
-            {
-                case S: return "S";
-                case A: return "A";
-                case B: return "B";
-                case C: return "C";
-                case D: return "D";
-                case E: return "E";
-                default: return "None";
-            }
+                if(scaling >= S) return "S";
+                if(scaling >= A) return "A";
+                if(scaling >= B) return "B";
+                if(scaling >= C) return "C";
+                if(scaling >= D) return "D";
+                if(scaling >= E) return "E";
+                return "None";
         }
     }
 }

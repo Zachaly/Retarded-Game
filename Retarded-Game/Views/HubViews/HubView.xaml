@@ -13,6 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0"
@@ -30,5 +31,8 @@
         <Button Grid.Row="4"
                 Content="Shop"
                 Command="{Binding GoToShop}"/>
+        <Button Grid.Row="5"
+                Content="Smith"
+                Command="{Binding GoToSmith}"/>
     </Grid>
 </UserControl>

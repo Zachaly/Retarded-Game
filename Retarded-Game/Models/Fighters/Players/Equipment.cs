@@ -32,6 +32,7 @@ namespace Retarded_Game.Models.Fighters.Players
 
         public IEnumerable<Consumable> AllConsumables;
         public IEnumerable<Ring> AllRings;
+        public IEnumerable<UpgradeMaterial> UpgradeMaterials;
 
         public Equipment()
         {
@@ -46,6 +47,7 @@ namespace Retarded_Game.Models.Fighters.Players
             AllShields = from Shield el in AllItems where el != null select el;
             AllConsumables = from Consumable el in AllItems where el != null select el;
             AllRings = from Ring el in AllItems where el != null select el;
+            UpgradeMaterials = from UpgradeMaterial el in AllItems where el != null select el;
 
             EquippedRings = new List<Ring>() { Ring.None, Ring.None, Ring.None, Ring.None };
         }
@@ -65,7 +67,18 @@ namespace Retarded_Game.Models.Fighters.Players
 
             for (int i = 0; i < rings.Count; i++)
                 EquippedRings[i] = rings[i];
-            consumables.ForEach(x => AllItems.Add(x));
+            consumables.ForEach(item => AllItems.Add(item));
+            EquippedRings.Where(item => item != Ring.None).ToList().ForEach(item => AllItems.Add(item));
+            
+            AllItems.Add(LeftHand);
+            if(!AllItems.Contains(RightHand))
+                AllItems.Add(RightHand);
+            AllItems.Add(Boots);
+            AllItems.Add(Chestplate);
+            AllItems.Add(Pants);
+            AllItems.Add(Helmet);
+            AllItems.Where(item => item.Name == "None" || item.Name == "Empty Hand").ToList()
+                .ForEach(item => AllItems.Remove(item));
         }
 
         public void SetPlayer(Player player)
@@ -158,15 +171,9 @@ namespace Retarded_Game.Models.Fighters.Players
             if (item is Weapon == false && item is Shield == false)
                 return;
 
-            item.Equip(_player, out done);
-
-            if (!done)
-                return;
-
             if(item is Weapon)
             {
-                var weapon = item as Weapon;
-                if(weapon.WeaponType == WeaponType.TwoHanded)
+                if((item as Weapon).WeaponType == WeaponType.TwoHanded)
                     return;
             }
 
@@ -176,6 +183,10 @@ namespace Retarded_Game.Models.Fighters.Players
                     return;
             }
             
+            item.Equip(_player, out done);
+
+            if (!done)
+                return;
             LeftHand.UnEquip(_player);
             LeftHand = item;
         }

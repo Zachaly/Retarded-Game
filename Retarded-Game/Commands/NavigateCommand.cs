@@ -8,8 +8,8 @@ namespace Retarded_Game.Commands
     /// </summary>
     public class NavigateCommand : CommandBase
     {
-        protected readonly NavigationService _navigationService;
-        protected BaseViewModel _target;
+        private readonly NavigationService _navigationService;
+        private BaseViewModel _target;
 
         public NavigateCommand(NavigationService navigationService, BaseViewModel target)
         { 

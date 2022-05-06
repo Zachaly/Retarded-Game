@@ -4,26 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             xmlns:statisticsModel="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
+             xmlns:statisticsView="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
              Background="LightGray"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}">
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+        <DataTemplate DataType="{x:Type statisticsModel:BaseStatsViewModel}">
+            <statisticsView:BaseStatsView/>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -136,7 +141,7 @@
 
         <Label Grid.Row="0"
                Grid.Column="6"
-               Content="{Binding StrenghtScaling}"/>
+               Content="{Binding StrengthScaling}"/>
 
         <Label Grid.Row="1"
                Grid.Column="6"
@@ -149,15 +154,15 @@
         <Label Grid.Row="3"
                Grid.Column="6"
                Content="{Binding IntelligenceScaling}"/>
-        <Label Grid.Row="5"
-               Grid.Column="0"
-               Grid.ColumnSpan="7"
+        <Label Grid.Row="0"
+               Grid.Column="7"
+               Grid.ColumnSpan="2"
                Content="Statistics change"/>
 
-        <ContentControl Grid.Row="6"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="7"
-                        Content="{Binding Statistics}"/>
-
+        <ContentControl Grid.Row="1"
+                        Grid.Column="7"
+                        Grid.RowSpan="4"
+                        Grid.ColumnSpan="2"
+                        Content="{Binding BaseStats}"/>
     </Grid>
 </UserControl>

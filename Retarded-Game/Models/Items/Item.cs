@@ -3,11 +3,12 @@
     /// <summary>
     /// Base class for item
     /// </summary>
-    public abstract class Item
+    public class Item
     {
         public string Name { get; set; }
         public string Description { get; }
         public int Price { get; set; }
+        public static Item None => new Item("", "", 0);
 
         public Item(string name, string description, int price)
         {

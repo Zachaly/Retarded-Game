@@ -4,22 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             xmlns:statisticsModel="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
+             xmlns:statisticsView="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
              Background="LightGray"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+        <DataTemplate DataType="{x:Type statisticsModel:StatisticsViewModel}">
+            <statisticsView:StatisticsView/>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="30*"/>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -59,22 +64,22 @@
 
         <Label Grid.Row="0"
                Grid.Column="2"
-               Content="{Binding BaseDamage}"/>
+               Content="{Binding BlockBaseDamage}"/>
 
         <Label Grid.Row="1"
                Grid.Column="2"
-               Content="{Binding MagicDamage}"/>
+               Content="{Binding BlockMagicDamage}"/>
 
         <Label Grid.Row="2"
                Grid.Column="2"
-               Content="{Binding FireDamage}"/>
+               Content="{Binding BlockFireDamage}"/>
 
         <Label Grid.Row="3"
                Grid.Column="2"
-               Content="{Binding FrostDamage}"/>
+               Content="{Binding BlockFrostDamage}"/>
         <Label Grid.Row="4"
                Grid.Column="2"
-               Content="{Binding LightningDamage}"/>
+               Content="{Binding BlockLightningDamage}"/>
 
         <Label Grid.Row="0"
                Grid.Column="3"
@@ -114,14 +119,15 @@
                Grid.Column="4"
                Content="{Binding BlockChance}"/>
 
-        <Label Grid.Row="5"
-               Grid.Column="0"
-               Grid.ColumnSpan="7"
+        <Label Grid.Row="0"
+               Grid.Column="5"
+               Grid.ColumnSpan="3"
                Content="Statistics change"/>
 
-        <ContentControl Grid.Row="6"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="7"
+        <ContentControl Grid.Row="1"
+                        Grid.Column="5"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="4"
                         Content="{Binding Statistics}"/>
     </Grid>
 </UserControl>

@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             xmlns:statisticsModel="clr-namespace:Retarded_Game.ViewModels.StatisticsViewModels"
+             xmlns:statisticsView="clr-namespace:Retarded_Game.Views.PlayerStatisticsViews"
              Background="LightGray"
              mc:Ignorable="d">
     <UserControl.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+        <DataTemplate DataType="{x:Type statisticsModel:StatisticsViewModel}">
+            <statisticsView:StatisticsView/>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

@@ -16,6 +16,6 @@ namespace Retarded_Game.Models.Items
         /// <summary>
         /// Default armor of given type
         /// </summary>
-        public static Armor None(ArmorType type) => new Armor("None", "", 0, new Statistics(), type);
+        new public static Armor None(ArmorType type) => new Armor("None", "", 0, new Statistics(), type);
     }
 }

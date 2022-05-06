@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate x:Key="BaseDefence">
+        <Label Content="{Binding BaseDefence}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="MagicResistance">
+        <Label Content="{Binding MagicResistance}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FireResistance">
+        <Label Content="{Binding FireResistance}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FrostResistance">
+        <Label Content="{Binding FrostResistance}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="LightningResistance">
+        <Label Content="{Binding LightningResistance}"/>
+    </DataTemplate>
+</ResourceDictionary>
