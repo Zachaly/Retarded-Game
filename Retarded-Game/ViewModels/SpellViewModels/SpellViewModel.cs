@@ -23,6 +23,5 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         public string MinimalIntelligence => $"Intelligence: {_spell.StatRequirements.MinimalIntelligence}";
 
         public SpellViewModel(Spell spell) => _spell = spell;
-        
     }
 }

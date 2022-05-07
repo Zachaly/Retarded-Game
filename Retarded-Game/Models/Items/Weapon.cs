@@ -5,7 +5,7 @@ using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.Models.Items
 {
-    public class Weapon : EquipmentPart
+    public sealed class Weapon : EquipmentPart
     {
         private readonly WeaponUpgrade _weaponUpgrade;
 
@@ -21,7 +21,10 @@ namespace Retarded_Game.Models.Items
         public double DexterityScaling { get; set; }
         public double IntelligenceScaling { get; set; }
         public double FaithScaling { get; set; } 
-        public WeaponType WeaponType { get;}
+        public WeaponType WeaponType { get; }
+        public int UpgradeLevel => _weaponUpgrade.UpgradeLevel;
+        public int UpgradeCost => _weaponUpgrade.Cost;
+        public int MaterialForNextUpgrade => _weaponUpgrade.MaterialForNextLevel;
 
         public Weapon(string name, string description, int price,
             StatRequirements statRequirements,
@@ -56,5 +59,9 @@ namespace Retarded_Game.Models.Items
         }
 
         public void Upgrade(Player player, out bool canUpgrade) => _weaponUpgrade.Upgrade(player, out canUpgrade);
+
+        public override Weapon Clone() 
+            => new Weapon(Name, Description, Price, StatRequirements, StatsChange.Copy(),
+            BaseDamage, StrenghtScaling, DexterityScaling, IntelligenceScaling, FaithScaling, WeaponType);
     }
 }

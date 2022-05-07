@@ -5,7 +5,7 @@ namespace Retarded_Game.Models.Items
     /// <summary>
     /// Class for a shield, it can block damage up to 100%
     /// </summary>
-    public class Shield : EquipmentPart
+    public sealed class Shield : EquipmentPart
     {
         int _blockChance = 0;
         double _blockBaseDamage = 0, _blockFireDamage = 0, _blockFrostDamage = 0, _blockLightningDamage = 0, _blockMagicDamage = 0;
@@ -93,5 +93,10 @@ namespace Retarded_Game.Models.Items
             _blockFrostDamage = blockFrostDamage;
             _blockLightningDamage = blockLightningDamage;
         }
+
+        public override Shield Clone() 
+            => new Shield(Name, Description, Price, StatRequirements, StatsChange.Copy(),
+            _blockBaseDamage, _blockMagicDamage, _blockFireDamage,
+            _blockFrostDamage, _blockLightningDamage, _blockChance);
     }
 }

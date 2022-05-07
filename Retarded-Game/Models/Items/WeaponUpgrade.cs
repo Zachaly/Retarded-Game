@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game.Models.Items
 {
-    internal class WeaponUpgrade
+    /// <summary>
+    /// Used in upgrading the weapons
+    /// </summary>
+    internal sealed class WeaponUpgrade
     {
         private readonly Weapon _weapon;
         private int _upgradeLevel = 0;
@@ -23,16 +25,18 @@ namespace Retarded_Game.Models.Items
         {
             canUpgrade = false;
 
-            if(player.Equipment.UpgradeMaterials
-                .Where(item => item.MaterialLevel == _materialLevel)
+            var upgradeMaterials = player.Equipment.AllItems.Where(item => item is UpgradeMaterial)
+                .Select(item => item as UpgradeMaterial);
+
+            if (upgradeMaterials.Where(item => item.MaterialLevel == _materialLevel)
                 .Count() >= MaterialForNextLevel && player.Money >= Cost)
                 canUpgrade = true;
 
             if (canUpgrade)
             {
-                var usedMaterials = player.Equipment.UpgradeMaterials
-                    .Where(item => item.MaterialLevel == _materialLevel)
+                var usedMaterials = upgradeMaterials.Where(item => item.MaterialLevel == _materialLevel)
                     .Take(_materialForNextLevel).ToArray();
+
                 player.Equipment.AllItems.RemoveAll(item => usedMaterials.Contains(item));
 
                 _weapon.BaseDamage *= 1.1;
@@ -47,6 +51,5 @@ namespace Retarded_Game.Models.Items
                 }
             }
         }
-
     }
 }

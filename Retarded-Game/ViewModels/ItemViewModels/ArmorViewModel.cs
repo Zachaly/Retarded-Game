@@ -2,7 +2,7 @@
 
 namespace Retarded_Game.ViewModels.ItemViewModels
 {
-    public class ArmorViewModel : EquipmentPartViewModel
+    public sealed class ArmorViewModel : EquipmentPartViewModel
     {
         private  Armor _armor => _item as Armor;
         public string Type => _armor.ArmorType.ToString();

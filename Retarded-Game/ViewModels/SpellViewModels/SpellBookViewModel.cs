@@ -24,7 +24,6 @@ namespace Retarded_Game.ViewModels.SpellViewModels
                 OnPropertyChanged(nameof(SelectedSpell));
             }
         }
-        
 
         public SpellBookViewModel(Spellbook spellbook)
         {

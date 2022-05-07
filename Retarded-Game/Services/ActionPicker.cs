@@ -39,9 +39,9 @@ namespace Retarded_Game.Services
                 action = GetHealingAction(action);
             else if (_enemy.Statistics.BaseStats.CurrentMana < _actions.MinBy(action => action.ManaCost).ManaCost)
                 action = GetActionByTag(_actions, action, ActionTag.ManaRegeneration);
-            if(!_actionPicked)
+            if (!_actionPicked)
                 action = GetOffensiveAction(_actions);
-            
+
             return action;
         }
 
@@ -50,14 +50,14 @@ namespace Retarded_Game.Services
             var healingActions = _actions.FindAll(action => action.ActionTags.Contains(ActionTag.Healing));
             healingActions = healingActions.FindAll(action => action.ManaCost <= _enemy.Statistics.BaseStats.CurrentMana);
 
-            if(healingActions.Count == 0)
+            if (healingActions.Count == 0)
                 return defaultAction;
 
             // if player hp is below 25% and you have attack that heals you, return that attack
-            if(_player.Statistics.BaseStats.CurrentHP <= _player.Statistics.BaseStats.CurrentHP * 0.25
+            if (_player.Statistics.BaseStats.CurrentHP <= _player.Statistics.BaseStats.CurrentHP * 0.25
                 && healingActions.Any(action => action.ActionTags.Contains(ActionTag.Attack)))
                 return GetOffensiveAction(healingActions);
-                
+
             return GetRandomElement(healingActions);
         }
 
@@ -92,7 +92,7 @@ namespace Retarded_Game.Services
         /// </summary>
         private ActionTag ResistanceToAttackTag(Resistance resistance)
         {
-            switch (resistance) 
+            switch (resistance)
             {
                 case Resistance.Base:
                     return ActionTag.Basic;

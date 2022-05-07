@@ -33,8 +33,7 @@
         <Label Grid.Row="2"
                Grid.Column="0"
                Grid.ColumnSpan="2"
-               Content="{Binding SpellCount}">
-        </Label>
+               Content="{Binding SpellCount}"/>
 
         <ContentControl Grid.Row="1"
                         Grid.Column="0"
@@ -62,6 +61,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    
                     <GridViewColumn Header="Minimal Intelligence">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -100,6 +100,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    
                     <GridViewColumn Header="Minimal Intelligence">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

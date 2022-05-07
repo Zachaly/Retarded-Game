@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.EquipmentViews"
              mc:Ignorable="d" 
-             Background="Gray">
+             Background="LightGray">
     <UserControl.Resources>
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
     </UserControl.Resources>
@@ -16,17 +16,22 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         <Label Grid.Row="0"
                Content="{Binding Name}"/>
+        
         <Label Grid.Row="1"
                Content="{Binding Description}"/>
+        
         <Label Grid.Row="2"
                Content="{Binding Price}"/>
+        
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            
             <Label Grid.Column="0"
                    Content="Material Level"/>
             <Label Grid.Column="1"

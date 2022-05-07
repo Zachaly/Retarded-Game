@@ -16,5 +16,7 @@
             Description = description;
             Price = price;
         }
+
+        public virtual Item Clone() => new Item(Name, Description, Price);
     }
 }

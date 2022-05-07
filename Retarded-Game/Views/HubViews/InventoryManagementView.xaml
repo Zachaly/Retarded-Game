@@ -40,39 +40,44 @@
                   Grid.ColumnSpan="2"
                   ItemsSource="{Binding Items}"
                   Background="SlateGray"
-                  SelectedItem="{Binding SelectedItem}"
-                  >
+                  SelectedItem="{Binding SelectedItem}">
             <ListView.View>
                 <GridView x:Name="ItemColumns"/>
             </ListView.View>
         </ListView>
-        
+
         <StackPanel Grid.Row="1"
                     Grid.Column="0">
             <Button Width="auto"
                     Height="auto"
                     Content="Return to hub"
                     Command="{Binding ReturnToHubCommand}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See weapons"
                     Command="{Binding ChangeToWeapons}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See shields"
                     Command="{Binding ChangeToShields}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See armors"
                     Command="{Binding ChangeToArmors}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See consumables"
                     Command="{Binding ChangeToConsumables}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See upgrade materials"
                     Command="{Binding ChangeToUpgradeMaterials}"/>
+            
             <Button Width="auto"
                     Height="auto"
                     Content="See all items"

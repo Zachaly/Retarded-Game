@@ -36,10 +36,12 @@
             <RowDefinition Height="80*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
+        
         <Label Grid.Row="0"
                Grid.Column="0"
                Grid.ColumnSpan="2"
                Content="{Binding CharacterName}"/>
+        
         <Grid Grid.Row="0"
               Grid.Column="2">
             <Grid.ColumnDefinitions>
@@ -50,15 +52,19 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
             <Label Grid.Row="0"
                    Grid.Column="0"
                    Content="Level"/>
+            
             <Label Grid.Row="0"
                    Grid.Column="1"
                    Content="{Binding Level}"/>
+            
             <Label Grid.Row="1"
                    Grid.Column="0"
                    Content="Experience"/>
+            
             <Label Grid.Row="1"
                    Grid.Column="1"
                    Content="{Binding Experience}"/>
@@ -66,9 +72,11 @@
         <ContentControl Grid.Row="1"
                         Grid.Column="1"
                         Content="{Binding Equipment}"/>
+        
         <ContentControl Grid.Row="1"
                         Grid.Column="0"
                         Content="{Binding Statistics}"/>
+        
         <ListView Grid.Row="1"
                   Grid.Column="2"
                   ItemsSource="{Binding SpellNames}"

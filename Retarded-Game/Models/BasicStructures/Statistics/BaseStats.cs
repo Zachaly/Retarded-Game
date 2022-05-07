@@ -22,6 +22,9 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
         /// Influenced by vitality, strenght and dexterity
         /// </summary>
         
+        ///<summary>
+        ///If basestats are part of equipment there are no minimal values for stats
+        ///</summary>
         public bool IsEquipment 
         { 
             get => _isEquipment; 

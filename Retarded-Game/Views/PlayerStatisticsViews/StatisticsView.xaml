@@ -20,8 +20,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <ContentControl Grid.Column="0"
             Content="{Binding BaseStatsModel}"/>
+        
         <ContentControl Grid.Column="1"
             Content="{Binding DefencesModel}"/>
     </Grid>

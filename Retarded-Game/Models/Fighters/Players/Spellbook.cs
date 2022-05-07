@@ -9,7 +9,8 @@ namespace Retarded_Game.Models.Fighters.Players
     /// </summary>
     public sealed class Spellbook
     {
-        int _baseNumberOfSpells = 0;
+        private int _baseNumberOfSpells = 0;
+        private Player? _player;
 
         public List<Spell> AllSpells { get; }
         public List<Spell> EquippedSpells { get; }
@@ -18,8 +19,6 @@ namespace Retarded_Game.Models.Fighters.Players
         { 
             get => _baseNumberOfSpells + (_player.Statistics.BaseStats.Faith/5 + _player.Statistics.BaseStats.Intelligence/5); 
         }
-
-        Player _player;
 
         public Spellbook()
         {
@@ -59,7 +58,7 @@ namespace Retarded_Game.Models.Fighters.Players
             else
                 _baseNumberOfSpells = spells.Count;
 
-            bool dummybool = true;
+            bool dummybool = true; // used for compatibility
             foreach(Spell spell in spells)
             {
                 LearnSpell(spell, out dummybool);

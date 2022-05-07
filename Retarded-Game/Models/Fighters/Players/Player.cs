@@ -1,6 +1,4 @@
-﻿using Retarded_Game.Models.BasicStructures.Statistics;
-
-namespace Retarded_Game.Models.Fighters.Players
+﻿namespace Retarded_Game.Models.Fighters.Players
 {
     /// <summary>
     /// Player character

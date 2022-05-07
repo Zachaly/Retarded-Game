@@ -5,7 +5,7 @@ using Retarded_Game.Models.Items;
 
 namespace Retarded_Game.ViewModels.ItemViewModels
 {
-    public class EquipmentViewModel : BaseViewModel
+    public sealed class EquipmentViewModel : BaseViewModel
     {
         private readonly Equipment _equipment;
 

@@ -11,7 +11,7 @@ namespace Retarded_Game.Models.Fighters.Players
     public class Spell
     {
         public delegate void Usage(Player player, Fighter target);
-        event Usage _onUsage;
+        event Usage _onUsage; // special effects that spell has, e.g. status effects 
         public double ManaCost { get; }
         public Damage Damage { get; }
 

@@ -34,6 +34,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="2"
                Content="{Binding Name}"/>
+        
         <Label Grid.Column="0"
                Grid.Row="1"
                Grid.ColumnSpan="2"
@@ -48,18 +49,23 @@
         <Label Grid.Column="2"
                Grid.Row="0"
                Content="Damage"/>
+        
         <Label Grid.Column="2"
                Grid.Row="1"
                Content="{Binding BaseDamage}"/>
+        
         <Label Grid.Column="2"
                Grid.Row="2"
                Content="{Binding MagicDamage}"/>
+        
         <Label Grid.Column="2"
                Grid.Row="3"
                Content="{Binding FireDamage}"/>
+        
         <Label Grid.Column="2"
                Grid.Row="4"
                Content="{Binding FrostDamage}"/>
+        
         <Label Grid.Column="2"
                Grid.Row="5"
                Content="{Binding LightningDamage}"/>
@@ -87,6 +93,5 @@
         <Label Grid.Column="3"
                Grid.Row="5"
                Content="{Binding IntelligenceScaling}"/>
-
     </Grid>
 </UserControl>

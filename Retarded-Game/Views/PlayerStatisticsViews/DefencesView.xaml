@@ -30,15 +30,19 @@
         <Label Content="Base Defence"
                Grid.Column="0"
                Grid.Row="0"/>
+        
         <Label Content="Magic Resistance"
                Grid.Column="0"
                Grid.Row="1"/>
+        
         <Label Content="Fire Resistance"
                Grid.Column="0"
                Grid.Row="2"/>
+        
         <Label Content="Frost Resistance"
                Grid.Column="0"
                Grid.Row="3"/>
+
         <Label Content="Lightning Resistance"
                Grid.Column="0"
                Grid.Row="4"/>
@@ -46,15 +50,19 @@
         <Label Content="{Binding BaseDefence}"
                Grid.Column="1"
                Grid.Row="0"/>
+        
         <Label Content="{Binding MagicResistance}"
                Grid.Column="1"
                Grid.Row="1"/>
+        
         <Label Content="{Binding FireResistance}"
                Grid.Column="1"
                Grid.Row="2"/>
+        
         <Label Content="{Binding FrostResistance}"
                Grid.Column="1"
                Grid.Row="3"/>
+        
         <Label Content="{Binding LightningResistance}"
                Grid.Column="1"
                Grid.Row="4"/>

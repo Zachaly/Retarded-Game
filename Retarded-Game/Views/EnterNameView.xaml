@@ -31,6 +31,7 @@
                  Margin="5"
                  TextAlignment="Center"
                  VerticalContentAlignment="Center"/>
+        
         <Button Grid.Column="1"
                 Grid.Row="1"
                 Content="Confirm"

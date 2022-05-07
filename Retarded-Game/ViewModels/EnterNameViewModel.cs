@@ -5,7 +5,7 @@ using Retarded_Game.Stores;
 
 namespace Retarded_Game.ViewModels
 {
-    public class EnterNameViewModel : BaseViewModel
+    public sealed class EnterNameViewModel : BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
         string _name = "";
@@ -24,6 +24,5 @@ namespace Retarded_Game.ViewModels
 
         public EnterNameViewModel(NavigationStore navigationStore)
             => _navigationStore = navigationStore;
-        
     }
 }

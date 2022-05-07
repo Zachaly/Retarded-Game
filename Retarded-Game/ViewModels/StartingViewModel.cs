@@ -5,7 +5,7 @@ using Retarded_Game.Stores;
 
 namespace Retarded_Game.ViewModels
 {
-    public class StartingViewModel : BaseViewModel
+    public sealed class StartingViewModel : BaseViewModel
     {
         public ICommand CloseCommand { get; }
         public ICommand CreateCharacterCommand { get; }

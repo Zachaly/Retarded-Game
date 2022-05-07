@@ -19,18 +19,23 @@
         <Button Grid.Row="0"
                 Content="Go exploring"
                 Command="{Binding GoToExploration}"/>
+        
         <Button Grid.Row="1"
                 Content="Check character info"
                 Command="{Binding GoToCharacterInfo}"/>
+        
         <Button Grid.Row="2"
                 Content="See inventory"
                 Command="{Binding GoToInventoryManagement}"/>
+        
         <Button Grid.Row="3"
                 Content="Check spells"
                 Command="{Binding GoToSpellManagement}"/>
+        
         <Button Grid.Row="4"
                 Content="Shop"
                 Command="{Binding GoToShop}"/>
+        
         <Button Grid.Row="5"
                 Content="Smith"
                 Command="{Binding GoToSmith}"/>

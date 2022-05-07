@@ -10,48 +10,28 @@ namespace Retarded_Game.Models.Fighters.Players
     /// </summary>
     public sealed class Equipment
     {
-        Player _player;
+        Player? _player;
         public Armor Helmet { get; set; } = Armor.None(ArmorType.Helmet);
         public Armor Chestplate { get; set; } = Armor.None(ArmorType.Chestplate);
         public Armor Pants { get; set; } = Armor.None(ArmorType.Pants);
         public Armor Boots { get; set; } = Armor.None(ArmorType.Boots);
 
         public Weapon RightHand { get; set; } = Weapon.EmptyHand;
+        // marked as equipment part because it can be either shield or weapon
         public EquipmentPart LeftHand { get; set; } = Weapon.EmptyHand;
         public List<Ring> EquippedRings { get; set; }
 
         public List<Item> AllItems { get;}
 
-        public IEnumerable<Armor> AllHelmets;
-        public IEnumerable<Armor> AllChestplates;
-        public IEnumerable<Armor> AllTrousers;
-        public IEnumerable<Armor> AllBoots;
-
-        public IEnumerable<Weapon> AllWeapons;
-        public IEnumerable<Shield> AllShields;
-
-        public IEnumerable<Consumable> AllConsumables;
-        public IEnumerable<Ring> AllRings;
-        public IEnumerable<UpgradeMaterial> UpgradeMaterials;
-
         public Equipment()
         {
             AllItems = new List<Item>();
-
-            AllHelmets = from Armor el in AllItems where el.ArmorType == ArmorType.Helmet select el;
-            AllChestplates = from Armor el in AllItems where el.ArmorType == ArmorType.Chestplate select el;
-            AllTrousers = from Armor el in AllItems where el.ArmorType == ArmorType.Pants select el;
-            AllBoots = from Armor el in AllItems where el.ArmorType == ArmorType.Boots select el;
-
-            AllWeapons = from Weapon el in AllItems where el != null select el;
-            AllShields = from Shield el in AllItems where el != null select el;
-            AllConsumables = from Consumable el in AllItems where el != null select el;
-            AllRings = from Ring el in AllItems where el != null select el;
-            UpgradeMaterials = from UpgradeMaterial el in AllItems where el != null select el;
-
             EquippedRings = new List<Ring>() { Ring.None, Ring.None, Ring.None, Ring.None };
         }
 
+        /// <summary>
+        /// Sets items that equipment constains on start
+        /// </summary>
         public void SetStartingEquipment(Armor helmet, Armor chestplate, Armor pants, Armor boots,
             Weapon weapon, EquipmentPart leftHand, List<Ring> rings, List<Consumable> consumables)
         {
@@ -79,8 +59,12 @@ namespace Retarded_Game.Models.Fighters.Players
             AllItems.Add(Helmet);
             AllItems.Where(item => item.Name == "None" || item.Name == "Empty Hand").ToList()
                 .ForEach(item => AllItems.Remove(item));
+            // removes placeholders for no item equipped from list of items
         }
 
+        /// <summary>
+        /// Sets the player holding the equipment and equips starting items
+        /// </summary>
         public void SetPlayer(Player player)
         {
             _player = player;
@@ -127,6 +111,7 @@ namespace Retarded_Game.Models.Fighters.Players
         public void Equip(Ring ring, out bool enoughtSpace)
         {
             enoughtSpace = false;
+            // player can have only 4 rings equipped at a time
             if(EquippedRings.Count < 4 && EquippedRings.Contains(Ring.None))
                 enoughtSpace = true;
 
@@ -165,28 +150,30 @@ namespace Retarded_Game.Models.Fighters.Players
             RightHand = weapon;
         }
 
+        /// <summary>
+        /// Equips the left hand, it has to be either shield or weapon
+        /// </summary>
         public void Equip(EquipmentPart item, out bool done)
         {
             done = false;
             if (item is Weapon == false && item is Shield == false)
                 return;
 
+            // cannot equip a two handed weapon to left hand
             if(item is Weapon)
-            {
                 if((item as Weapon).WeaponType == WeaponType.TwoHanded)
                     return;
-            }
 
+            // cannot equip anything to left hand when you have currently equipped two handed weapon
             if(LeftHand is Weapon)
-            {
                 if ((LeftHand as Weapon).WeaponType == WeaponType.TwoHanded)
                     return;
-            }
             
             item.Equip(_player, out done);
 
             if (!done)
                 return;
+
             LeftHand.UnEquip(_player);
             LeftHand = item;
         }

@@ -24,9 +24,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -35,132 +32,186 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        
         <Label Grid.Row="0"
                Grid.Column="0"
                Content="{Binding Name}"/>
+        
         <Label Grid.Row="1"
                Grid.RowSpan="3"
                Grid.Column="0"
                Content="{Binding Description}"/>
+        
         <Label Grid.Row="4"
                Grid.Column="0"
                Content="{Binding Price}"/>
 
-        <Label Grid.Row="0"
-               Grid.Column="1"
-               Content="Base Damage"/>
+        <Grid Grid.Row="0"
+              Grid.RowSpan="5"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="1"
-               Grid.Column="1"
-               Content="Magic Damage"/>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Base Damage"/>
 
-        <Label Grid.Row="2"
-               Grid.Column="1"
-               Content="Fire Damage"/>
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Magic Damage"/>
 
-        <Label Grid.Row="3"
-               Grid.Column="1"
-               Content="Frost Damage"/>
-        <Label Grid.Row="4"
-               Grid.Column="1"
-               Content="Lightning Damage"/>
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Fire Damage"/>
 
-        <Label Grid.Row="0"
-               Grid.Column="2"
-               Content="{Binding BaseDamage}"/>
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Content="Frost Damage"/>
 
-        <Label Grid.Row="1"
-               Grid.Column="2"
-               Content="{Binding MagicDamage}"/>
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Content="Lightning Damage"/>
 
-        <Label Grid.Row="2"
-               Grid.Column="2"
-               Content="{Binding FireDamage}"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding BaseDamage}"/>
 
-        <Label Grid.Row="3"
-               Grid.Column="2"
-               Content="{Binding FrostDamage}"/>
-        <Label Grid.Row="4"
-               Grid.Column="2"
-               Content="{Binding LightningDamage}"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding MagicDamage}"/>
 
-        <Label Grid.Row="0"
-               Grid.Column="3"
-               Content="Required Strenght"/>
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Content="{Binding FireDamage}"/>
 
-        <Label Grid.Row="1"
-               Grid.Column="3"
-               Content="Required Dexterity"/>
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Content="{Binding FrostDamage}"/>
 
-        <Label Grid.Row="2"
-               Grid.Column="3"
-               Content="Required Faith"/>
+            <Label Grid.Row="4"
+                   Grid.Column="1"
+                   Content="{Binding LightningDamage}"/>
+        </Grid>
 
-        <Label Grid.Row="3"
-               Grid.Column="3"
-               Content="Required Intelligence"/>
-        <Label Grid.Row="4"
-               Grid.Column="3"
-               Content="Type"/>
+        <Grid Grid.Row="0"
+              Grid.RowSpan="5"
+              Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Required Strenght"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Required Dexterity"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Required Faith"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Content="Required Intelligence"/>
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Content="Type"/>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding RequiredStrenght}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding RequiredDexterity}"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Content="{Binding RequiredFaith}"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Content="{Binding RequiredIntelligence}"/>
+
+            <Label Grid.Row="4"
+                   Grid.Column="1"
+                   Content="{Binding Type}"/>
+        </Grid>
+
+        <Grid Grid.Row="0"
+              Grid.RowSpan="5"
+              Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Strenght Scaling"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Dexterity Scaling"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Faith Scaling"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Content="Intelligence Scaling"/>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding StrengthScaling}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding DexterityScaling}"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Content="{Binding FaithScaling}"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Content="{Binding IntelligenceScaling}"/>
+        </Grid>
 
         <Label Grid.Row="0"
                Grid.Column="4"
-               Content="{Binding RequiredStrenght}"/>
-
-        <Label Grid.Row="1"
-               Grid.Column="4"
-               Content="{Binding RequiredDexterity}"/>
-
-        <Label Grid.Row="2"
-               Grid.Column="4"
-               Content="{Binding RequiredFaith}"/>
-
-        <Label Grid.Row="3"
-               Grid.Column="4"
-               Content="{Binding RequiredIntelligence}"/>
-        <Label Grid.Row="4"
-               Grid.Column="4"
-               Content="{Binding Type}"/>
-
-        <Label Grid.Row="0"
-               Grid.Column="5"
-               Content="Strenght Scaling"/>
-
-        <Label Grid.Row="1"
-               Grid.Column="5"
-               Content="Dexterity Scaling"/>
-
-        <Label Grid.Row="2"
-               Grid.Column="5"
-               Content="Faith Scaling"/>
-
-        <Label Grid.Row="3"
-               Grid.Column="5"
-               Content="Intelligence Scaling"/>
-
-        <Label Grid.Row="0"
-               Grid.Column="6"
-               Content="{Binding StrengthScaling}"/>
-
-        <Label Grid.Row="1"
-               Grid.Column="6"
-               Content="{Binding DexterityScaling}"/>
-
-        <Label Grid.Row="2"
-               Grid.Column="6"
-               Content="{Binding FaithScaling}"/>
-
-        <Label Grid.Row="3"
-               Grid.Column="6"
-               Content="{Binding IntelligenceScaling}"/>
-        <Label Grid.Row="0"
-               Grid.Column="7"
                Grid.ColumnSpan="2"
                Content="Statistics change"/>
 
         <ContentControl Grid.Row="1"
-                        Grid.Column="7"
+                        Grid.Column="4"
                         Grid.RowSpan="4"
                         Grid.ColumnSpan="2"
                         Content="{Binding BaseStats}"/>

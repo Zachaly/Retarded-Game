@@ -1,12 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Retarded_Game.ViewModels.HubViewModels;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Filters items currently shown in inventory based on T
+    /// </summary>
     public class ChangeInventoryCategoryCommand<T> : CommandBase
     {
         private readonly InventoryManagementViewModel _inventory;
+        
         public ChangeInventoryCategoryCommand(InventoryManagementViewModel inventory)
         {
             _inventory = inventory;

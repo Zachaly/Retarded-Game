@@ -3,11 +3,13 @@ using Retarded_Game.ViewModels.ItemViewModels;
 using Retarded_Game.ViewModels.SpellViewModels;
 using Retarded_Game.ViewModels.StatisticsViewModels;
 using System.Collections.ObjectModel;
-using Retarded_Game.Commands;
 using Retarded_Game.Services;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
+    /// <summary>
+    /// Hub subcategory showing player stats, equipped items and spells
+    /// </summary>
     public class CharacterInfoViewModel : HubSubCategoryBase
     {
         public string CharacterName => _player.Name;

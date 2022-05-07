@@ -9,6 +9,10 @@ namespace Retarded_Game.Models.BasicStructures.Statistics
     {
         public Defences Defences { get; set; }
         public BaseStats BaseStats { get; set; }
+
+        /// <summary>
+        /// Sets statistics as part of equipment part
+        /// </summary>
         public bool IsEquipment 
         { 
             set => BaseStats.IsEquipment = value;

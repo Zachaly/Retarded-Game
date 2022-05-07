@@ -21,8 +21,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -35,98 +33,136 @@
         <Label Grid.Row="0"
                Grid.Column="0"
                Content="{Binding Name}"/>
+        
         <Label Grid.Row="1"
                Grid.RowSpan="3"
                Grid.Column="0"
                Content="{Binding Description}"/>
+        
         <Label Grid.Row="4"
                Grid.Column="0"
                Content="{Binding Price}"/>
 
-        <Label Grid.Row="0"
-               Grid.Column="1"
-               Content="Base Damage Block"/>
+        <Grid Grid.Row="0"
+              Grid.RowSpan="5"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="1"
-               Grid.Column="1"
-               Content="Magic Damage Block"/>
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Base Damage Block"/>
 
-        <Label Grid.Row="2"
-               Grid.Column="1"
-               Content="Fire Damage Block"/>
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Magic Damage Block"/>
 
-        <Label Grid.Row="3"
-               Grid.Column="1"
-               Content="Frost Damage Block"/>
-        <Label Grid.Row="4"
-               Grid.Column="1"
-               Content="Lightning Damage Block"/>
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Fire Damage Block"/>
 
-        <Label Grid.Row="0"
-               Grid.Column="2"
-               Content="{Binding BlockBaseDamage}"/>
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Content="Frost Damage Block"/>
 
-        <Label Grid.Row="1"
-               Grid.Column="2"
-               Content="{Binding BlockMagicDamage}"/>
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Content="Lightning Damage Block"/>
 
-        <Label Grid.Row="2"
-               Grid.Column="2"
-               Content="{Binding BlockFireDamage}"/>
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding BlockBaseDamage}"/>
 
-        <Label Grid.Row="3"
-               Grid.Column="2"
-               Content="{Binding BlockFrostDamage}"/>
-        <Label Grid.Row="4"
-               Grid.Column="2"
-               Content="{Binding BlockLightningDamage}"/>
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding BlockMagicDamage}"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Content="{Binding BlockFireDamage}"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Content="{Binding BlockFrostDamage}"/>
+
+            <Label Grid.Row="4"
+                   Grid.Column="1"
+                   Content="{Binding BlockLightningDamage}"/>
+        </Grid>
+
+        <Grid Grid.Row="0"
+              Grid.RowSpan="5"
+              Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"
+                   Grid.Column="0"
+                   Content="Required Strenght"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Content="Required Dexterity"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Content="Required Faith"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Content="Required Intelligence"/>
+
+            <Label Grid.Row="4"
+                   Grid.Column="0"
+                   Content="Block Chance"/>
+
+            <Label Grid.Row="0"
+                   Grid.Column="1"
+                   Content="{Binding RequiredStrenght}"/>
+
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Content="{Binding RequiredDexterity}"/>
+
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Content="{Binding RequiredFaith}"/>
+
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Content="{Binding RequiredIntelligence}"/>
+
+            <Label Grid.Row="4"
+                   Grid.Column="1"
+                   Content="{Binding BlockChance}"/>
+        </Grid>
 
         <Label Grid.Row="0"
                Grid.Column="3"
-               Content="Required Strenght"/>
-
-        <Label Grid.Row="1"
-               Grid.Column="3"
-               Content="Required Dexterity"/>
-
-        <Label Grid.Row="2"
-               Grid.Column="3"
-               Content="Required Faith"/>
-
-        <Label Grid.Row="3"
-               Grid.Column="3"
-               Content="Required Intelligence"/>
-        <Label Grid.Row="4"
-               Grid.Column="3"
-               Content="Block Chance"/>
-
-        <Label Grid.Row="0"
-               Grid.Column="4"
-               Content="{Binding RequiredStrenght}"/>
-
-        <Label Grid.Row="1"
-               Grid.Column="4"
-               Content="{Binding RequiredDexterity}"/>
-
-        <Label Grid.Row="2"
-               Grid.Column="4"
-               Content="{Binding RequiredFaith}"/>
-
-        <Label Grid.Row="3"
-               Grid.Column="4"
-               Content="{Binding RequiredIntelligence}"/>
-        <Label Grid.Row="4"
-               Grid.Column="4"
-               Content="{Binding BlockChance}"/>
-
-        <Label Grid.Row="0"
-               Grid.Column="5"
-               Grid.ColumnSpan="3"
+               Grid.ColumnSpan="2"
                Content="Statistics change"/>
 
         <ContentControl Grid.Row="1"
-                        Grid.Column="5"
-                        Grid.ColumnSpan="3"
+                        Grid.Column="3"
+                        Grid.ColumnSpan="2"
                         Grid.RowSpan="4"
                         Content="{Binding Statistics}"/>
     </Grid>

@@ -17,7 +17,6 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
-        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -62,5 +61,4 @@
                         Grid.RowSpan="2" 
                         Content="{Binding SelectedClass}"/>
     </Grid>
-    
 </UserControl>

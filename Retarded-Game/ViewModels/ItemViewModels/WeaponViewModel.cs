@@ -2,7 +2,7 @@
 
 namespace Retarded_Game.ViewModels.ItemViewModels
 {
-    public class WeaponViewModel : HandsItemViewModel
+    public sealed class WeaponViewModel : HandsItemViewModel
     {
         private Weapon _weapon => _item as Weapon;
 
