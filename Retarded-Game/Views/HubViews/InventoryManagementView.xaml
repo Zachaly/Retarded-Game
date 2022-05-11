@@ -103,6 +103,15 @@
                 <DataTemplate DataType="{x:Type itemViewModels:RingViewModel}">
                     <itemViews:RingView/>
                 </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:UpgradeMaterialViewModel}">
+                    <itemViews:UpgradeMaterialView/>
+                </DataTemplate>
+                
+                <DataTemplate DataType="{x:Type itemViewModels:ConsumableViewModel}">
+                    <itemViews:ItemView/>
+                </DataTemplate>
+                
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

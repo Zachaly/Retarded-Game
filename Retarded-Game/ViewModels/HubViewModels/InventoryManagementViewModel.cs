@@ -11,7 +11,7 @@ using Retarded_Game.Views.HubViews;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
-    public class InventoryManagementViewModel : HubSubCategoryBase
+    public class InventoryManagementViewModel : HubSubCategoryBase, IItemListViewModel
     {
         private readonly Equipment _inventory;
         private readonly List<ItemViewModel> _allItems;
@@ -72,6 +72,14 @@ namespace Retarded_Game.ViewModels.HubViewModels
             var shieldViewModels = _inventory.AllItems.Where(item => item is Shield)
                 .Select(item => new ShieldViewModel(item as Shield)).ToList();
             _allItems.AddRange(shieldViewModels);
+
+            var upgradeViewModels = _inventory.AllItems.Where(item => item is UpgradeMaterial)
+                .Select(item => new UpgradeMaterialViewModel(item as UpgradeMaterial)).ToList();
+            _allItems.AddRange(upgradeViewModels);
+
+            var consumableViewModels = _inventory.AllItems.Where(item => item is Consumable)
+                .Select(item => new ConsumableViewModel(item as Consumable)).ToList();
+            _allItems.AddRange(consumableViewModels);
 
             _selectedItem = _allItems.FirstOrDefault();
             Items = new ObservableCollection<ItemViewModel>();
