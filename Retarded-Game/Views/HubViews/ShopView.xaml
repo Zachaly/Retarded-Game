@@ -39,13 +39,16 @@
                   ItemsSource="{Binding Items}"
                   Background="SlateGray"
                   SelectedItem="{Binding SelectedItem}">
+            
             <ListView.View>
                 <GridView x:Name="ItemColumns"/>
             </ListView.View>
+            
         </ListView>
 
         <StackPanel Grid.Row="1"
                     Grid.Column="1">
+            
             <Button Width="auto"
                     Height="auto"
                     Content="Return to hub"
@@ -80,12 +83,14 @@
                     Height="auto"
                     Content="See all items"
                     Command="{Binding ChangeToAll}"/>
+            
         </StackPanel>
 
         <StackPanel Grid.Row="0"
                     Grid.Column="1">
 
             <ContentControl Content="{Binding SelectedItem}" Height="auto">
+                
                 <ContentControl.Resources>
                     <DataTemplate DataType="{x:Type itemViewModels:ArmorViewModel}">
                         <itemViews:ArmorView/>
@@ -102,16 +107,24 @@
                     <DataTemplate DataType="{x:Type itemViewModels:RingViewModel}">
                         <itemViews:RingView/>
                     </DataTemplate>
+                    
                     <DataTemplate DataType="{x:Type itemViewModels:UpgradeMaterialViewModel}">
                         <itemViews:UpgradeMaterialView/>
                     </DataTemplate>
+                    
                     <DataTemplate DataType="{x:Type itemViewModels:ConsumableViewModel}">
                         <itemViews:ItemView/>
                     </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type itemViewModels:ItemViewModel}">
+                        <itemViews:ItemView/>
+                    </DataTemplate>
+                    
                 </ContentControl.Resources>
             </ContentControl>
 
             <Grid Background="LightGray">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -123,12 +136,15 @@
                         Command="{Binding BuyItemCommand}"
                         Width="auto"
                         Height="auto"/>
+                
                 <Label  Grid.Column="1"
                         Content="Current Money"
                         Style="{StaticResource DefaultLabel}"/>
+                
                 <Label  Grid.Column="2"
                         Content="{Binding PlayerMoney}"
                         Style="{StaticResource DefaultLabel}"/>
+                
             </Grid>
         </StackPanel>
 

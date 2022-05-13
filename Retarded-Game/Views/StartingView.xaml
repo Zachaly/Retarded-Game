@@ -13,14 +13,14 @@
         </Grid.RowDefinitions>
         
         <Button Content="Create Character" 
-                    Grid.Row="0" 
-                    Command="{Binding CreateCharacterCommand}"/>
+                Grid.Row="0" 
+                Command="{Binding CreateCharacterCommand}"/>
         
         <Button Content="Load Character" 
-                    Grid.Row="1" />
+                Grid.Row="1" />
         
         <Button Content="Exit" 
-                    Grid.Row="2" 
-                    Command="{Binding CloseCommand}"/>
+                Grid.Row="2" 
+                Command="{Binding CloseCommand}"/>
     </Grid>
 </UserControl>

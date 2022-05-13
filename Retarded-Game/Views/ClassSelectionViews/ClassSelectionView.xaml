@@ -35,6 +35,7 @@
                   BorderThickness="1"
                   ItemsSource="{Binding StartingClasses}"
                   SelectedItem="{Binding SelectedClass}">
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn>

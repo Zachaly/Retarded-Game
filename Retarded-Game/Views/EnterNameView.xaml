@@ -40,5 +40,6 @@
                 Height="{StaticResource DefaultBoxHeight}"
                 Margin="5"
                 Command="{Binding ConfirmNameCommand}"/>
+        
     </Grid>
 </UserControl>

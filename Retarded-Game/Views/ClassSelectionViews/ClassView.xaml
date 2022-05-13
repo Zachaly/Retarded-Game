@@ -40,14 +40,17 @@
                         Grid.Row="1"
                         Content="{Binding Equipment}"
                         FontSize="10"/>
+        
         <ContentControl Grid.Row="1"
                         Grid.Column="1"
                         Content="{Binding Statistics}"
                         FontSize="10"/>
+        
         <ListView Grid.Row="1"
                   Grid.Column="2"
                   ItemsSource="{Binding SpellNames}"
                   Background="Gray">
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Spell Names">

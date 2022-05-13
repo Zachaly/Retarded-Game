@@ -40,13 +40,16 @@
                   ItemsSource="{Binding Items}"
                   Background="SlateGray"
                   SelectedItem="{Binding SelectedItem}">
+            
             <ListView.View>
                 <GridView x:Name="ItemColumns"/>
             </ListView.View>
+            
         </ListView>
 
         <StackPanel Grid.Row="1"
                     Grid.Column="0">
+            
             <Button Width="auto"
                     Height="auto"
                     Content="Return to hub"
@@ -81,6 +84,7 @@
                     Height="auto"
                     Content="See all items"
                     Command="{Binding ChangeToAll}"/>
+            
         </StackPanel>
         
         <ContentControl Grid.Row="1"
@@ -110,7 +114,11 @@
                 <DataTemplate DataType="{x:Type itemViewModels:ConsumableViewModel}">
                     <itemViews:ItemView/>
                 </DataTemplate>
-                
+
+                <DataTemplate DataType="{x:Type itemViewModels:ItemViewModel}">
+                    <itemViews:ItemView/>
+                </DataTemplate>
+
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

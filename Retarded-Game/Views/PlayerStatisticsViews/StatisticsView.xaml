@@ -26,5 +26,6 @@
         
         <ContentControl Grid.Column="1"
             Content="{Binding DefencesModel}"/>
+        
     </Grid>
 </UserControl>

@@ -32,7 +32,7 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
             _startingClasses = new List<ClassViewModel> { new ClassViewModel(Trash()), new ClassViewModel(Warrior()),
                 new ClassViewModel(Mage())};
 
-            SelectedClass = _startingClasses.FirstOrDefault();
+            SelectedClass = _startingClasses.First();
             _navigationService = navigationService;
         }
     }

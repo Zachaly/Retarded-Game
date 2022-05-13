@@ -111,5 +111,6 @@
         <Label Content="{Binding CriticalHitChance}"
                Grid.Column="1"
                Grid.Row="9"/>
+        
     </Grid>
 </UserControl>

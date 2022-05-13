@@ -66,5 +66,6 @@
         <Label Content="{Binding LightningResistance}"
                Grid.Column="1"
                Grid.Row="4"/>
+        
     </Grid>
 </UserControl>

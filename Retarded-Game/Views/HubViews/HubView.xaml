@@ -39,5 +39,6 @@
         <Button Grid.Row="5"
                 Content="Smith"
                 Command="{Binding GoToSmith}"/>
+        
     </Grid>
 </UserControl>
