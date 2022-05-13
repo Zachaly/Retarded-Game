@@ -8,9 +8,9 @@ namespace Retarded_Game.Commands
     /// </summary>
     public class ChangeInventoryCategoryCommand<T> : CommandBase
     {
-        private readonly IItemListViewModel _inventory;
+        private readonly ItemListViewModel _inventory;
         
-        public ChangeInventoryCategoryCommand(IItemListViewModel inventory)
+        public ChangeInventoryCategoryCommand(ItemListViewModel inventory)
         {
             _inventory = inventory;
         }

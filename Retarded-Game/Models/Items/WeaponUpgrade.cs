@@ -44,6 +44,7 @@ namespace Retarded_Game.Models.Items
                 _cost += 100;
                 _materialForNextLevel++;
 
+                // every 3 upgrades you need material of higher level
                 if (UpgradeLevel % 3 == 0)
                 {
                     _materialLevel++;

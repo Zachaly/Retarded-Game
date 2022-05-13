@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:Retarded_Game.Views.HubViews"
              xmlns:itemViewModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
              xmlns:itemViews="clr-namespace:Retarded_Game.Views.EquipmentViews"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}">

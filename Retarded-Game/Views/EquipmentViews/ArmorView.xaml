@@ -9,16 +9,20 @@
              Background="LightGray"
              mc:Ignorable="d">
     <UserControl.Resources>
+
         <Style TargetType="Label" BasedOn="{StaticResource DefaultLabel}"/>
+
         <DataTemplate DataType="{x:Type statisticsModel:StatisticsViewModel}">
             <statisticsView:StatisticsView/>
         </DataTemplate>
+
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
@@ -27,22 +31,34 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+
         <Label Grid.Row="0"
                Grid.Column="0"
                Content="{Binding Name}"/>
+
         <Label Grid.Row="1"
                Grid.RowSpan="3"
                Grid.Column="0"
                Content="{Binding Description}"/>
-        <Label Grid.Row="4"
-               Grid.Column="0"
-               Content="{Binding Price}"/>
+
+        <Grid Grid.Row="4"
+              Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Width="auto" Content="Price"/>
+            <Label Grid.Column="1" Width="auto" Content="{Binding Price}"/>
+        </Grid>
+
         <Label Grid.Row="5" 
                Grid.Column="0"
                Content="{Binding Type}"/>
+
         <Label Grid.Row="0"
                Grid.Column="1"
                Content="Statistics"/>
+
         <ContentControl Grid.Row="1"
                         Grid.Column="1"
                         Grid.RowSpan="5"

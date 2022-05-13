@@ -5,9 +5,6 @@
     /// </summary>
     internal class CloseCommand : CommandBase
     {
-        public override void Execute(object? parameter)
-        {
-            App.Current.Shutdown();
-        }
+        public override void Execute(object? parameter) => App.Current.Shutdown();
     }
 }

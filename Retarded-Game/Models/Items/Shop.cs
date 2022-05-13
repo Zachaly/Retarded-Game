@@ -14,12 +14,15 @@ namespace Retarded_Game.Models.Items
         public void BuyItem(Item item, Player player)
         {
             player.Money -= item.Price;
-            player.Equipment.AllItems.Add(item.Clone());
+            player.Equipment.AllItems.Add(item);
             _basicOffer.Remove(item);
         }
 
         public void AppendOffer(List<Item> items) => _basicOffer.AddRange(items);
 
+        /// <summary>
+        /// Sets items standard to the shop
+        /// </summary>
         public void SetStandardOffer()
         {
             List<Item> basicOffer = new List<Item>();

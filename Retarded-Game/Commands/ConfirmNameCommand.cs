@@ -10,7 +10,7 @@ namespace Retarded_Game.Commands
     /// </summary>
     public class ConfirmNameCommand : NavigateCommand
     {
-        EnterNameViewModel _nameViewModel;
+        private readonly EnterNameViewModel _nameViewModel;
 
         public ConfirmNameCommand(EnterNameViewModel nameViewModel, NavigationService navigationService) 
             : base(navigationService, new ClassSelectionViewModel(navigationService))

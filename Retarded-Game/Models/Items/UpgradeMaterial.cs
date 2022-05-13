@@ -1,5 +1,8 @@
 ﻿namespace Retarded_Game.Models.Items
 {
+    /// <summary>
+    /// Item used to upgrade weapons
+    /// </summary>
     public sealed class UpgradeMaterial : Item
     {
         public int MaterialLevel { get; }
