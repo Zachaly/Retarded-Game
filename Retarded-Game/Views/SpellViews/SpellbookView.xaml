@@ -28,19 +28,28 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="2"
+        <Label Grid.Row="3"
                Grid.Column="0"
                Grid.ColumnSpan="2"
                Content="{Binding SpellCount}"/>
 
-        <ContentControl Grid.Row="1"
+        <ContentControl Grid.Row="2"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Content="{Binding SelectedSpell}"/>
 
-        <ListView Grid.Row="0"
+        <Label Grid.Row="0"
+               Grid.Column="0"
+               Content="All Spells"/>
+        
+        <Label Grid.Row="0"
+               Grid.Column="1"
+               Content="Equipped Spells"/>
+
+        <ListView Grid.Row="1"
                   Grid.Column="0"
                   ItemsSource="{Binding AllSpells}"
                   SelectedItem="{Binding SelectedSpell}">
@@ -80,7 +89,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Grid.Row="0"
+        <ListView Grid.Row="1"
                   Grid.Column="1"
                   ItemsSource="{Binding EquippedSpells}">
             <ListView.View>

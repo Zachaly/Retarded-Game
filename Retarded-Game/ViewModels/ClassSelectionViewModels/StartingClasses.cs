@@ -72,6 +72,10 @@ namespace Retarded_Game.ViewModels.ClassSelectionViewModels
                 WeaponScaling.None, WeaponScaling.C, new List<ActionTag> { ActionTag.Spell, ActionTag.Magic }, (_, __) => { });
             spellbook.EquippedSpells.Add(magicMissile);
 
+            Spell fireBall = new Spell("Fire ball", "", 5, new StatRequirements(2,3), new Damage(0, 7, 0, 0, 0),
+                WeaponScaling.D, WeaponScaling.D, new List<ActionTag> { ActionTag.Spell, ActionTag.Fire,}, (_, __) => { });
+            spellbook.AllSpells.Add(fireBall);
+
             return new PlayerStartingClass("Mage", 5, new Statistics(stats), equipment, spellbook, 3);
         }
     }

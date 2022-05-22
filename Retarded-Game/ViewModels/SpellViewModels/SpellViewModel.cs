@@ -7,6 +7,7 @@ namespace Retarded_Game.ViewModels.SpellViewModels
     {
         private readonly Spell _spell;
 
+        public Spell Spell => _spell;
         public string Name => _spell.Name;
         public string Description => _spell.Description;
 
@@ -23,5 +24,9 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         public string MinimalIntelligence => $"Intelligence: {_spell.StatRequirements.MinimalIntelligence}";
 
         public SpellViewModel(Spell spell) => _spell = spell;
+
+        public bool RequirementsFullfiled(Player player)
+            => _spell.StatRequirements.AreFulliled(player.Statistics.BaseStats);
+        
     }
 }

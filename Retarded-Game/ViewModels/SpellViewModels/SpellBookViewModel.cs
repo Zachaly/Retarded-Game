@@ -12,8 +12,8 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         private readonly ObservableCollection<SpellViewModel> _allSpells;
         private SpellViewModel _selectedSpell;
 
-        public IEnumerable<SpellViewModel> EquippedSpells => _equippedSpells;
-        public IEnumerable<SpellViewModel> AllSpells => _allSpells;
+        public ObservableCollection<SpellViewModel> EquippedSpells => _equippedSpells;
+        public ObservableCollection<SpellViewModel> AllSpells => _allSpells;
         public string SpellCount => $"Current number of spells: {_equippedSpells.Count}/{_spellbook.PossibleSpells}";
         public SpellViewModel SelectedSpell 
         {
@@ -29,11 +29,34 @@ namespace Retarded_Game.ViewModels.SpellViewModels
         {
             _spellbook = spellbook;
             _equippedSpells = new ObservableCollection<SpellViewModel>();
-            _spellbook.EquippedSpells.ForEach(spell => _equippedSpells.Add(new SpellViewModel(spell)));
 
             _allSpells = new ObservableCollection<SpellViewModel>();
-            _spellbook.AllSpells.ForEach(spell => _allSpells.Add(new SpellViewModel(spell)));
+            _spellbook.AllSpells.ForEach(spell => {
+                var viewModel = new SpellViewModel(spell);
+                _allSpells.Add(viewModel);
+                if (_spellbook.EquippedSpells.Contains(spell))
+                    _equippedSpells.Add(viewModel);
+            });
             SelectedSpell = _allSpells.First();
+        }
+
+        public void EquipSpell()
+        {
+            _spellbook.EquipSpell(SelectedSpell.Spell, out bool compatbool);
+            EquippedSpells.Add(SelectedSpell);
+            OnPropertyChanged(nameof(SpellCount));
+        }
+
+        public bool CanEquip(Player player)
+            => SelectedSpell.Spell.StatRequirements.AreFulliled(player.Statistics.BaseStats)
+               && EquippedSpells.Count() < _spellbook.PossibleSpells
+               && !EquippedSpells.Contains(SelectedSpell);
+
+        public void UnequipSpell()
+        {
+            _spellbook.UnEquipSpell(SelectedSpell.Spell);
+            EquippedSpells.Remove(SelectedSpell);
+            OnPropertyChanged(nameof(SpellCount));
         }
     }
 }

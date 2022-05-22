@@ -4,9 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Retarded_Game.Views.HubViews"
+             xmlns:spells="clr-namespace:Retarded_Game.ViewModels.SpellViewModels"
+             xmlns:spellviews="clr-namespace:Retarded_Game.Views.SpellViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type spells:SpellBookViewModel}">
+            <spellviews:SpellbookView/>
+        </DataTemplate>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ContentControl Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Content="{Binding SpellBook}"/>
+        <Button Grid.Row="1"
+                Grid.Column="0"
+                Command="{Binding ReturnToHubCommand}"
+                Content="Return to hub"
+                Width="auto"
+                Height="auto"/>
+
+        <Button Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding EquipSpellCommand}"
+                Content="Equip spell"
+                Width="auto"
+                Height="auto"/>
+
+        <Button Grid.Row="1"
+                Grid.Column="2"
+                Command="{Binding UnequipSpellCommand}"
+                Content="Unequip spell"
+                Width="auto"
+                Height="auto"/>
     </Grid>
 </UserControl>
