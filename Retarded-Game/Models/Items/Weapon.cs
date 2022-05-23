@@ -25,6 +25,7 @@ namespace Retarded_Game.Models.Items
         public int UpgradeLevel => _weaponUpgrade.UpgradeLevel;
         public int UpgradeCost => _weaponUpgrade.Cost;
         public int MaterialForNextUpgrade => _weaponUpgrade.MaterialForNextLevel;
+        public int RequiredMaterialLevel => _weaponUpgrade.RequiredMaterialLevel;
 
         public Weapon(string name, string description, int price,
             StatRequirements statRequirements,

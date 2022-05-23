@@ -43,6 +43,9 @@
         <DataTemplate DataType="{x:Type hub:ShopViewModel}">
             <hubView:ShopView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type hub:SmithViewModel}">
+            <hubView:SmithView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid Background="SlateGray">
         <ContentControl Content="{Binding CurrentViewModel}"/>

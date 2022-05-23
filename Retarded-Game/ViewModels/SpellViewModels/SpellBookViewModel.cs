@@ -37,7 +37,7 @@ namespace Retarded_Game.ViewModels.SpellViewModels
                 if (_spellbook.EquippedSpells.Contains(spell))
                     _equippedSpells.Add(viewModel);
             });
-            SelectedSpell = _allSpells.First();
+            SelectedSpell = _allSpells.FirstOrDefault();
         }
 
         public void EquipSpell()

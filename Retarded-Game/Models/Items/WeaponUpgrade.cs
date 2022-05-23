@@ -17,6 +17,7 @@ namespace Retarded_Game.Models.Items
 
         public int UpgradeLevel => _upgradeLevel;
         public int MaterialForNextLevel => _materialForNextLevel;
+        public int RequiredMaterialLevel => _materialLevel;
         public int Cost => _cost;
 
         public WeaponUpgrade(Weapon weapon) => _weapon = weapon;
@@ -25,19 +26,26 @@ namespace Retarded_Game.Models.Items
         {
             canUpgrade = false;
 
-            var upgradeMaterials = player.Equipment.AllItems.Where(item => item is UpgradeMaterial)
-                .Select(item => item as UpgradeMaterial);
+            var upgradeMaterials = 
+                player.Equipment.AllItems.
+                Where(item => item is UpgradeMaterial).
+                Select(item => item as UpgradeMaterial);
 
-            if (upgradeMaterials.Where(item => item.MaterialLevel == _materialLevel)
-                .Count() >= MaterialForNextLevel && player.Money >= Cost)
+            if (upgradeMaterials.Where(item => item.MaterialLevel == _materialLevel).
+                Count() >= MaterialForNextLevel 
+                && player.Money >= Cost)
                 canUpgrade = true;
 
             if (canUpgrade)
             {
-                var usedMaterials = upgradeMaterials.Where(item => item.MaterialLevel == _materialLevel)
-                    .Take(_materialForNextLevel).ToArray();
+                var usedMaterials = 
+                    upgradeMaterials.
+                    Where(item => item.MaterialLevel == _materialLevel).
+                    Take(_materialForNextLevel).
+                    ToArray();
 
                 player.Equipment.AllItems.RemoveAll(item => usedMaterials.Contains(item));
+                player.Money -= _cost;
 
                 _weapon.BaseDamage *= 1.1;
                 _upgradeLevel++;
