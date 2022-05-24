@@ -18,16 +18,13 @@ namespace Retarded_Game.Models.Items
            StatsChange.IsEquipment = true;
         }
 
-        public virtual void Equip(Player player, out bool areStatsCorrect)
+        public virtual void Equip(Player player)
         {
             BaseStats playerBaseStats = player.Statistics.BaseStats;
-
-            areStatsCorrect = StatRequirements.AreFulliled(playerBaseStats);
-            if (!areStatsCorrect)
+            if (!StatRequirements.AreFulliled(playerBaseStats))
                 return;
 
             player.Statistics.ChangeBy(StatsChange);
-            areStatsCorrect = true;
         }
 
         public virtual void UnEquip(Player player) 

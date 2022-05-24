@@ -22,9 +22,9 @@ namespace Retarded_Game.Models.Items
 
         public WeaponUpgrade(Weapon weapon) => _weapon = weapon;
 
-        public void Upgrade(Player player, out bool canUpgrade)
+        public void Upgrade(Player player)
         {
-            canUpgrade = false;
+            bool canUpgrade = false;
 
             var upgradeMaterials = 
                 player.Equipment.AllItems.

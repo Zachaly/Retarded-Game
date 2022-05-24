@@ -74,9 +74,9 @@ namespace Retarded_Game.Models.Fighters.Players
             Equip(Chestplate);
             Equip(Pants);
             Equip(Boots);
-            Equip(RightHand, out dummybool);
-            Equip(LeftHand, out dummybool);
-            EquippedRings.ForEach(x => Equip(x, out dummybool));
+            Equip(RightHand);
+            Equip(LeftHand);
+            EquippedRings.ForEach(x => Equip(x));
         }
 
         public void Equip(Armor armor)
@@ -86,31 +86,31 @@ namespace Retarded_Game.Models.Fighters.Players
             {
                 Helmet.UnEquip(_player);
                 Helmet = armor;
-                Helmet.Equip(_player, out dummyBool);
+                Helmet.Equip(_player);
             }
             else if(armor.ArmorType == ArmorType.Chestplate)
             {
                 Chestplate.UnEquip(_player);
                 Chestplate = armor;
-                Chestplate.Equip(_player, out dummyBool);
+                Chestplate.Equip(_player);
             }
             else if(armor.ArmorType == ArmorType.Pants)
             {
                 Pants.UnEquip(_player);
                 Pants = armor;
-                Pants.Equip(_player, out dummyBool);
+                Pants.Equip(_player);
             }
             else if (armor.ArmorType == ArmorType.Boots)
             {
                 Boots.UnEquip(_player);
                 Boots = armor;
-                Boots.Equip(_player, out dummyBool);
+                Boots.Equip(_player);
             }
         }
 
-        public void Equip(Ring ring, out bool enoughtSpace)
+        public void Equip(Ring ring)
         {
-            enoughtSpace = false;
+            bool enoughtSpace = false;
             // player can have only 4 rings equipped at a time
             if(EquippedRings.Count < 4 && EquippedRings.Contains(Ring.None))
                 enoughtSpace = true;
@@ -119,18 +119,20 @@ namespace Retarded_Game.Models.Fighters.Players
             {
                 EquippedRings.Remove(Ring.None);
                 EquippedRings.Add(ring);
-                ring.Equip(_player, out enoughtSpace);
+                ring.Equip(_player);
             }
         }
 
         public void Equip(Weapon weapon, out bool statsCorrect)
         {
-            weapon.Equip(_player, out statsCorrect);
+            statsCorrect = weapon.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
 
             if (!statsCorrect)
                 return;
 
-            if(weapon.WeaponType == WeaponType.OneHanded)
+            weapon.Equip(_player);
+
+            if (weapon.WeaponType == WeaponType.OneHanded)
             {
                 if(LeftHand is Weapon)
                 {
@@ -153,9 +155,8 @@ namespace Retarded_Game.Models.Fighters.Players
         /// <summary>
         /// Equips the left hand, it has to be either shield or weapon
         /// </summary>
-        public void Equip(EquipmentPart item, out bool done)
+        public void Equip(EquipmentPart item)
         {
-            done = false;
             if (item is Weapon == false && item is Shield == false)
                 return;
 
@@ -168,11 +169,11 @@ namespace Retarded_Game.Models.Fighters.Players
             if(LeftHand is Weapon)
                 if ((LeftHand as Weapon).WeaponType == WeaponType.TwoHanded)
                     return;
-            
-            item.Equip(_player, out done);
 
-            if (!done)
+            if (!item.StatRequirements.AreFulliled(_player.Statistics.BaseStats))
                 return;
+            
+            item.Equip(_player);
 
             LeftHand.UnEquip(_player);
             LeftHand = item;

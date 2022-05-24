@@ -12,15 +12,12 @@ namespace Retarded_Game.ViewModels.HubViewModels
         public EquipSpellCommand EquipSpellCommand => new EquipSpellCommand(this);
         public UnequipSpellCommand UnequipSpellCommand => new UnequipSpellCommand(this);
 
-        public SpellManagementViewModel(NavigationService navigationService, Player player) : base(navigationService, player)
-        {
-            SpellBook = new SpellBookViewModel(player.Spellbook);
-        }
+        public SpellManagementViewModel(NavigationService navigationService, Player player) 
+            : base(navigationService, player)
+            => SpellBook = new SpellBookViewModel(player.Spellbook);
 
         public void EquipSpell() => SpellBook.EquipSpell();
-        public bool CanEquip()
-            => SpellBook.CanEquip(_player);
-
+        public bool CanEquip() => SpellBook.CanEquip(_player);
         public void UnequipSpell() => SpellBook.UnequipSpell();
     }
 }

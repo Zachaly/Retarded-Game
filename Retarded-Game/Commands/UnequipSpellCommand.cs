@@ -1,13 +1,10 @@
 ﻿using Retarded_Game.ViewModels.HubViewModels;
-using Retarded_Game.ViewModels.SpellViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Command used to unequip spell
+    /// </summary>
     public class UnequipSpellCommand : CommandBase
     {
         private readonly SpellManagementViewModel _spellbook;

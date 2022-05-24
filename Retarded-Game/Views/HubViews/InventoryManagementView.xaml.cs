@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Controls;
 using Retarded_Game.ViewModels.HubViewModels;
-using Retarded_Game.ViewModels.ItemViewModels;
 using Retarded_Game.Services;
 
 namespace Retarded_Game.Views.HubViews
 {
     /// <summary>
-    /// Logika interakcji dla klasy InventoryManagementView.xaml
+    /// View containing info about player inventory
     /// </summary>
     public partial class InventoryManagementView : UserControl
     {

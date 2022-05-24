@@ -31,6 +31,7 @@ namespace Retarded_Game.ViewModels.HubViewModels
         public ObservableCollection<WeaponViewModel> Weapons { get; private set; }
         public ObservableCollection<UpgradeMaterialViewModel> UpgradeMaterials { get; private set; }
         public UpgradeWeaponCommand UpgradeWeaponCommand => new UpgradeWeaponCommand(this);
+
         public SmithViewModel(NavigationService navigationService, Player player) : base(navigationService, player)
         {
             SetItems();
@@ -46,6 +47,9 @@ namespace Retarded_Game.ViewModels.HubViewModels
             SetItems();
         }
 
+        /// <summary>
+        /// Updates values of properties containing informations specific to upgrade
+        /// </summary>
         private void UpgradeInfoChanged()
         {
             OnPropertyChanged(nameof(UpgradeLevel));
@@ -54,6 +58,9 @@ namespace Retarded_Game.ViewModels.HubViewModels
             OnPropertyChanged(nameof(UpgradeCost));
         }
 
+        /// <summary>
+        /// Updates info about player's weapons and upgrade materials
+        /// </summary>
         private void SetItems()
         {
             Weapons = new ObservableCollection<WeaponViewModel>();
@@ -74,6 +81,10 @@ namespace Retarded_Game.ViewModels.HubViewModels
 
             upgradeMaterials.ForEach(material => UpgradeMaterials.Add(new UpgradeMaterialViewModel(material)));
         }
+
+        /// <summary>
+        /// Checks if the player meets requirements to upgrade weapon
+        /// </summary>
         public bool CanUpgrade()
         {
             bool canupgrade = true;

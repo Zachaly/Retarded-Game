@@ -5,6 +5,9 @@ using Retarded_Game.ViewModels.ItemViewModels;
 
 namespace Retarded_Game.Services
 {
+    /// <summary>
+    /// Used to set columns in listview to show info about certain item type
+    /// </summary>
     public class ItemDataColumnsSetter
     {
         private readonly GridView _itemColumns;
@@ -41,6 +44,9 @@ namespace Retarded_Game.Services
                 SetStandardColumns();
         }
 
+        /// <summary>
+        /// Columns containing name and price
+        /// </summary>
         public void SetStandardColumns()
         {
             _itemColumns.Columns.Clear();

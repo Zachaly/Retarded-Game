@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using Retarded_Game.ViewModels;
 using Retarded_Game.Stores;
-using Retarded_Game.Models.Fighters.Players;
 
 namespace Retarded_Game
 {

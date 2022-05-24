@@ -59,7 +59,7 @@ namespace Retarded_Game.Models.Items
             return damage;
         }
 
-        public void Upgrade(Player player, out bool canUpgrade) => _weaponUpgrade.Upgrade(player, out canUpgrade);
+        public void Upgrade(Player player) => _weaponUpgrade.Upgrade(player);
 
         public override Weapon Clone() 
             => new Weapon(Name, Description, Price, StatRequirements, StatsChange.Copy(),

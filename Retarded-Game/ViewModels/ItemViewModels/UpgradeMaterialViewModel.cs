@@ -6,8 +6,6 @@ namespace Retarded_Game.ViewModels.ItemViewModels
     {
         public int MaterialLevel { get; }
         public UpgradeMaterialViewModel(UpgradeMaterial item) : base(item)
-        {
-            MaterialLevel = item.MaterialLevel;
-        }
+            => MaterialLevel = item.MaterialLevel;
     }
 }

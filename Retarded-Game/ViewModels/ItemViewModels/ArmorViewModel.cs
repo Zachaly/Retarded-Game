@@ -14,6 +14,5 @@ namespace Retarded_Game.ViewModels.ItemViewModels
         public string LightningResistance => Statistics.DefencesModel.LightningResistance;
 
         public ArmorViewModel(Armor armor) : base(armor) { }
-        
     }
 }

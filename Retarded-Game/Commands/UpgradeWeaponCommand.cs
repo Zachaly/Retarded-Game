@@ -2,6 +2,9 @@
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Command used to upgrade weapon selected in SmithViewModel
+    /// </summary>
     public class UpgradeWeaponCommand : CommandBase
     {
         private readonly SmithViewModel _smith;

@@ -25,7 +25,7 @@ namespace Retarded_Game.ViewModels.ItemViewModels
 
         public void Upgrade(Player player)
         {
-            _weapon.Upgrade(player, out bool dummy);
+            _weapon.Upgrade(player);
             OnPropertyChanged(nameof(BaseDamage));
             OnPropertyChanged(nameof(FireDamage));
             OnPropertyChanged(nameof(FrostDamage));
