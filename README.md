@@ -1,2 +1,3 @@
 # Retarded-Game
- Retarded jrpg like game
+ Retarded jrpg like game <br/>
+ Created using WPF
