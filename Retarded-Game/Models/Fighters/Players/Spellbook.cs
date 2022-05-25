@@ -26,18 +26,18 @@ namespace Retarded_Game.Models.Fighters.Players
             EquippedSpells = new List<Spell>();
         }
 
-        public void LearnSpell(Spell spell, out bool canLearn)
+        public void LearnSpell(Spell spell)
         {
-            canLearn = !AllSpells.Contains(spell) || spell.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
+            bool canLearn = !AllSpells.Contains(spell) || spell.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
             if (!canLearn)
                 return;
             
             AllSpells.Add(spell);
         }
 
-        public void EquipSpell(Spell spell, out bool canEquip)
+        public void EquipSpell(Spell spell)
         {
-            canEquip = !EquippedSpells.Contains(spell) && EquippedSpells.Count < PossibleSpells;
+            bool canEquip = !EquippedSpells.Contains(spell) && EquippedSpells.Count < PossibleSpells;
             if (!canEquip)
                 return;
 
@@ -58,11 +58,10 @@ namespace Retarded_Game.Models.Fighters.Players
             else
                 _baseNumberOfSpells = spells.Count;
 
-            bool dummybool = true; // used for compatibility
             foreach(Spell spell in spells)
             {
-                LearnSpell(spell, out dummybool);
-                EquipSpell(spell, out dummybool);
+                LearnSpell(spell);
+                EquipSpell(spell);
             }
         }
 

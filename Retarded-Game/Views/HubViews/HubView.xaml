@@ -14,6 +14,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Button Grid.Row="0"
@@ -29,16 +31,24 @@
                 Command="{Binding GoToInventoryManagement}"/>
         
         <Button Grid.Row="3"
+                Content="Change equipped items"
+                Command="{Binding GoToEquipmentChange}"/>
+
+        <Button Grid.Row="4"
                 Content="Check spells"
                 Command="{Binding GoToSpellManagement}"/>
         
-        <Button Grid.Row="4"
+        <Button Grid.Row="5"
                 Content="Shop"
                 Command="{Binding GoToShop}"/>
         
-        <Button Grid.Row="5"
+        <Button Grid.Row="6"
                 Content="Smith"
                 Command="{Binding GoToSmith}"/>
         
+        <Button Grid.Row="7"
+                Content="Close"
+                Command="{Binding CloseCommand}"/>
+
     </Grid>
 </UserControl>

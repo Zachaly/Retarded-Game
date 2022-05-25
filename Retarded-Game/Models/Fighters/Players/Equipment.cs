@@ -16,12 +16,17 @@ namespace Retarded_Game.Models.Fighters.Players
         public Armor Pants { get; set; } = Armor.None(ArmorType.Pants);
         public Armor Boots { get; set; } = Armor.None(ArmorType.Boots);
 
+        public bool LeftHandEquip = false;
+
         public Weapon RightHand { get; set; } = Weapon.EmptyHand;
         // marked as equipment part because it can be either shield or weapon
         public EquipmentPart LeftHand { get; set; } = Weapon.EmptyHand;
         public List<Ring> EquippedRings { get; set; }
 
-        public List<Item> AllItems { get;}
+        public List<Item> AllItems { get; }
+
+        public List<EquipmentPart> EquippedItems 
+            => new List<EquipmentPart> { LeftHand, RightHand, Helmet, Chestplate, Pants, Boots};
 
         public Equipment()
         {
@@ -68,7 +73,6 @@ namespace Retarded_Game.Models.Fighters.Players
         public void SetPlayer(Player player)
         {
             _player = player;
-            bool dummybool;
 
             Equip(Helmet);
             Equip(Chestplate);
@@ -79,9 +83,22 @@ namespace Retarded_Game.Models.Fighters.Players
             EquippedRings.ForEach(x => Equip(x));
         }
 
+        public void Equip(EquipmentPart equipmentPart)
+        {
+
+
+            if(equipmentPart is Armor)
+                Equip(equipmentPart as Armor);
+            else if(LeftHandEquip)
+                EquipLeftHand(equipmentPart);
+            else if(equipmentPart is Ring)
+                Equip(equipmentPart as Ring);
+            else if(equipmentPart is Weapon)
+                Equip(equipmentPart as Weapon);
+        }
+
         public void Equip(Armor armor)
         {
-            bool dummyBool; // used only for compatibility because armor does not care about stats(or at least shouldn't ;P)
             if(armor.ArmorType == ArmorType.Helmet)
             {
                 Helmet.UnEquip(_player);
@@ -123,9 +140,9 @@ namespace Retarded_Game.Models.Fighters.Players
             }
         }
 
-        public void Equip(Weapon weapon, out bool statsCorrect)
+        public void Equip(Weapon weapon)
         {
-            statsCorrect = weapon.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
+            bool statsCorrect = weapon.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
 
             if (!statsCorrect)
                 return;
@@ -155,7 +172,7 @@ namespace Retarded_Game.Models.Fighters.Players
         /// <summary>
         /// Equips the left hand, it has to be either shield or weapon
         /// </summary>
-        public void Equip(EquipmentPart item)
+        public void EquipLeftHand(EquipmentPart item)
         {
             if (item is Weapon == false && item is Shield == false)
                 return;
@@ -177,6 +194,46 @@ namespace Retarded_Game.Models.Fighters.Players
 
             LeftHand.UnEquip(_player);
             LeftHand = item;
+        }
+
+        public void Unequip(EquipmentPart item)
+        {
+            if(item == RightHand)
+            {
+                RightHand.UnEquip(_player);
+                RightHand = Weapon.EmptyHand;
+            }
+            else if(item == LeftHand)
+            {
+                LeftHand.UnEquip(_player);
+                LeftHand = Weapon.EmptyHand;
+            }
+            else if(item == Helmet)
+            {
+                Helmet.UnEquip(_player);
+                Helmet = Armor.None(ArmorType.Helmet);
+            }
+            else if(item == Chestplate)
+            {
+                Chestplate.UnEquip(_player);
+                Chestplate = Armor.None(ArmorType.Chestplate);
+            }
+            else if(item == Pants)
+            {
+                Pants.UnEquip(_player);
+                Pants = Armor.None(ArmorType.Pants);
+            }
+            else if(item == Boots)
+            {
+                Boots.UnEquip(_player);
+                Boots = Armor.None(ArmorType.Boots);
+            }
+            else if (EquippedRings.Contains(item))
+            {
+                (item as Ring).UnEquip(_player);
+                EquippedRings.Remove(item as Ring);
+                EquippedRings.Add(Ring.None);
+            }
         }
     }
 }

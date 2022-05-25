@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="Retarded_Game.Views.HubViews.ChangeEquipmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Retarded_Game.Views.HubViews"
+             xmlns:itemViewModels="clr-namespace:Retarded_Game.ViewModels.ItemViewModels"
+             xmlns:itemViews="clr-namespace:Retarded_Game.Views.EquipmentViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="auto"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}"/>
+            </Style>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ItemDataDictionaries/ItemDictionary.xaml"/>
+                <ResourceDictionary Source="ItemDataDictionaries/WeaponDictionary.xaml"/>
+                <ResourceDictionary Source="ItemDataDictionaries/EquipmentPartDictionary.xaml"/>
+                <ResourceDictionary Source="ItemDataDictionaries/ShieldDictionary.xaml"/>
+                <ResourceDictionary Source="ItemDataDictionaries/ArmorDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="45*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="2"
+                  Background="SlateGray"
+                  ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedItem}">
+            <ListView.View>
+                <GridView x:Name="ItemColumns"/>
+            </ListView.View>
+        </ListView>
+
+        <ContentControl Grid.Row="1"
+                        Grid.Column="0"
+                        Content="{Binding SelectedItem}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type itemViewModels:ArmorViewModel}">
+                    <itemViews:ArmorView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:WeaponViewModel}">
+                    <itemViews:WeaponView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:ShieldViewModel}">
+                    <itemViews:ShieldView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:RingViewModel}">
+                    <itemViews:RingView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:ItemViewModel}">
+                    <itemViews:ItemView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+
+        <ContentControl Grid.Row="1"
+                        Grid.Column="1"
+                        Content="{Binding EquippedItem}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type itemViewModels:ArmorViewModel}">
+                    <itemViews:ArmorView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:WeaponViewModel}">
+                    <itemViews:WeaponView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:ShieldViewModel}">
+                    <itemViews:ShieldView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:RingViewModel}">
+                    <itemViews:RingView/>
+                </DataTemplate>
+
+                <DataTemplate DataType="{x:Type itemViewModels:ItemViewModel}">
+                    <itemViews:ItemView/>
+                </DataTemplate>
+
+            </ContentControl.Resources>
+        </ContentControl>
+
+        <Button Grid.Column="0"
+                Grid.Row="2"
+                Content="Equip item"
+                Command="{Binding EquipCommand}"/>
+        <Button Grid.Column="1"
+                Grid.Row="2"
+                Content="Unequip item"
+                Command="{Binding UnequipCommand}"/>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="2"
+                    Grid.RowSpan="3">
+
+            <Button Content="Right Hand"
+                    Command="{Binding ChangeToRightHand}"/>
+
+            <Button Content="Left Hand"
+                    Command="{Binding ChangeToLeftHand}"/>
+
+            <Button Content="Helmet"
+                    Command="{Binding ChangeToHelmet}"/>
+
+            <Button Content="Chestplate"
+                    Command="{Binding ChangeToChestplate}"/>
+            
+            <Button Content="Pants"
+                    Command="{Binding ChangeToPants}"/>
+
+            <Button Content="Boots"
+                    Command="{Binding ChangeToBoots}"/>
+
+            <Button Content="Ring 1"
+                    Command="{Binding ChangeToRing}"
+                    CommandParameter="0"/>
+            
+            <Button Content="Ring 2"
+                    Command="{Binding ChangeToRing}"
+                    CommandParameter="1"/>
+            
+            <Button Content="Ring 3"
+                    Command="{Binding ChangeToRing}"
+                    CommandParameter="2"/>
+            
+            <Button Content="Ring 4"
+                    Command="{Binding ChangeToRing}"
+                    CommandParameter="3"/>
+
+            <Button Content="Return to hub"
+                    Command="{Binding ReturnToHubCommand}"/>
+        </StackPanel>
+                    
+    </Grid>
+</UserControl>

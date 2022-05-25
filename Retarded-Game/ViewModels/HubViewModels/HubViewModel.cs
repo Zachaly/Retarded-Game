@@ -23,7 +23,10 @@ namespace Retarded_Game.ViewModels.HubViewModels
             new ShopViewModel(_navigationService, _player, _shop));
         public NavigateCommand GoToSmith => new NavigateCommand(_navigationService,
             new SmithViewModel(_navigationService, _player));
-
+        public NavigateCommand GoToEquipmentChange => new NavigateCommand(_navigationService,
+            new ChangeEquipmentViewModel(_navigationService, _player));
+        public CloseCommand CloseCommand => new CloseCommand();
+        
         public HubViewModel(NavigationService navigationService, Player player)
         {
             _player = player;

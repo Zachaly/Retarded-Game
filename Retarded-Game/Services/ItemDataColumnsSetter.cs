@@ -40,6 +40,8 @@ namespace Retarded_Game.Services
                 SetUpgradeMaterialColumns();
             else if (type == typeof(RingViewModel))
                 SetRingColumns();
+            else if( type == typeof(HandsItemViewModel))
+                SetLeftHandColumns();
             else
                 SetStandardColumns();
         }
@@ -106,6 +108,12 @@ namespace Retarded_Game.Services
         {
             SetStandardColumns();
             AddNewColumn("Material Level");
+        }
+
+        private void SetLeftHandColumns()
+        {
+            SetStandardColumns();
+            AddStatsRequirementsColumns();
         }
     }
 }

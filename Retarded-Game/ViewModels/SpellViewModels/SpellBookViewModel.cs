@@ -37,12 +37,12 @@ namespace Retarded_Game.ViewModels.SpellViewModels
                 if (_spellbook.EquippedSpells.Contains(spell))
                     _equippedSpells.Add(viewModel);
             });
-            SelectedSpell = _allSpells.FirstOrDefault();
+            SelectedSpell = _allSpells.Count > 0 ? _allSpells.First() : new SpellViewModel(new Spell());
         }
 
         public void EquipSpell()
         {
-            _spellbook.EquipSpell(SelectedSpell.Spell, out bool compatbool);
+            _spellbook.EquipSpell(SelectedSpell.Spell);
             EquippedSpells.Add(SelectedSpell);
             OnPropertyChanged(nameof(SpellCount));
         }

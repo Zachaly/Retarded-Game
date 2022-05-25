@@ -10,6 +10,6 @@ namespace Retarded_Game.ViewModels.ItemViewModels
         public string Description => _item.Description;
         public int Price => _item.Price;
         public Item Item => _item;
-        public ItemViewModel(Item item) => _item = item;
+        public ItemViewModel(Item item) => _item = item is null ? Item.None : item;
     }
 }

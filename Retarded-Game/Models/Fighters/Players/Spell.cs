@@ -12,16 +12,16 @@ namespace Retarded_Game.Models.Fighters.Players
     {
         public delegate void Usage(Player player, Fighter target);
         event Usage _onUsage; // special effects that spell has, e.g. status effects 
-        public double ManaCost { get; }
-        public Damage Damage { get; }
+        public double ManaCost { get; } = 0;
+        public Damage Damage { get; } = new Damage();
 
-        public StatRequirements StatRequirements { get; }
-        public string Name { get; }
-        public string Description { get; }
+        public StatRequirements StatRequirements { get; } = new StatRequirements(0,0);
+        public string Name { get; } = "";
+        public string Description { get; } = "";
 
-        public double FaithScaling { get; }
-        public double IntelligenceScaling { get; }
-        public List<ActionTag> ActionTags { get; }
+        public double FaithScaling { get; } = 0;
+        public double IntelligenceScaling { get; } = 0;
+        public List<ActionTag> ActionTags { get; } = new List<ActionTag>();
 
         private Player _player;
         
@@ -47,6 +47,8 @@ namespace Retarded_Game.Models.Fighters.Players
                 enemy.TakeDamage(damage);
             };
         }
+
+        public Spell() { }
 
         public void Use(Fighter fighter, out bool used)
         {
