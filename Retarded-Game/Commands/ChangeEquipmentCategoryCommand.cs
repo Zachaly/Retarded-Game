@@ -2,17 +2,17 @@
 using Retarded_Game.ViewModels.HubViewModels;
 using Retarded_Game.ViewModels.ItemViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Change item category in equipment view
+    /// </summary>
+    /// <typeparam name="T">ViewModel of desired item type</typeparam>
     public class ChangeEquipmentCategoryCommand<T> : CommandBase
     {
-        private ChangeEquipmentViewModel _viewModel;
-        private ArmorType _armorType = 0;
+        private readonly ChangeEquipmentViewModel _viewModel;
+        private readonly ArmorType _armorType = 0;
 
         public ChangeEquipmentCategoryCommand(ChangeEquipmentViewModel viewModel) => _viewModel = viewModel;
 

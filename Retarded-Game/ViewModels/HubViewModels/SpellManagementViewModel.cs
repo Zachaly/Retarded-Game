@@ -5,6 +5,9 @@ using Retarded_Game.Commands;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
+    /// <summary>
+    /// Viewmodel where player can manage his spell
+    /// </summary>
     public class SpellManagementViewModel : HubSubCategoryBase
     {
         public SpellBookViewModel SpellBook { get; }

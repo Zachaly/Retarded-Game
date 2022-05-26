@@ -13,6 +13,5 @@ namespace Retarded_Game.ViewModels
             _navigationStore.CurrentViewModelChanged += 
                 () => OnPropertyChanged(nameof(CurrentViewModel));
         }
-
     }
 }

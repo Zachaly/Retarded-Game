@@ -12,9 +12,6 @@ namespace Retarded_Game.ViewModels.StatisticsViewModels
         public string FrostResistance => $"{_defences.FrostResistance * 100}%";
         public string LightningResistance => $"{_defences.LightningResistance * 100}%";
 
-        public DefencesViewModel(Defences defences)
-        {
-            _defences = defences;
-        }
+        public DefencesViewModel(Defences defences) => _defences = defences;
     }
 }

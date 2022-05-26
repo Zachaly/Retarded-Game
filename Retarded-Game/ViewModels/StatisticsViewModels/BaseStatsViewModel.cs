@@ -17,9 +17,6 @@ namespace Retarded_Game.ViewModels.StatisticsViewModels
         public string DodgeChance => $"{_baseStats.DodgeChance}%";
         public string CriticalHitChance => $"{_baseStats.CriticalChance}%";
 
-        public BaseStatsViewModel(BaseStats baseStats)
-        {
-            _baseStats = baseStats;
-        }
+        public BaseStatsViewModel(BaseStats baseStats) => _baseStats = baseStats;
     }
 }

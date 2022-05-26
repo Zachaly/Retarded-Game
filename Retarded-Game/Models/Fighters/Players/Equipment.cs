@@ -16,6 +16,7 @@ namespace Retarded_Game.Models.Fighters.Players
         public Armor Pants { get; set; } = Armor.None(ArmorType.Pants);
         public Armor Boots { get; set; } = Armor.None(ArmorType.Boots);
 
+        // checks if you are trying to equip item on left hand in
         public bool LeftHandEquip = false;
 
         public Weapon RightHand { get; set; } = Weapon.EmptyHand;
@@ -83,10 +84,11 @@ namespace Retarded_Game.Models.Fighters.Players
             EquippedRings.ForEach(x => Equip(x));
         }
 
+        /// <summary>
+        /// Equips given item
+        /// </summary>
         public void Equip(EquipmentPart equipmentPart)
         {
-
-
             if(equipmentPart is Armor)
                 Equip(equipmentPart as Armor);
             else if(LeftHandEquip)
@@ -97,7 +99,7 @@ namespace Retarded_Game.Models.Fighters.Players
                 Equip(equipmentPart as Weapon);
         }
 
-        public void Equip(Armor armor)
+        private void Equip(Armor armor)
         {
             if(armor.ArmorType == ArmorType.Helmet)
             {
@@ -125,7 +127,7 @@ namespace Retarded_Game.Models.Fighters.Players
             }
         }
 
-        public void Equip(Ring ring)
+        private void Equip(Ring ring)
         {
             bool enoughtSpace = false;
             // player can have only 4 rings equipped at a time
@@ -140,7 +142,7 @@ namespace Retarded_Game.Models.Fighters.Players
             }
         }
 
-        public void Equip(Weapon weapon)
+        private void Equip(Weapon weapon)
         {
             bool statsCorrect = weapon.StatRequirements.AreFulliled(_player.Statistics.BaseStats);
 
@@ -169,10 +171,7 @@ namespace Retarded_Game.Models.Fighters.Players
             RightHand = weapon;
         }
 
-        /// <summary>
-        /// Equips the left hand, it has to be either shield or weapon
-        /// </summary>
-        public void EquipLeftHand(EquipmentPart item)
+        private void EquipLeftHand(EquipmentPart item)
         {
             if (item is Weapon == false && item is Shield == false)
                 return;

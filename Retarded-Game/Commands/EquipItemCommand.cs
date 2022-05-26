@@ -1,15 +1,13 @@
 ﻿using Retarded_Game.ViewModels.HubViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Retarded_Game.Commands
 {
+    /// <summary>
+    /// Command used to equip selected item in equipment change view
+    /// </summary>
     public class EquipItemCommand : CommandBase
     {
-        private ChangeEquipmentViewModel _viewModel;
+        private readonly ChangeEquipmentViewModel _viewModel;
 
         public EquipItemCommand(ChangeEquipmentViewModel viewModel) 
         {

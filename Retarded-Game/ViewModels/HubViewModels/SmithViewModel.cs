@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
+    /// <summary>
+    /// Hub subcategory where player can upgrade weapons
+    /// </summary>
     public class SmithViewModel : HubSubCategoryBase
     {
         private WeaponViewModel _selectedWeapon;

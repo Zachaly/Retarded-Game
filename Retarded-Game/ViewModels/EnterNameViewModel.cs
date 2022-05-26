@@ -22,7 +22,6 @@ namespace Retarded_Game.ViewModels
 
         public ICommand ConfirmNameCommand => new ConfirmNameCommand(this, new NavigationService(_navigationStore));
 
-        public EnterNameViewModel(NavigationStore navigationStore)
-            => _navigationStore = navigationStore;
+        public EnterNameViewModel(NavigationStore navigationStore) => _navigationStore = navigationStore;
     }
 }

@@ -11,6 +11,9 @@ using Retarded_Game.Views.HubViews;
 
 namespace Retarded_Game.ViewModels.HubViewModels
 {
+    /// <summary>
+    /// Viewmodel used to change equipped items
+    /// </summary>
     public class ChangeEquipmentViewModel : HubSubCategoryBase
     {
         private Item? _currentEquippmentPart;
@@ -49,23 +52,21 @@ namespace Retarded_Game.ViewModels.HubViewModels
         public UnequipCommand UnequipCommand => new UnequipCommand(this);
         
         public ChangeEquipmentViewModel(NavigationService navigationService, Player player) 
-            : base(navigationService, player)
-        {
-            Items = new ObservableCollection<EquipmentPartViewModel>();
-        }
-
+            : base(navigationService, player) 
+            => Items = new ObservableCollection<EquipmentPartViewModel>();
+        
         private ItemViewModel CurrentEquippedItemViewModel()
         {
             if (_currentEquippmentPart is Weapon)
                 return new WeaponViewModel(_currentEquippmentPart as Weapon);
-            else if(_currentEquippmentPart is Armor)
+            if(_currentEquippmentPart is Armor)
                 return new ArmorViewModel(_currentEquippmentPart as Armor);
-            else if(_currentEquippmentPart is Shield)
+            if(_currentEquippmentPart is Shield)
                 return new ShieldViewModel(_currentEquippmentPart as Shield);
-            else if(_currentEquippmentPart is Ring)
+            if(_currentEquippmentPart is Ring)
                 return new RingViewModel(_currentEquippmentPart as Ring);
-            else
-                return new ItemViewModel(Item.None);
+            
+            return new ItemViewModel(Item.None);
         }
 
         public void SetItemsOfType(Type type, ArmorType armorType = 0)
@@ -85,6 +86,10 @@ namespace Retarded_Game.ViewModels.HubViewModels
             ItemsChanged();
         }
 
+        /// <summary>
+        /// Changes ring
+        /// </summary>
+        /// <param name="ringNum">Currently changed ring</param>
         public void SetRing(int ringNum)
         {
             if (ringNum < 0 || ringNum > 3)
@@ -96,6 +101,7 @@ namespace Retarded_Game.ViewModels.HubViewModels
                 && !_player.Equipment.EquippedRings.Contains(item)).
                 Select(item => item as Ring).
                 ToList();
+
             rings.ForEach(item => Items.Add(new RingViewModel(item)));
             ItemsChanged();
             _view.SetColumnsToType(typeof(RingViewModel));
@@ -155,8 +161,14 @@ namespace Retarded_Game.ViewModels.HubViewModels
                 _currentEquippmentPart = _player.Equipment.Boots;
         }
 
+        /// <summary>
+        /// Checks if player can equip currently selected item
+        /// </summary>
         public bool CanEquip() => SelectedItem is null ? false : SelectedItem.AreStatsFullfilled(_player.Statistics.BaseStats);
 
+        /// <summary>
+        /// Equips selected item
+        /// </summary>
         public void Equip() 
         { 
             SelectedItem.Equip(_player);
@@ -165,6 +177,9 @@ namespace Retarded_Game.ViewModels.HubViewModels
             Items.Remove(SelectedItem);
             ItemsChanged();
         }
+        /// <summary>
+        /// Unequips current equipment part
+        /// </summary>
         public void UnEquip() 
         {
             if ((EquippedItem as EquipmentPartViewModel) == null)
@@ -176,6 +191,9 @@ namespace Retarded_Game.ViewModels.HubViewModels
             ItemsChanged();
         }
 
+        /// <summary>
+        /// Updates info about selected item and current equipment part
+        /// </summary>
         private void ItemsChanged()
         {
             OnPropertyChanged(nameof(Items));
