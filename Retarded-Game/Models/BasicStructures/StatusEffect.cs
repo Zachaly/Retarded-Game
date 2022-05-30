@@ -1,20 +1,20 @@
 ﻿using Retarded_Game.Models.Fighters;
+using System;
 
 namespace Retarded_Game.Models.BasicStructures
 {
-    public delegate void StatusEffectTick(Fighter target);
     /// <summary>
     /// Class representing a status effect that affects character
     /// </summary>
     public sealed class StatusEffect
     {
         Fighter _target;
-        event StatusEffectTick _tick;
+        Action<Fighter> _tick;
         int _numberOfTicks;
-        public StatusEffect(Fighter target, int numberOfTicks, StatusEffectTick tick)
+        public StatusEffect(Fighter target, int numberOfTicks, Action<Fighter> tick)
         {
             _target = target;
-            _tick += tick;
+            _tick = tick;
             _numberOfTicks = numberOfTicks;
         }
 

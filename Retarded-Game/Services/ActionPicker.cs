@@ -4,7 +4,6 @@ using Retarded_Game.Models.BasicStructures.Enums;
 using System.Linq;
 using Retarded_Game.Models.Fighters.Players;
 using Retarded_Game.Models.Fighters.AI;
-using Retarded_Game.Models.Fighters;
 
 namespace Retarded_Game.Services
 {
@@ -14,22 +13,19 @@ namespace Retarded_Game.Services
     public sealed class ActionPicker
     {
         private readonly Player _player;
-        private readonly Fighter _enemy;
+        private readonly Enemy _enemy;
         private readonly List<EnemyAction> _actions;
         private static readonly Random _random = new Random();
         private bool _actionPicked = false;
 
-        public ActionPicker(AIFighter enemy, List<EnemyAction> actions, Player player)
+        public ActionPicker(Enemy enemy, List<EnemyAction> actions, Player player)
         {
             _enemy = enemy;
             _actions = actions;
             _player = player;
         }
 
-        private EnemyAction GetRandomElement(List<EnemyAction> list)
-        {
-            return list[_random.Next(0, list.Count)];
-        }
+        private EnemyAction GetRandomElement(List<EnemyAction> list) => list[_random.Next(0, list.Count)];
 
         public EnemyAction GetAction()
         {
